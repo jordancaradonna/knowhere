@@ -7,7 +7,6 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>welcome knowhere!</Text>
-        <Button title=' Save the cheeks' icon ={{name: 'cached'}} />
       </View>
     );
   }
