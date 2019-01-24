@@ -1,23 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {Button} from 'react-native-elements';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import thunk from 'redux-thunk';
+
+import reducers from './src/reducers';
+import LoginScreen from './src/screens/LoginScreen';
+import CreateUserScreen from './src/screens/CreateUserScreen';
+import DashboardScreen from './src/screens/DashboardScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import ExploreScreen from './src/screens/ExploreScreen';
+import NotificationsScreen from './src/screens/NotificationsScreen';
 
 export default class App extends React.Component {
   render() {
+    const store = createStore(reducers, {}, applyMiddleware(thunk));
+    const MainNavigator = createStackNavigator(
+      {
+        login: LoginScreen,
+        createuser: CreateUserScreen,
+        main: createBottomTabNavigator(
+          {
+            dash: DashboardScreen,
+            profile: ProfileScreen,
+            explore: ExploreScreen,
+            notifications: NotificationsScreen
+          }
+        )
+      }
+  );
+    const Navigator = createAppContainer(MainNavigator);
+
     return (
-      <View style={styles.container}>
-        <Text>welcome knowhere!</Text>
-        <Button title=' Save the cheeks' icon ={{name: 'cached'}} />
-      </View>
+      <Provider store={store} >
+        <Navigator />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
