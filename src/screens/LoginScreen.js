@@ -8,6 +8,10 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('createuser');
   }
 
+  onSignInPress() {
+    this.props.navigation.navigate('main');
+  }
+  
   render () {
     return (
       <View>
@@ -22,6 +26,10 @@ class LoginScreen extends React.Component {
         <Button
             title='Sign Up'
             onPress={this.onSignUpPress.bind(this)}
+        />
+        <Button
+            title='Sign in'
+            onPress={this.onSignInPress.bind(this)}
         />
       </View>
     )
