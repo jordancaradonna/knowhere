@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import thunk from 'redux-thunk';
 
 import reducers from './src/reducers';
+
 import LoginScreen from './src/screens/LoginScreen';
 import CreateUserScreen from './src/screens/CreateUserScreen';
 import AccountInfoScreen from './src/screens/AccountInfoScreen';

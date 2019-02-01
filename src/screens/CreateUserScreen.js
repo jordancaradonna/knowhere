@@ -1,39 +1,49 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, Text, TextInput, Button} from 'react-native';
+
 
 class CreateUserScreen extends React.Component {
   onCancelPress() {
     this.props.navigation.navigate('login');
   }
-  /* onConfirmPress(){
+  onConfirmPress(){
     this.props.navigation.navigate('accountinfo');
-  }  */
-  
+  }  
   
   render () {
     return (
       <View>
-        <Text>
-          CreateUserScreen
-          CreateUserScreen
-          CreateUserScreen
-          CreateUserScreen
-          CreateUserScreen
-          CreateUserScreen
-        </Text>
-        <TextInput placeholder='First Name:' />
-        <TextInput placeholder='Last Name:' />
-        <TextInput placeholder='Email:' />
-        <TextInput placeholder='Password:' />
-        <TextInput placeholder='Confirm Password:' />
+        
+        <Text>                              Create User Screen</Text>
+
+        <TextInput
+          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+          placeholder='First Name:' 
+          />
+        <TextInput 
+          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+          placeholder='Last Name:' />
+        <TextInput 
+          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+          placeholder='Email:' />
+        <TextInput 
+           style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+           placeholder='Password:' />
+        <TextInput 
+           style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+           placeholder='Confirm Password:' />
 
         
+         <Button
+            title='Confirm'
+            color="#83b4ff"
+            onPress={this.onConfirmPress.bind(this)}
+        />
         <Button
-            title='Cancel / ?????Continue??????'
+            title='Cancel'
+            color="#83b4ff"
             onPress={this.onCancelPress.bind(this)}
         />
-        
         
       </View>
     )
