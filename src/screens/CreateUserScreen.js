@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { View, Text, TextInput, Button} from 'react-native';
 
 
@@ -45,6 +46,32 @@ class CreateUserScreen extends React.Component {
             onPress={this.onCancelPress.bind(this)}
         />
         
+=======
+import { View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
+
+class CreateUserScreen extends React.Component {
+
+  onCreateTripPress() {
+    this.props.navigation.navigate('createtrip');
+  }
+
+  render () {
+    return (
+      <View>
+        <Text>
+          CreateUserScreen
+          CreateUserScreen
+          CreateUserScreen
+          CreateUserScreen
+          CreateUserScreen
+          CreateUserScreen
+        </Text>
+        <Button
+          title='Create a Trip'
+          onPress={this.onCreateTripPress.bind(this)}
+        />
+>>>>>>> 6b2fc5eebf66ecfbf8847386d6fab976dcba0541
       </View>
     )
   }
