@@ -1,5 +1,10 @@
 import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { Text, 
+        TextInput, StyleSheet, 
+        ImageBackground, View } from 'react-native';
+import { Button, Header } from 'react-native-elements';
+
+
 
 
 class LoginScreen extends React.Component {
@@ -14,44 +19,104 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('forgotpassword');
   } 
   
-
   render () {
     return (
       
-      <View> 
-        <Text>                                       KNOWHERE       
-        </Text>
+      <ImageBackground source={require('../images/finalBackground.jpg')}
+                       style={styles.container}> 
 
+
+       <View style = {{justifyContent: 'space-between', 
+                        alignItems: 'center'}}>
+
+
+        <Text style={[styles.title,]}>Knowhere      
+        </Text>
+       
+
+       
         <Button
-            title='Sign Up'
-            color="#83b4ff"
+            title='Sign up'
+            titleStyle={styles.buttonTitle}
+            buttonStyle={styles.buttonStyle}
+            //color="white"
+            //backgroundColor='#83b4ff'
+            style = {{padding: 55}}
             onPress={this.onSignUpPress.bind(this)}
         />
 
-        <TextInput 
-          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
-          placeholder='Email:' />
-        <TextInput 
-          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
-          placeholder='Password:' />
-        
 
-        <Button
-            title='Sign in'
-            color="#83b4ff"
-            onPress={this.onSignInPress.bind(this)}
+        <TextInput 
+          style={{height: 45, width: 250, 
+                  backgroundColor: 'white', 
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
+          placeholder=' Email: ' 
         />
+        <Text> </Text>
+        <TextInput 
+          style={{height: 45, width: 250, 
+                  backgroundColor: 'white', 
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
+          placeholder=' Password:' 
+        />
+        <Text> </Text>
+       
         <Button
             title='Forgot Password?'
-            color="#83b4ff"
+            color="black"
+            backgroundColor='#white'
             onPress={this.onForgotPasswordPress.bind(this)}
         />
-      </View>
+       
+
+
+        <Button
+            title='Sign In'
+            titleStyle={styles.buttonTitle}
+            buttonStyle={styles.buttonStyle}
+            //color="white"
+            //backgroundColor='#83b4ff'
+            style = {{padding: 20}}
+            onPress={this.onSignInPress.bind(this)}
+        />
       
+
+      </View>
+      </ImageBackground>
     )
   }
 }
 
 
 
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  title:{ //Knowhere
+    fontSize: 28,
+    padding: 22,
+    fontStyle: 'italic',
+    fontFamily: 'Chalkboard SE',
+    color: 'black',
+  },
+  buttonTitle:{
+    //fontSize: 16, doesnt work!
+    //letterSpacing: 2,
+    color: "white",
+  },
+  buttonStyle:{
+    width: 85,
+    //height: 45,
+    backgroundColor: "#83b4ff",
+    borderRadius: 100, //makes it oval not squared
+    elevation: 5,
+  }
+});
+
+//fontFamily:  Thonburi, Chalkboard SE, Courier New, 
+
 export default LoginScreen;
+

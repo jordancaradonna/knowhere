@@ -1,36 +1,97 @@
 import React from 'react';
-import { View, Text, TextInput, Button} from 'react-native';
-
+import { ImageBackground, StyleSheet, 
+        Text, TextInput } from 'react-native';
+import { Button } from 'react-native-elements';
 
 class AccountInfoScreen extends React.Component {
-  onContinuePress() {
-    this.props.navigation.navigate('login');
+  onSignInPress() {
+    this.props.navigation.navigate('main');
   }
   
   render () {
     return (
-      <View>
-        <Text>
-         Account Info Screen comes after CreateUserScreen
-        </Text>
+      <ImageBackground source={require('../images/finalBackground2.jpg')}
+                       style={styles.container}> 
+
+        <Text style={[styles.title,]}> Knowhere </Text>
+        <Text> </Text>
+
+        <Text style={[styles.otherText,]}> Welcome! </Text>
+        <Text style={[styles.otherText,]}> Just a couple more things </Text>
+        <Text style={[styles.otherText,]}> to set up your account. </Text>
+        
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+
         <TextInput
-          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+          style={{height: 40, width: 200,
+                  backgroundColor: 'white', 
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder='Choose Country' 
         />
+           <TextInput style={{height:5}}/>
         <TextInput
-          style={{height: 50, borderColor: '#D3D3D3', borderWidth: 2}}
+          style={{height: 40, width: 200,
+                  backgroundColor: 'white', 
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder='Choose City' 
         />
 
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+
         <Button
-            title='Continue'
-            color="#83b4ff"
-            onPress={this.onContinuePress.bind(this)}
+            title='add photo'
+            color="black"
+            backgroundColor='#white'
+            style={{padding:8}}
         />
         
-      </View>
+        <Text> </Text>
+
+        <Button
+            title='Sign in'
+            titleStyle={styles.buttonTitle}
+            buttonStyle={styles.buttonStyle}
+            //color="white"
+            //backgroundColor='#83b4ff'
+            style={{padding:8}}
+            onPress={this.onSignInPress.bind(this)}
+        />
+        
+      </ImageBackground>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  title:{
+    fontSize: 28,
+    fontFamily: 'Chalkboard SE',
+    padding: 22,
+    color: 'black',
+  },
+  otherText:{
+    fontSize: 16,
+  },
+  buttonTitle:{
+    fontSize: 16,
+    letterSpacing: 2,
+    color: "white",
+  },
+  buttonStyle:{
+    width: 90,
+    height: 45,
+    backgroundColor: "#83b4ff",
+    borderRadius: 100, //makes it oval not squared
+    elevation: 5,
+  }
+});
 
 export default AccountInfoScreen;
