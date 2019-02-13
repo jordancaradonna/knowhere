@@ -1,70 +1,129 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, 
+import { StyleSheet, Text, TextInput,
         View, ImageBackground} from 'react-native';
+import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
-
+import {
+  emailChanged,
+  passwordChanged,
+  confirmPasswordChanged,
+  createUser,
+  createFail
+} from '../actions'
 
 class CreateUserScreen extends React.Component {
+
+  onEmailChange(text) {
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.props.passwordChanged(text);
+  }
+
+  onConfirmPasswordChange(text) {
+    this.props.confirmPasswordChanged(text);
+  }
+
   onCancelPress() {
     this.props.navigation.navigate('login');
   }
+
   onConfirmPress(){
-    this.props.navigation.navigate('accountinfo');
+    const { email, password, confirmPassword } = this.props
+    console.log(this.props);
+      this.props.createUser({ email, password, confirmPassword }, () => {
+        this.props.navigation.navigate('main');
+      });
   }
 
+  renderError () {
+    if(this.props.error) {
+      return(
+        <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+      );
+    }
+  }
   render () {
     return (
       <ImageBackground source={require('../images/background1.jpg')}
-                       style={styles.container}> 
+                       style={styles.container}>
 
-        
+
         <Text style={[styles.title,]}> Knowhere </Text>
- 
-        <Text >   </Text>
-        <Text >   </Text>
-        
 
+        <Text >   </Text>
+        <Text >   </Text>
+
+        {this.renderError()}
         <TextInput
+<<<<<<< HEAD
           style={{height: 40, width: 250, backgroundColor: 'white', 
+=======
+          style={{height: 40, width: 200, backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
              <Text >   </Text>
         <TextInput
+<<<<<<< HEAD
           style={{height: 40, width: 250, 
                   backgroundColor: 'white', 
+=======
+          style={{height: 40, width: 200,
+                  backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Last Name:' 
+          placeholder=' Last Name:'
         />
              <Text >   </Text>
          <TextInput
+<<<<<<< HEAD
           style={{height: 40, width: 250, backgroundColor: 'white', 
+=======
+          style={{height: 40, width: 200, backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Email:' 
+          placeholder=' Email:'
+          onChangeText={this.onEmailChange.bind(this)}
+          value={this.props.email}
         />
              <Text >   </Text>
         <TextInput
+<<<<<<< HEAD
            style={{height: 40, width: 250, backgroundColor: 'white', 
+=======
+           secureTextEntry
+           style={{height: 40, width: 200, backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                    borderColor: '#83b4ff', borderWidth: 0.5}}
-           placeholder=' Password:' 
+           placeholder=' Password:'
+           onChangeText={this.onPasswordChange.bind(this)}
+           value={this.props.password}
         />
              <Text >   </Text>
         <TextInput
+<<<<<<< HEAD
            style={{height: 40, width: 250, backgroundColor: 'white', 
+=======
+           secureTextEntry
+           style={{height: 40, width: 200, backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                    borderColor: '#83b4ff', borderWidth: 0.5}}
-           placeholder=' Confirm Password:' 
+           placeholder=' Confirm Password:'
+           onChangeText={this.onConfirmPasswordChange.bind(this)}
+           value={this.props.confirmPassword}
         />
              <Text >   </Text>
-
-
-        <Text style={[styles.otherText,]}>   An email will be sent with a link </Text>
-        <Text style={[styles.otherText,]}>   allowing you to proceed:  </Text>
 
 
 
       <View style={styles.container2}>
-        
-        <View style={styles.buttonContainer}> 
+
+        <View style={styles.buttonContainer}>
           <Button
             title='Cancel'
             titleStyle={styles.buttonTitle}
@@ -74,7 +133,7 @@ class CreateUserScreen extends React.Component {
             onPress={this.onCancelPress.bind(this)}   />
         </View>
 
-        <View style={styles.buttonContainer}>   
+        <View style={styles.buttonContainer}>
           <Button
             title='Confirm'
             titleStyle={styles.buttonTitle}
@@ -130,7 +189,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  errorTextStyle: {
+    fontSize: 15,
+    alignSelf: 'center',
+    color: 'red'
   }
 });
 
-export default CreateUserScreen;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading, confirmPassword } = auth;
+
+  return { email, password, error, loading, confirmPassword };
+};
+
+export default connect(mapStateToProps, {
+  emailChanged,
+  passwordChanged,
+  createUser,
+  confirmPasswordChanged,
+})(CreateUserScreen);

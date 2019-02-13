@@ -6,6 +6,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import thunk from 'redux-thunk';
+import firebase from 'firebase';
 
 import reducers from './src/reducers';
 
@@ -22,6 +23,18 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 export default class App extends React.Component {
+  componentWillMount() {
+    // Initialize Firebase
+    const config = {
+    apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
+    authDomain: 'knowhere.firebaseapp.com',
+    databaseURL: 'https://knowhere.firebaseio.com',
+    projectId: 'knowhere',
+    storageBucket: '',
+    messagingSenderId: '289231611796'
+    };
+    firebase.initializeApp(config);
+  }
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
     
@@ -32,6 +45,7 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
+<<<<<<< HEAD
         dashOutings: DashboardOutingScreen,
         
 
@@ -94,6 +108,18 @@ export default class App extends React.Component {
 
     }
 
+=======
+        main: createBottomTabNavigator(
+          {
+            dash: DashboardScreen,
+            profile: ProfileScreen,
+            explore: ExploreScreen,
+            notifications: NotificationsScreen
+          }
+        )
+      },
+      navigationOptions = { header: null }
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
   );
 
     const Navigator = createAppContainer(MainNavigator);

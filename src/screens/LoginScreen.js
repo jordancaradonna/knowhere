@@ -1,39 +1,69 @@
 import React from 'react';
-import { Text, 
-        TextInput, StyleSheet, 
+import { Text,
+        TextInput, StyleSheet,
         ImageBackground, View } from 'react-native';
+<<<<<<< HEAD
 import { Button } from 'react-native-elements';
 
+=======
+import { connect } from 'react-redux';
+import { Button, Header } from 'react-native-elements';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
 
 
 
 class LoginScreen extends React.Component {
 
+<<<<<<< HEAD
 
+=======
+  onEmailChange(text) {
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.props.passwordChanged(text);
+  }
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
 
   onSignUpPress() {
     this.props.navigation.navigate('createuser');
   }
   onSignInPress() {
-    this.props.navigation.navigate('main');
+    const { email, password } = this.props
+
+    this.props.loginUser({ email, password}, () => {
+      this.props.navigation.navigate('main')
+    });
   }
   onForgotPasswordPress() {
     this.props.navigation.navigate('forgotpassword');
-  } 
-  
+  }
+
+  renderError () {
+    if(this.props.error) {
+      return(
+        <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+      );
+    }
+  }
   render () {
     return (
-      
+
       <ImageBackground source={require('../images/finalBackground.jpg')}
-                       style={styles.container}> 
+                       style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between', 
+       <View style = {{justifyContent: 'space-between',
                         alignItems: 'center'}}>
 
 
-        <Text style={[styles.title,]}>Knowhere      
+        <Text style={[styles.title,]}>Knowhere
         </Text>
+<<<<<<< HEAD
         <Text> </Text>
        
 
@@ -41,18 +71,43 @@ class LoginScreen extends React.Component {
         <TextInput 
           style={{height: 45, width: 250, 
                   backgroundColor: 'white', 
+=======
+
+
+
+        <Button
+            title='Sign up'
+            titleStyle={styles.buttonTitle}
+            buttonStyle={styles.buttonStyle}
+            //color="white"
+            //backgroundColor='#83b4ff'
+            style = {{padding: 55}}
+            onPress={this.onSignUpPress.bind(this)}
+        />
+
+        {this.renderError()}
+        <TextInput
+          style={{height: 45, width: 250,
+                  backgroundColor: 'white',
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Email: ' 
+          placeholder=' Email: '
+          onChangeText={this.onEmailChange.bind(this)}
         />
         <Text> </Text>
-        <TextInput 
-          style={{height: 45, width: 250, 
-                  backgroundColor: 'white', 
+        <TextInput
+          secureTextEntry
+          style={{height: 45, width: 250,
+                  backgroundColor: 'white',
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Password:' 
+          placeholder=' Password:'
+          onChangeText={this.onPasswordChange.bind(this)}
         />
         <Text> </Text>
+<<<<<<< HEAD
        
+=======
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
 
         <Button
             small 
@@ -64,8 +119,11 @@ class LoginScreen extends React.Component {
             onPress={this.onForgotPasswordPress.bind(this)}
         />
 
+<<<<<<< HEAD
        
       
+=======
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
 
 
       <View style={styles.container2}>
@@ -87,6 +145,7 @@ class LoginScreen extends React.Component {
             titleStyle={styles.buttonTitle}
             buttonStyle={styles.buttonStyle}
             //color="white"
+<<<<<<< HEAD
             backgroundColor='#b0d0ff'
             //style={{padding: 15}}
             onPress={this.onSignInPress.bind(this)}  />
@@ -95,6 +154,12 @@ class LoginScreen extends React.Component {
 
 
 
+=======
+            //backgroundColor='#83b4ff'
+            style = {{padding: 20}}
+            onPress={this.onSignInPress.bind(this)}
+        />
+>>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
 
 
       </View>
@@ -142,10 +207,20 @@ const styles = StyleSheet.create({
    //backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  errorTextStyle: {
+    fontSize: 15,
+    alignSelf: 'center',
+    color: 'red'
   }
 });
 
-//fontFamily:  Thonburi, Chalkboard SE, Courier New, 
+//fontFamily:  Thonburi, Chalkboard SE, Courier New,
 
-export default LoginScreen;
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
 
+  return { email, password, error, loading };
+};
+
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginScreen);
