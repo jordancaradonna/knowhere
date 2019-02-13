@@ -32,6 +32,15 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('forgotpassword');
   }
 
+  renderError () {
+    if(this.props.error) {
+      return(
+        <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+      );
+    }
+  }
   render () {
     return (
 
@@ -58,7 +67,7 @@ class LoginScreen extends React.Component {
             onPress={this.onSignUpPress.bind(this)}
         />
 
-
+        {this.renderError()}
         <TextInput
           style={{height: 45, width: 250,
                   backgroundColor: 'white',
@@ -129,6 +138,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  errorTextStyle: {
+    fontSize: 15,
+    alignSelf: 'center',
+    color: 'red'
   }
 });
 

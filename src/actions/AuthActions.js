@@ -40,6 +40,7 @@ export const loginUser = ({ email, password }, callbackFunction) => {
       .then(user => loginUserSuccess(dispatch, user, callbackFunction))
       .catch((error) => {
         console.log(error);
+        loginUserFail(dispatch, error.message)
       });
     };
 };
@@ -61,8 +62,8 @@ export const createUser = ({ email, password, confirmPassword }, callbackFunctio
   };
 };
 
-const loginUserFail = (dispatch) => {
-  dispatch({ type: LOGIN_USER_FAIL });
+const loginUserFail = (dispatch, errorText) => {
+  dispatch({ type: LOGIN_USER_FAIL, payload: errorText });
 };
 
 const loginUserSuccess = (dispatch, user, callbackFunction) => {
