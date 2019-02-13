@@ -45,7 +45,7 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-<<<<<<< HEAD
+
         dashOutings: DashboardOutingScreen,
         
 
@@ -105,22 +105,9 @@ export default class App extends React.Component {
                 //inactiveTintColor: '#black'
               //}
           })
+    })
 
-    }
 
-=======
-        main: createBottomTabNavigator(
-          {
-            dash: DashboardScreen,
-            profile: ProfileScreen,
-            explore: ExploreScreen,
-            notifications: NotificationsScreen
-          }
-        )
-      },
-      navigationOptions = { header: null }
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
-  );
 
     const Navigator = createAppContainer(MainNavigator);
 

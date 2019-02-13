@@ -11,6 +11,7 @@ import {
   createFail
 } from '../actions'
 
+
 class CreateUserScreen extends React.Component {
 
   onEmailChange(text) {
@@ -46,6 +47,8 @@ class CreateUserScreen extends React.Component {
       );
     }
   }
+
+
   render () {
     return (
       <ImageBackground source={require('../images/background1.jpg')}
@@ -58,34 +61,26 @@ class CreateUserScreen extends React.Component {
         <Text >   </Text>
 
         {this.renderError()}
+
         <TextInput
-<<<<<<< HEAD
+
           style={{height: 40, width: 250, backgroundColor: 'white', 
-=======
-          style={{height: 40, width: 200, backgroundColor: 'white',
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
              <Text >   </Text>
         <TextInput
-<<<<<<< HEAD
-          style={{height: 40, width: 250, 
-                  backgroundColor: 'white', 
-=======
+
           style={{height: 40, width: 200,
                   backgroundColor: 'white',
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Last Name:'
         />
              <Text >   </Text>
          <TextInput
-<<<<<<< HEAD
-          style={{height: 40, width: 250, backgroundColor: 'white', 
-=======
+
           style={{height: 40, width: 200, backgroundColor: 'white',
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
+
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Email:'
           onChangeText={this.onEmailChange.bind(this)}
@@ -93,25 +88,18 @@ class CreateUserScreen extends React.Component {
         />
              <Text >   </Text>
         <TextInput
-<<<<<<< HEAD
+             secureTextEntry
            style={{height: 40, width: 250, backgroundColor: 'white', 
-=======
-           secureTextEntry
-           style={{height: 40, width: 200, backgroundColor: 'white',
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
-                   borderColor: '#83b4ff', borderWidth: 0.5}}
+           borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Password:'
            onChangeText={this.onPasswordChange.bind(this)}
            value={this.props.password}
         />
              <Text >   </Text>
-        <TextInput
-<<<<<<< HEAD
-           style={{height: 40, width: 250, backgroundColor: 'white', 
-=======
+        <TextInput 
            secureTextEntry
            style={{height: 40, width: 200, backgroundColor: 'white',
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
+
                    borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Confirm Password:'
            onChangeText={this.onConfirmPasswordChange.bind(this)}
