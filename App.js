@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import thunk from 'redux-thunk';
+import firebase from 'firebase';
 
 import reducers from './src/reducers';
 
@@ -19,6 +20,18 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 export default class App extends React.Component {
+  componentWillMount() {
+    // Initialize Firebase
+    const config = {
+    apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
+    authDomain: 'knowhere.firebaseapp.com',
+    databaseURL: 'https://knowhere.firebaseio.com',
+    projectId: 'knowhere',
+    storageBucket: '',
+    messagingSenderId: '289231611796'
+    };
+    firebase.initializeApp(config);
+  }
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
     const MainNavigator = createStackNavigator(
@@ -35,7 +48,8 @@ export default class App extends React.Component {
             notifications: NotificationsScreen
           }
         )
-      }
+      },
+      navigationOptions = { header: null }
   );
     const Navigator = createAppContainer(MainNavigator);
 
