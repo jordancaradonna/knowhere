@@ -25,32 +25,32 @@ class CreateUserScreen extends React.Component {
         
 
         <TextInput
-          style={{height: 40, width: 200, backgroundColor: 'white', 
+          style={{height: 40, width: 250, backgroundColor: 'white', 
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
              <Text >   </Text>
         <TextInput
-          style={{height: 40, width: 200, 
+          style={{height: 40, width: 250, 
                   backgroundColor: 'white', 
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Last Name:' 
         />
              <Text >   </Text>
          <TextInput
-          style={{height: 40, width: 200, backgroundColor: 'white', 
+          style={{height: 40, width: 250, backgroundColor: 'white', 
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Email:' 
         />
              <Text >   </Text>
         <TextInput
-           style={{height: 40, width: 200, backgroundColor: 'white', 
+           style={{height: 40, width: 250, backgroundColor: 'white', 
                    borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Password:' 
         />
              <Text >   </Text>
         <TextInput
-           style={{height: 40, width: 200, backgroundColor: 'white', 
+           style={{height: 40, width: 250, backgroundColor: 'white', 
                    borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Confirm Password:' 
         />
@@ -106,9 +106,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer:{
     flex: 1,
+    marginLeft: 25,
+    marginRight: 25,
   },
   title:{
     fontSize: 28,
+    fontStyle: 'italic',
     fontFamily: 'Chalkboard SE',
     padding: 22,
     color: 'black',
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   buttonStyle:{
-    //width: 90,
+    width: 110,
     height: 42,
     backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared

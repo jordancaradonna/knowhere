@@ -2,13 +2,15 @@ import React from 'react';
 import { Text, 
         TextInput, StyleSheet, 
         ImageBackground, View } from 'react-native';
-import { Button, Header } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 
 
 
 
 class LoginScreen extends React.Component {
-  
+
+
+
   onSignUpPress() {
     this.props.navigation.navigate('createuser');
   }
@@ -32,18 +34,8 @@ class LoginScreen extends React.Component {
 
         <Text style={[styles.title,]}>Knowhere      
         </Text>
+        <Text> </Text>
        
-
-       
-        <Button
-            title='Sign up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 55}}
-            onPress={this.onSignUpPress.bind(this)}
-        />
 
 
         <TextInput 
@@ -61,25 +53,49 @@ class LoginScreen extends React.Component {
         />
         <Text> </Text>
        
+
         <Button
+            small 
+            rounded
             title='Forgot Password?'
             color="black"
             backgroundColor='#white'
+            marginBottom= '15'
             onPress={this.onForgotPasswordPress.bind(this)}
         />
+
        
+      
 
 
-        <Button
+      <View style={styles.container2}>
+        
+        <View style={styles.buttonContainer}> 
+          <Button
+            title='Sing Up'
+            titleStyle={styles.buttonTitle}
+            buttonStyle={styles.buttonStyle}
+            //color="white"
+            backgroundColor='#83b4ff'
+            //style={{padding: 15}}
+            onPress={this.onSignUpPress.bind(this)}   />
+        </View>
+
+        <View style={styles.buttonContainer}>   
+          <Button
             title='Sign In'
             titleStyle={styles.buttonTitle}
             buttonStyle={styles.buttonStyle}
             //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 20}}
-            onPress={this.onSignInPress.bind(this)}
-        />
-      
+            backgroundColor='#b0d0ff'
+            //style={{padding: 15}}
+            onPress={this.onSignInPress.bind(this)}  />
+        </View>
+      </View>
+
+
+
+
 
       </View>
       </ImageBackground>
@@ -96,11 +112,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title:{ //Knowhere
-    fontSize: 28,
-    padding: 22,
+    fontSize: 33,
+    padding: 40,
+    marginBottom: 50,
     fontStyle: 'italic',
     fontFamily: 'Chalkboard SE',
     color: 'black',
+  },
+  container2:{
+    flex: 1,
+    flexDirection: 'row',
+    //alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer:{
+    flex: 1,
+    marginTop: 25,
+    marginLeft: 25,
+    marginRight: 25,
   },
   buttonTitle:{
     //fontSize: 16, doesnt work!
@@ -108,9 +137,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   buttonStyle:{
-    width: 85,
+    width: 100,
     //height: 45,
-    backgroundColor: "#83b4ff",
+   //backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
   }
