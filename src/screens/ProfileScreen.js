@@ -6,6 +6,15 @@ import { Button, Tile, Avatar} from 'react-native-elements';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class ProfileScreen extends React.Component {
+
+onCreateTripPress() {
+  this.props.navigation.navigate('createtrip');
+}
+
+onCreateOutingPress() {
+  this.props.navigation.navigate('createouting');
+}
+
   render () {
     return (
       <View>
@@ -24,6 +33,14 @@ class ProfileScreen extends React.Component {
         >
           <Text style={styles.NameStyle}>User Name</Text>
           <Text>User Home</Text>
+          <Button
+            title='Create Outing'
+            onPress={this.onCreateOutingPress.bind(this)}
+          />
+          <Button
+            title='Create Trip'
+            onPress={this.onCreateTripPress.bind(this)}
+          />
           <Button
             title='map button'
           />

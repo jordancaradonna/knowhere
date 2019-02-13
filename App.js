@@ -14,7 +14,8 @@ import DashboardScreen from './src/screens/DashboardScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-
+import CreateTripScreen from './src/screens/CreateTripScreen';
+import CreateOutingScreen from './src/screens/CreateOutingScreen';
 
 
 
@@ -27,12 +28,14 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
+        createtrip: CreateTripScreen,
+        createouting: CreateOutingScreen,
         main: createBottomTabNavigator(
           {
-            dash: DashboardScreen,
-            profile: ProfileScreen,
-            explore: ExploreScreen,
-            notifications: NotificationsScreen
+            Dash: DashboardScreen,
+            Profile: ProfileScreen,
+            Explore: ExploreScreen,
+            Notifications: NotificationsScreen
           }
         )
       }

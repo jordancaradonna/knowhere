@@ -1,16 +1,18 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
+
 
 class DashboardScreen extends React.Component {
+
   render () {
     return (
-      <View>
-        <Text>
-          DashboardScreen
-          DashboardScreen
-          DashboardScreen
-          DashboardScreen
-          DashboardScreen
+      <View style={
+        {
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+        <Text style={{ fontSize: 30}}>
           DashboardScreen
         </Text>
       </View>
