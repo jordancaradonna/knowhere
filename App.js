@@ -2,9 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
-
 import Icon from 'react-native-vector-icons/Ionicons'
-
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
@@ -37,26 +35,23 @@ export default class App extends React.Component {
   }
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    
-    
+
+
     const MainNavigator = createStackNavigator(
     {
         login: LoginScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-<<<<<<< HEAD
         dashOutings: DashboardOutingScreen,
-        
-
         main: createBottomTabNavigator({
             Dash: {
               screen: DashboardScreen,
               navigationOptions: {
                 tabBarLabel: 'dash',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-today" 
-                        color={ tintColor } 
+                  <Icon name="ios-today"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -66,8 +61,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'notifications',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-notifications" 
-                        color={ tintColor } 
+                  <Icon name="ios-notifications"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -77,8 +72,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'explore',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-compass" 
-                        color={ tintColor } 
+                  <Icon name="ios-compass"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -88,8 +83,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'profile',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-contact" 
-                        color={ tintColor } 
+                  <Icon name="ios-contact"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -106,20 +101,8 @@ export default class App extends React.Component {
               //}
           })
 
-    }
-
-=======
-        main: createBottomTabNavigator(
-          {
-            dash: DashboardScreen,
-            profile: ProfileScreen,
-            explore: ExploreScreen,
-            notifications: NotificationsScreen
-          }
-        )
-      },
-      navigationOptions = { header: null }
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
+    },
+    navigationOptions = { header: null }
   );
 
     const Navigator = createAppContainer(MainNavigator);
@@ -133,4 +116,3 @@ export default class App extends React.Component {
     );
   }
 }
-
