@@ -2,8 +2,9 @@ import React from 'react';
 import { Text,
         TextInput, StyleSheet,
         ImageBackground, View } from 'react-native';
+import { Button } from 'react-native-elements';
+
 import { connect } from 'react-redux';
-import { Button, Header } from 'react-native-elements';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 
@@ -18,6 +19,7 @@ class LoginScreen extends React.Component {
   onPasswordChange(text) {
     this.props.passwordChanged(text);
   }
+
 
   onSignUpPress() {
     this.props.navigation.navigate('createuser');
@@ -42,6 +44,8 @@ class LoginScreen extends React.Component {
       );
     }
   }
+
+
   render () {
     return (
 
@@ -55,22 +59,18 @@ class LoginScreen extends React.Component {
 
         <Text style={[styles.title,]}>Knowhere
         </Text>
+
         <Text> </Text>
 
-        <Button
-            title='Sign up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 55}}
-            onPress={this.onSignUpPress.bind(this)}
-        />
+
 
         {this.renderError()}
+
+
         <TextInput
           style={{height: 45, width: 250,
                   backgroundColor: 'white',
+
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Email: '
           onChangeText={this.onEmailChange.bind(this)}
@@ -86,6 +86,9 @@ class LoginScreen extends React.Component {
         />
         <Text> </Text>
 
+
+
+
         <Button
             small
             rounded
@@ -97,34 +100,32 @@ class LoginScreen extends React.Component {
         />
 
 
-      <View style={styles.container2}>
+        <View style={styles.container2}>
 
-        <View style={styles.buttonContainer}>
-          <Button
-            title='Sing Up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            backgroundColor='#83b4ff'
-            //style={{padding: 15}}
-            onPress={this.onSignUpPress.bind(this)}   />
+          <View style={styles.buttonContainer}>
+            <Button
+             title='Sing Up'
+             titleStyle={styles.buttonTitle}
+             buttonStyle={styles.buttonStyle}
+             //color="white"
+             backgroundColor='#83b4ff'
+             //style={{padding: 15}}
+             onPress={this.onSignUpPress.bind(this)}   />
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <Button
+              title='Sign In'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+
+              backgroundColor='#b0d0ff'
+              //style={{padding: 15}}
+              onPress={this.onSignInPress.bind(this)}  />
+          </View>
         </View>
 
-        <View style={styles.buttonContainer}>
-          <Button
-            title='Sign In'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            backgroundColor='#b0d0ff'
-            //style={{padding: 15}}
-            onPress={this.onSignInPress.bind(this)}  />
-        </View>
-      </View>
-            //backgroundColor='#83b4ff'
-            style = {{padding: 20}}
-            onPress={this.onSignInPress.bind(this)}
-        />
 
       </View>
       </ImageBackground>
@@ -180,6 +181,8 @@ const styles = StyleSheet.create({
 });
 
 //fontFamily:  Thonburi, Chalkboard SE, Courier New,
+
+
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, error, loading } = auth;

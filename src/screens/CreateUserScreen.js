@@ -11,6 +11,7 @@ import {
   createFail
 } from '../actions'
 
+
 class CreateUserScreen extends React.Component {
 
   onEmailChange(text) {
@@ -46,6 +47,8 @@ class CreateUserScreen extends React.Component {
       );
     }
   }
+
+
   render () {
     return (
       <ImageBackground source={require('../images/background1.jpg')}
@@ -58,16 +61,19 @@ class CreateUserScreen extends React.Component {
         <Text >   </Text>
 
         {this.renderError()}
+
         <TextInput
-          style={{height: 40, width: 250, backgroundColor: 'white',
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+
+          style={{height: 45, width: 250, backgroundColor: 'white',
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
              <Text >   </Text>
         <TextInput
-          style={{height: 40, width: 250,
+
+          style={{height: 45, width: 250,
                   backgroundColor: 'white',
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Last Name:'
         />
              <Text >   </Text>

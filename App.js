@@ -21,8 +21,7 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 export default class App extends React.Component {
-  componentWillMount() {
-    // Initialize Firebase
+  componentWillMount() { // Initialize Firebase
     const config = {
     apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
     authDomain: 'knowhere.firebaseapp.com',
@@ -43,6 +42,10 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
         dashOutings: DashboardOutingScreen,
         main: createBottomTabNavigator({
             Dash: {
@@ -90,7 +93,6 @@ export default class App extends React.Component {
               }
             },
 
-
           }, {
               navigationOptions:{
                 tabBarVisible:true
@@ -100,10 +102,16 @@ export default class App extends React.Component {
                 //inactiveTintColor: '#black'
               //}
           })
+    })
 
+
+
+<<<<<<< HEAD
     },
     navigationOptions = { header: null }
   );
+=======
+>>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
 
     const Navigator = createAppContainer(MainNavigator);
 
