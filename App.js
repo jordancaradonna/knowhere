@@ -23,8 +23,7 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 export default class App extends React.Component {
-  componentWillMount() {
-    // Initialize Firebase
+  componentWillMount() { // Initialize Firebase
     const config = {
     apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
     authDomain: 'knowhere.firebaseapp.com',
@@ -95,7 +94,6 @@ export default class App extends React.Component {
               }
             },
 
-
           }, {
               navigationOptions:{
                 tabBarVisible:true
@@ -106,6 +104,7 @@ export default class App extends React.Component {
               //}
           })
     })
+
 
 
 

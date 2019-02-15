@@ -100,40 +100,31 @@ class LoginScreen extends React.Component {
         />
 
 
-      <View style={styles.container2}>
+        <View style={styles.container2}>
         
-        <View style={styles.buttonContainer}> 
-          <Button
-            title='Sing Up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            backgroundColor='#83b4ff'
-            //style={{padding: 15}}
-            onPress={this.onSignUpPress.bind(this)}   />
+          <View style={styles.buttonContainer}> 
+            <Button
+             title='Sing Up'
+             titleStyle={styles.buttonTitle}
+             buttonStyle={styles.buttonStyle}
+             //color="white"
+             backgroundColor='#83b4ff'
+             //style={{padding: 15}}
+             onPress={this.onSignUpPress.bind(this)}   />
+          </View>
+
+          <View style={styles.buttonContainer}>   
+            <Button
+              title='Sign In'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+
+              backgroundColor='#b0d0ff'
+              //style={{padding: 15}}
+              onPress={this.onSignInPress.bind(this)}  />
+          </View>
         </View>
-
-        <View style={styles.buttonContainer}>   
-          <Button
-            title='Sign In'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-
-            backgroundColor='#b0d0ff'
-            //style={{padding: 15}}
-            onPress={this.onSignInPress.bind(this)}  />
-        </View>
-      </View>
-
-
-
-
-            //backgroundColor='#83b4ff'
-            style = {{padding: 20}}
-            onPress={this.onSignInPress.bind(this)}
-        />
-
 
 
       </View>

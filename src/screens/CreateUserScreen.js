@@ -64,24 +64,24 @@ class CreateUserScreen extends React.Component {
 
         <TextInput
 
-          style={{height: 40, width: 250, backgroundColor: 'white', 
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+          style={{height: 45, width: 250, backgroundColor: 'white', 
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
              <Text >   </Text>
         <TextInput
 
-          style={{height: 40, width: 200,
+          style={{height: 45, width: 250,
                   backgroundColor: 'white',
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Last Name:'
         />
              <Text >   </Text>
          <TextInput
 
-          style={{height: 40, width: 200, backgroundColor: 'white',
+          style={{height: 45, width: 250, backgroundColor: 'white',
 
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Email:'
           onChangeText={this.onEmailChange.bind(this)}
           value={this.props.email}
@@ -89,8 +89,8 @@ class CreateUserScreen extends React.Component {
              <Text >   </Text>
         <TextInput
              secureTextEntry
-           style={{height: 40, width: 250, backgroundColor: 'white', 
-           borderColor: '#83b4ff', borderWidth: 0.5}}
+           style={{height: 45, width: 250, backgroundColor: 'white', 
+           borderColor: 'black', borderWidth: 0.5}}
            placeholder=' Password:'
            onChangeText={this.onPasswordChange.bind(this)}
            value={this.props.password}
@@ -98,9 +98,9 @@ class CreateUserScreen extends React.Component {
              <Text >   </Text>
         <TextInput 
            secureTextEntry
-           style={{height: 40, width: 200, backgroundColor: 'white',
+           style={{height: 45, width: 250, backgroundColor: 'white',
 
-                   borderColor: '#83b4ff', borderWidth: 0.5}}
+                   borderColor: 'black', borderWidth: 0.5}}
            placeholder=' Confirm Password:'
            onChangeText={this.onConfirmPasswordChange.bind(this)}
            value={this.props.confirmPassword}
