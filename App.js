@@ -45,70 +45,6 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-<<<<<<< HEAD
-        dashOutings: DashboardOutingScreen,
-        
-
-        main: createBottomTabNavigator({
-            Dash: {
-              screen: DashboardScreen,
-              navigationOptions: {
-                tabBarLabel: 'dash',
-                tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-today" 
-                        color={ tintColor } 
-                        size={24} />
-                )
-              }
-            },
-            Notifications: {
-              screen: NotificationsScreen,
-              navigationOptions: {
-                tabBarLabel: 'notifications',
-                tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-notifications" 
-                        color={ tintColor } 
-                        size={24} />
-                )
-              }
-            },
-            Explore: {
-              screen: ExploreScreen,
-              navigationOptions: {
-                tabBarLabel: 'explore',
-                tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-compass" 
-                        color={ tintColor } 
-                        size={24} />
-                )
-              }
-            },
-            Profile: {
-              screen: ProfileScreen,
-              navigationOptions: {
-                tabBarLabel: 'profile',
-                tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-contact" 
-                        color={ tintColor } 
-                        size={24} />
-                )
-              }
-            },
-
-
-          }, {
-              navigationOptions:{
-                tabBarVisible:true
-              },
-              //tablBarOptions:{
-                //activeTintColor: 'purple',
-                //inactiveTintColor: '#black'
-              //}
-          })
-
-    }
-
-=======
         main: createBottomTabNavigator(
           {
             dash: DashboardScreen,
@@ -119,7 +55,6 @@ export default class App extends React.Component {
         )
       },
       navigationOptions = { header: null }
->>>>>>> 4aec1b3b53ad32bc003260c042750753d2f10daf
   );
 
     const Navigator = createAppContainer(MainNavigator);
