@@ -64,7 +64,7 @@ class CreateUserScreen extends React.Component {
 
         <TextInput
 
-          style={{height: 45, width: 250, backgroundColor: 'white', 
+          style={{height: 45, width: 250, backgroundColor: 'white',
                   borderColor: 'black', borderWidth: 0.5}}
           placeholder=' First Name:'
         />
@@ -78,29 +78,26 @@ class CreateUserScreen extends React.Component {
         />
              <Text >   </Text>
          <TextInput
-
-          style={{height: 45, width: 250, backgroundColor: 'white',
-
-                  borderColor: 'black', borderWidth: 0.5}}
+          style={{height: 40, width: 250, backgroundColor: 'white',
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Email:'
           onChangeText={this.onEmailChange.bind(this)}
           value={this.props.email}
         />
              <Text >   </Text>
         <TextInput
-             secureTextEntry
-           style={{height: 45, width: 250, backgroundColor: 'white', 
-           borderColor: 'black', borderWidth: 0.5}}
+           secureTextEntry
+           style={{height: 40, width: 200, backgroundColor: 'white',
+                   borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Password:'
            onChangeText={this.onPasswordChange.bind(this)}
            value={this.props.password}
         />
              <Text >   </Text>
-        <TextInput 
+        <TextInput
            secureTextEntry
-           style={{height: 45, width: 250, backgroundColor: 'white',
-
-                   borderColor: 'black', borderWidth: 0.5}}
+           style={{height: 40, width: 200, backgroundColor: 'white',
+                   borderColor: '#83b4ff', borderWidth: 0.5}}
            placeholder=' Confirm Password:'
            onChangeText={this.onConfirmPasswordChange.bind(this)}
            value={this.props.confirmPassword}

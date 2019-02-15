@@ -19,7 +19,8 @@ import DashboardOutingScreen from './src/screens/DashboardOutingScreen'; //outin
 import ProfileScreen from './src/screens/ProfileScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-
+import CreateOutingScreen from './src/screens/CreateOutingScreen';
+import CreateTripScreen from './src/screens/CreateUserScreen';
 
 
 export default class App extends React.Component {
@@ -44,7 +45,8 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-
+        createouting: CreateOutingScreen,
+        createtrip: CreateTripScreen,
         dashOutings: DashboardOutingScreen,
         
 

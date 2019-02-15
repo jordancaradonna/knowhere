@@ -2,9 +2,11 @@ import React from 'react';
 import { Text,
         TextInput, StyleSheet,
         ImageBackground, View } from 'react-native';
+import { Button } from 'react-native-elements';
+
 import { connect } from 'react-redux';
-import { Button, Header } from 'react-native-elements';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
+
 
 
 
@@ -41,6 +43,8 @@ class LoginScreen extends React.Component {
       );
     }
   }
+
+
   render () {
     return (
 
@@ -48,80 +52,78 @@ class LoginScreen extends React.Component {
                        style={styles.container}>
 
 
-        <View style = {{justifyContent: 'space-between',
-                        alignItems: 'center'}}>
+       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
 
-          <Text style={[styles.title,]}>Knowhere
-          </Text>
+        <Text style={[styles.title,]}>Knowhere
+        </Text>
+
+        <Text> </Text>
 
 
 
-          <Button
-            title='Sign up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 55}}
-            onPress={this.onSignUpPress.bind(this)}
-          />
+        {this.renderError()}
 
-          {this.renderError()}
-          <TextInput
-            style={{height: 45, width: 250,
-                    backgroundColor: 'white',
-                    borderColor: '#83b4ff', borderWidth: 0.5}}
-            placeholder=' Email: '
-            onChangeText={this.onEmailChange.bind(this)}
-          />
-        
-          <Text> </Text>
-        
-          <TextInput
+
+        <TextInput
+          style={{height: 45, width: 250,
+                  backgroundColor: 'white',
+
+                  borderColor: '#83b4ff', borderWidth: 0.5}}
+          placeholder=' Email: '
+          onChangeText={this.onEmailChange.bind(this)}
+        />
+        <Text> </Text>
+        <TextInput
           secureTextEntry
           style={{height: 45, width: 250,
                   backgroundColor: 'white',
                   borderColor: '#83b4ff', borderWidth: 0.5}}
           placeholder=' Password:'
           onChangeText={this.onPasswordChange.bind(this)}
-          />
-          <Text> </Text>
+        />
+        <Text> </Text>
 
-          <Button
-            small 
+
+
+
+        <Button
+            small
             rounded
             title='Forgot Password?'
             color="black"
             backgroundColor='#white'
             marginBottom= '15'
             onPress={this.onForgotPasswordPress.bind(this)}
-          />
-        </View>
+        />
+
 
         <View style={styles.container2}>
 
-            <View style={styles.buttonContainer}>
-              <Button
-                title='Sign Up'
-                titleStyle={styles.buttonTitle}
-                buttonStyle={styles.buttonStyle}
-                backgroundColor='#83b4ff'
-                onPress={this.UNSAFE_componentWillMount.onSignUpPress.bind(this)}
-              />
-            </View>
+          <View style={styles.buttonContainer}>
+            <Button
+             title='Sing Up'
+             titleStyle={styles.buttonTitle}
+             buttonStyle={styles.buttonStyle}
+             //color="white"
+             backgroundColor='#83b4ff'
+             //style={{padding: 15}}
+             onPress={this.onSignUpPress.bind(this)}   />
+          </View>
 
-            <View style={styles.buttonContainer}>
-              <Button
-                title='Sign In'
-                titleStyle={styles.buttonTitle}
-                buttonStyle={styles.buttonStyle}
-                style = {{padding: 20}}
-                onPress={this.onSignInPress.bind(this)}
-              />
-            </View>
-        
+          <View style={styles.buttonContainer}>
+            <Button
+              title='Sign In'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+
+              backgroundColor='#b0d0ff'
+              //style={{padding: 15}}
+              onPress={this.onSignInPress.bind(this)}  />
+          </View>
         </View>
+
 
         </ImageBackground>
     )
@@ -176,6 +178,8 @@ const styles = StyleSheet.create({
 });
 
 //fontFamily:  Thonburi, Chalkboard SE, Courier New,
+
+
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, error, loading } = auth;
