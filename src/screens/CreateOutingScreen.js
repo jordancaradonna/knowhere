@@ -6,12 +6,7 @@ class CreateOutingScreen extends React.Component {
     return (
       <View>
         <Text>
-          CreateOutingScreen
-          CreateOutingScreen
-          CreateOutingScreen
-          CreateOutingScreen
-          CreateOutingScreen
-          CreateOutingScreen
+          
         </Text>
       </View>
     )

@@ -23,8 +23,7 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 
 
 export default class App extends React.Component {
-  componentWillMount() {
-    // Initialize Firebase
+  componentWillMount() { // Initialize Firebase
     const config = {
     apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
     authDomain: 'knowhere.firebaseapp.com',
@@ -45,17 +44,69 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-        main: createBottomTabNavigator(
-          {
-            dash: DashboardScreen,
-            profile: ProfileScreen,
-            explore: ExploreScreen,
-            notifications: NotificationsScreen
-          }
-        )
-      },
-      navigationOptions = { header: null }
-  );
+
+        dashOutings: DashboardOutingScreen,
+        
+
+        main: createBottomTabNavigator({
+            Dash: {
+              screen: DashboardScreen,
+              navigationOptions: {
+                tabBarLabel: 'dash',
+                tabBarIcon:({tintColor}) => (
+                  <Icon name="ios-today" 
+                        color={ tintColor } 
+                        size={24} />
+                )
+              }
+            },
+            Notifications: {
+              screen: NotificationsScreen,
+              navigationOptions: {
+                tabBarLabel: 'notifications',
+                tabBarIcon:({tintColor}) => (
+                  <Icon name="ios-notifications" 
+                        color={ tintColor } 
+                        size={24} />
+                )
+              }
+            },
+            Explore: {
+              screen: ExploreScreen,
+              navigationOptions: {
+                tabBarLabel: 'explore',
+                tabBarIcon:({tintColor}) => (
+                  <Icon name="ios-compass" 
+                        color={ tintColor } 
+                        size={24} />
+                )
+              }
+            },
+            Profile: {
+              screen: ProfileScreen,
+              navigationOptions: {
+                tabBarLabel: 'profile',
+                tabBarIcon:({tintColor}) => (
+                  <Icon name="ios-contact" 
+                        color={ tintColor } 
+                        size={24} />
+                )
+              }
+            },
+
+          }, {
+              navigationOptions:{
+                tabBarVisible:true
+              },
+              //tablBarOptions:{
+                //activeTintColor: 'purple',
+                //inactiveTintColor: '#black'
+              //}
+          })
+    })
+
+
+
 
     const Navigator = createAppContainer(MainNavigator);
 
