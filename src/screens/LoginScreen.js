@@ -48,8 +48,7 @@ class LoginScreen extends React.Component {
                        style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between',
-                        alignItems: 'center'}}>
+       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
 
         <Text style={[styles.title,]}>Knowhere
