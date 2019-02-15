@@ -34,6 +34,7 @@ class LoginScreen extends React.Component {
   onForgotPasswordPress() {
     this.props.navigation.navigate('forgotpassword');
   }
+  
 
   renderError () {
     if(this.props.error) {
