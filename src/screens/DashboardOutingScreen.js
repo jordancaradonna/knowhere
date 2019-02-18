@@ -2,10 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-
-
-class DashboardScreen extends React.Component {
-
+class DashboardOutingScreen extends React.Component {
   
   onTripsPress() {
     this.props.navigation.navigate('dash');
@@ -19,7 +16,6 @@ class DashboardScreen extends React.Component {
       <View style={styles.container} >
         
 
-
         <Text style={[styles.title,]}> Knowhere </Text>
 
 
@@ -32,8 +28,8 @@ class DashboardScreen extends React.Component {
               title='trips'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
-              color='white'
-              backgroundColor='#b0d0ff'
+              color='#83b4ff'
+              backgroundColor='#f4f4ff'
               onPress={this.onTripsPress.bind(this)}   />
           </View>
 
@@ -42,8 +38,8 @@ class DashboardScreen extends React.Component {
               title='outings'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
-              color='#83b4ff'
-              backgroundColor='#f4f4ff'
+              color='white'
+              backgroundColor='#b0d0ff'
               onPress={this.onOutingsPress.bind(this)}  />
            </View>
         </View>
@@ -76,6 +72,7 @@ const styles = StyleSheet.create({
   buttonTitle:{
     fontSize: 28,
     letterSpacing: 2,
+    //color: "white",
   },
   buttonStyle:{
     width: 160,
@@ -87,4 +84,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default DashboardScreen;
+export default DashboardOutingScreen;

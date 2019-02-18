@@ -1,85 +1,130 @@
 import React from 'react';
-import { Text, 
-        TextInput, StyleSheet, 
+import { Text,
+        TextInput, StyleSheet,
         ImageBackground, View } from 'react-native';
-import { Button, Header } from 'react-native-elements';
+import { Button } from 'react-native-elements';
+
+import { connect } from 'react-redux';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 
 
 
 class LoginScreen extends React.Component {
-  
+
+  onEmailChange(text) {
+    this.props.emailChanged(text);
+  }
+
+  onPasswordChange(text) {
+    this.props.passwordChanged(text);
+  }
+
+
   onSignUpPress() {
     this.props.navigation.navigate('createuser');
   }
   onSignInPress() {
-    this.props.navigation.navigate('main');
+    const { email, password } = this.props
+
+    this.props.loginUser({ email, password}, () => {
+      this.props.navigation.navigate('main')
+    });
   }
   onForgotPasswordPress() {
     this.props.navigation.navigate('forgotpassword');
-  } 
-  
+  }
+
+  renderError () {
+    if(this.props.error) {
+      return(
+        <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
+      );
+    }
+  }
+
+
   render () {
     return (
-      
+
       <ImageBackground source={require('../images/finalBackground.jpg')}
-                       style={styles.container}> 
+                       style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between', 
-                        alignItems: 'center'}}>
+       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
 
-        <Text style={[styles.title,]}>Knowhere      
+        <Text style={[styles.title,]}>Knowhere
         </Text>
-       
 
-       
-        <Button
-            title='Sign up'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 55}}
-            onPress={this.onSignUpPress.bind(this)}
-        />
+        <Text> </Text>
 
 
-        <TextInput 
-          style={{height: 45, width: 250, 
-                  backgroundColor: 'white', 
+
+        {this.renderError()}
+
+
+        <TextInput
+          style={{height: 45, width: 250,
+                  backgroundColor: 'white',
+
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Email: ' 
+          placeholder=' Email: '
+          onChangeText={this.onEmailChange.bind(this)}
         />
         <Text> </Text>
-        <TextInput 
-          style={{height: 45, width: 250, 
-                  backgroundColor: 'white', 
+        <TextInput
+          secureTextEntry
+          style={{height: 45, width: 250,
+                  backgroundColor: 'white',
                   borderColor: '#83b4ff', borderWidth: 0.5}}
-          placeholder=' Password:' 
+          placeholder=' Password:'
+          onChangeText={this.onPasswordChange.bind(this)}
         />
         <Text> </Text>
-       
+
+
+
+
         <Button
+            small
+            rounded
             title='Forgot Password?'
             color="black"
             backgroundColor='#white'
+            marginBottom= '15'
             onPress={this.onForgotPasswordPress.bind(this)}
         />
-       
 
 
-        <Button
-            title='Sign In'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style = {{padding: 20}}
-            onPress={this.onSignInPress.bind(this)}
-        />
-      
+        <View style={styles.container2}>
+
+          <View style={styles.buttonContainer}>
+            <Button
+             title='Sing Up'
+             titleStyle={styles.buttonTitle}
+             buttonStyle={styles.buttonStyle}
+             //color="white"
+             backgroundColor='#83b4ff'
+             //style={{padding: 15}}
+             onPress={this.onSignUpPress.bind(this)}   />
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <Button
+              title='Sign In'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+
+              backgroundColor='#b0d0ff'
+              //style={{padding: 15}}
+              onPress={this.onSignInPress.bind(this)}  />
+          </View>
+        </View>
+
 
       </View>
       </ImageBackground>
@@ -96,11 +141,24 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title:{ //Knowhere
-    fontSize: 28,
-    padding: 22,
+    fontSize: 33,
+    padding: 40,
+    marginBottom: 50,
     fontStyle: 'italic',
     fontFamily: 'Chalkboard SE',
     color: 'black',
+  },
+  container2:{
+    flex: 1,
+    flexDirection: 'row',
+    //alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer:{
+    flex: 1,
+    marginTop: 25,
+    marginLeft: 25,
+    marginRight: 25,
   },
   buttonTitle:{
     //fontSize: 16, doesnt work!
@@ -108,15 +166,27 @@ const styles = StyleSheet.create({
     color: "white",
   },
   buttonStyle:{
-    width: 85,
+    width: 100,
     //height: 45,
-    backgroundColor: "#83b4ff",
+   //backgroundColor: "#83b4ff",
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  errorTextStyle: {
+    fontSize: 15,
+    alignSelf: 'center',
+    color: 'red'
   }
 });
 
-//fontFamily:  Thonburi, Chalkboard SE, Courier New, 
+//fontFamily:  Thonburi, Chalkboard SE, Courier New,
 
-export default LoginScreen;
 
+
+const mapStateToProps = ({ auth }) => {
+  const { email, password, error, loading } = auth;
+
+  return { email, password, error, loading };
+};
+
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginScreen);
