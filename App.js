@@ -11,6 +11,10 @@ import DashboardScreen from './src/screens/DashboardScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
+import TripScreen from './src/screens/TripScreen';
+import OutingScreen from './src/screens/OutingScreen';
+import MapScreen from './src/screens/MapScreen';
+import FriendsScreen from './src/screens/FriendsScreen';
 
 export default class App extends React.Component {
   render() {
@@ -19,6 +23,10 @@ export default class App extends React.Component {
       {
         login: LoginScreen,
         createuser: CreateUserScreen,
+        map: MapScreen,
+        friends: FriendsScreen,
+        trips: TripScreen,
+        outings: OutingScreen,
         main: createBottomTabNavigator(
           {
             dash: DashboardScreen,
