@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 
 class DashboardScreen extends React.Component {
@@ -15,6 +15,11 @@ class DashboardScreen extends React.Component {
   }
   onMessagesPress(){
     this.props.navigation.navigate('messages');
+  }
+
+
+  static navigatinoOptions = {
+    title:'Home',
   }
   
   render () {

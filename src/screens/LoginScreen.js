@@ -6,6 +6,7 @@ import { Button } from 'react-native-elements';
 
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
+import DashboardScreen from './DashboardScreen';
 
 
 
@@ -34,7 +35,7 @@ class LoginScreen extends React.Component {
   onForgotPasswordPress() {
     this.props.navigation.navigate('forgotpassword');
   }
-  
+
 
   renderError () {
     if(this.props.error) {
@@ -45,6 +46,7 @@ class LoginScreen extends React.Component {
       );
     }
   }
+
 
 
   render () {
@@ -182,6 +184,7 @@ const styles = StyleSheet.create({
 });
 
 //fontFamily:  Thonburi, Chalkboard SE, Courier New,
+
 
 
 

@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
 
+
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
@@ -27,6 +28,8 @@ import TripScreen from './src/screens/TripScreen';
 
 
 
+
+
 export default class App extends React.Component {
   componentWillMount() { // Initialize Firebase
     const config = {
@@ -40,17 +43,20 @@ export default class App extends React.Component {
     firebase.initializeApp(config);
   }
 
+
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
     
-    
+
     const MainNavigator = createStackNavigator(
     {
+        dashOutings: DashboardOutingScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-        dashOutings: DashboardOutingScreen,
+        //dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
 
@@ -111,22 +117,22 @@ export default class App extends React.Component {
               //}
         })
 
-
         
-    })
-
-
+    }) //End of Main Navigator
 
 
     const Navigator = createAppContainer(MainNavigator);
 
+   
 
-
-    return (
+    return  (
       <Provider store={store} >
         <Navigator />
       </Provider>
-    );
+    )
+    
   }
 }
+
+
 
