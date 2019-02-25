@@ -52,7 +52,7 @@ class LoginScreen extends React.Component {
                        style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
+        <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
 
         <Text style={[styles.title,]}>Knowhere
@@ -123,9 +123,10 @@ class LoginScreen extends React.Component {
               onPress={this.onSignInPress.bind(this)}  />
           </View>
         </View>
+        </View>
 
 
-        </ImageBackground>
+      </ImageBackground>
     )
   }
 }
