@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput, CameraRoll } from 'react-native';
 import { Button } from 'react-native-elements';
 
-class CreateTripScreen extends React.Component {
+class CreateOutingScreen extends React.Component {
 
   onPostPress () {
     this.props.navigation.navigate('dash')
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CreateTripScreen;
+export default CreateOutingScreen;

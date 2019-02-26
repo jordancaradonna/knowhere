@@ -43,7 +43,6 @@ export default class App extends React.Component {
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-<<<<<<< HEAD
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
         main: createBottomTabNavigator(
