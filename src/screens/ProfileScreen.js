@@ -10,9 +10,9 @@ class ProfileScreen extends React.Component {
     return (
       <View>
         <Avatar
-          small
+          large
           rounded
-          //source={require('../static/temp_profile.jpg')}
+          source={require('../images/ireland.png')}
           containerStyle={styles.AvatarStyle}
           onPress={() => console.log("Works!")}
           activeOpacity={0.7}

@@ -1,14 +1,18 @@
-import React from 'react';
-import { View, Text, Image,
-         Dimensions, Animated, PanResponder, ScrollView
-        } from 'react-native';
-import {Avatar} from 'react-native-elements';
+import React, { Component } from 'react';
+import {
+  Dimensions,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  Animated
+} from 'react-native';
+import CardSection from './CardSection';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Swiper from 'react-native-swiper';
-import CardSection from '../components/CardSection';
-import Slide from '../components/Slide';
+import { Button, Avatar } from 'react-native-elements';
 
-
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const Users = [
   { id: "first", uri: require('../images/background1.jpg') },
   { id: "second", uri: require('../images/ireland.png')},
@@ -16,67 +20,43 @@ const Users = [
   { id: "fourth", uri: require('../images/pig.jpg')}
 ]
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const width = SCREEN_WIDTH -125;
-const offset = (SCREEN_WIDTH - width) / 2;
+export default class Slide extends Component {
 
-class DashboardScreen extends React.Component {
- 
   onViewAllPress() {
     this.props.navigation.navigate('profile');
   }
   render = () => {
-    
     return (
       <ScrollView style = {{flex: 1}}>
-          <View // contains the CardSection 
-          >
-              <Text
-                onPress = {this.onViewAllPress.bind(this)}
-                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} 
-              >
-                  View Post
-              </Text>
-            <View style = {{flex: 1, flexDirection: 'row', borderRightWidth: 1, }}>
-                <View //contains info on the left
-                style = {{justifyContent: "space-evenly"}}
-                >
-                    <Avatar
-                        large
-                        source={require('../images/ireland.png')}
-                        containerStyle={styles.AvatarStyle}
-                        onPress={() => this.props.navigation.navigate('profile')}
-                        activeOpacity={0.7}
-                    />
-                    <Text style={{  fontSize: 10, paddingLeft: 6}} 
-                          onPress={() => this.props.navigation.navigate('profile')}
-                    >
-                        Jordan Caradonna
-                    </Text>
-                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15}} //location pin
-                      >
-                        <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}
-                        />
-                        <Text > 
-                            Los Angeles
-                        </Text>
-                  </View>
-                    <Image 
-                        source = {require('../images/bookmark.png')}
-                        style = {{height: 10, width: 10, padding: 15}}
-                    />
-                  
+          <View style = {{}}>
+          <Button
+            onPress = {this.onViewAllPress.bind(this)}
+            style = {{textAlign: 'right', padding: 5, fontSize: 10}} 
+            title = 'View Post '
+            />
+            <View style = {{flex: 1, flexDirection: 'row', borderRightWidth: 1}}>
+                <View>
+                      <Text style={{ paddingTop: 30, fontSize: 10}}>
+                        test
+                      </Text>
+                      <Avatar
+                          large
+                          
+                          source={require('../images/ireland.png')}
+                          containerStyle={styles.AvatarStyle}
+                          onPress={() => console.log("Works!")}
+                          activeOpacity={0.7}
+                      />
                 </View>
-                  <ScrollView horizontal style = {{}}>
-                     {this.renderImages()} 
-                  </ScrollView>
+             <ScrollView horizontal style = {{}}>
+                 {this.renderImages()} 
+              </ScrollView>
               </View>
+         
           </View>
+         
             <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
-            <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
+            <Text style ={{paddingLeft: 10, justifyContent: 'center'}}>
                    Trip to Ireland
               </Text>
             </View>
@@ -84,9 +64,9 @@ class DashboardScreen extends React.Component {
               <Swiper  height={240}
                  onMomentumScrollEnd={(e, state, context) => console.log('index:', state.index)}
                  activeDot={<View style={{backgroundColor: '#000', width: 4, height: 4, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-                loop
-              >
-                  <View style={styles.slide} title={<Text numberOfLines={3}>Cash behind the door</Text>}>
+                  // paginationStyle={{ bottom: -23, left: null, right: 10}}
+                  loop>
+                  <View style={styles.slide} title={<Text numberOfLines={3}>cahs behind</Text>}>
                      <Image  style={styles.image} source={require('../images/ireland.png')} />
                   </View>
                    <View style={styles.slide} title={<Text numberOfLines={1}>Big lie behind Nine’s new show</Text>}>
@@ -99,7 +79,8 @@ class DashboardScreen extends React.Component {
                      <Image resizeMode='cover' style={styles.image} source={require('../images/ireland.png')} />
                   </View>
                </Swiper>
-        </CardSection>
+      </CardSection>
+
     </ScrollView>
     );
   };
@@ -115,7 +96,7 @@ class DashboardScreen extends React.Component {
            style = { styles.container}
          >
              <Image 
-               style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
+               style = {{flex: 1, height: 250, width: 300, resizeMode: 'cover', borderRadius: 20}}
                source = {item.uri}
              />
          </Animated.View>
@@ -123,17 +104,15 @@ class DashboardScreen extends React.Component {
      })
    }
 
-
-
 }
 const styles = {
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'visible',
-    height: 250,
-    width: 250, 
-    padding: 10,
+    height: 300,
+    width: 300, 
+    padding: 5,
     position:'relative' 
   },
   slide: {
@@ -170,13 +149,9 @@ const styles = {
   image: {
     flex: 1,
     justifyContent: 'center'
-  },
+  }, 
   AvatarStyle: {
-    marginTop: 10,
+    marginTop: 20,
     marginBottom: 20,
-    marginLeft: 5,
-    paddingLeft: 10
     }
 }
-
-export default DashboardScreen;
