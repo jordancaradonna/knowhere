@@ -14,10 +14,12 @@ import DashboardScreen from './src/screens/DashboardScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
+import CardSection from './src/components/CardSection';
 
 
 
 
+//
 export default class App extends React.Component {
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
@@ -40,15 +42,9 @@ export default class App extends React.Component {
     const Navigator = createAppContainer(MainNavigator);
 
     return (
-<<<<<<< HEAD
-      <View style={styles.container}>
-        <Text>welcome knowhere dudes!</Text>
-      </View>
-=======
       <Provider store={store} >
         <Navigator />
       </Provider>
->>>>>>> 27efc22160af6cf23b3f32e9cf7577d69ceb609c
     );
   }
 }
