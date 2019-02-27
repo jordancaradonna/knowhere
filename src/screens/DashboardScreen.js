@@ -4,10 +4,7 @@ import { View, Text, Image,
         } from 'react-native';
 import {Avatar} from 'react-native-elements';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Swiper from 'react-native-swiper';
-import CardSection from '../components/CardSection';
 import Slide from '../components/Slide';
-
 
 const Users = [
   { id: "first", uri: require('../images/background1.jpg') },
@@ -17,9 +14,6 @@ const Users = [
 ]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const width = SCREEN_WIDTH -125;
-const offset = (SCREEN_WIDTH - width) / 2;
 
 class DashboardScreen extends React.Component {
  
@@ -27,10 +21,9 @@ class DashboardScreen extends React.Component {
     this.props.navigation.navigate('profile');
   }
   render = () => {
-    
     return (
       <ScrollView style = {{flex: 1}}>
-          <View // contains the CardSection 
+          <View // contains the CardSection  
           >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
@@ -38,9 +31,8 @@ class DashboardScreen extends React.Component {
               >
                   View Post
               </Text>
-            <View style = {{flex: 1, flexDirection: 'row', borderRightWidth: 1, }}>
+            <View style = {{flex: 1, flexDirection: 'row' }}>
                 <View //contains info on the left
-                style = {{justifyContent: "space-evenly"}}
                 >
                     <Avatar
                         large
@@ -54,7 +46,8 @@ class DashboardScreen extends React.Component {
                     >
                         Jordan Caradonna
                     </Text>
-                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15}} //location pin
+                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
+                              borderColor: '#ddd',}} //location pin
                       >
                         <Image 
                             source = {require('../images/pin.png')}
@@ -64,11 +57,10 @@ class DashboardScreen extends React.Component {
                             Los Angeles
                         </Text>
                   </View>
-                    <Image 
-                        source = {require('../images/bookmark.png')}
-                        style = {{height: 10, width: 10, padding: 15}}
-                    />
-                  
+                  <Image 
+                        source = {require('../images/bookmark_.png')}
+                        style = {{height: 100, width: 100, padding: 15}}
+              />
                 </View>
                   <ScrollView horizontal style = {{}}>
                      {this.renderImages()} 
@@ -80,31 +72,59 @@ class DashboardScreen extends React.Component {
                    Trip to Ireland
               </Text>
             </View>
-      <CardSection style = {{ height: 300, width: SCREEN_WIDTH, flexDirection:'row'}}>
-              <Swiper  height={240}
-                 onMomentumScrollEnd={(e, state, context) => console.log('index:', state.index)}
-                 activeDot={<View style={{backgroundColor: '#000', width: 4, height: 4, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-                loop
+            <View // contains the CardSection  
+          >
+              <Text
+                onPress = {this.onViewAllPress.bind(this)}
+                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} 
               >
-                  <View style={styles.slide} title={<Text numberOfLines={3}>Cash behind the door</Text>}>
-                     <Image  style={styles.image} source={require('../images/ireland.png')} />
+                  View Post
+              </Text>
+            <View style = {{flex: 1, flexDirection: 'row' }}>
+                <View //contains info on the left
+                >
+                    <Avatar
+                        large
+                        source={require('../images/ireland.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Text style={{  fontSize: 10, paddingLeft: 6}} 
+                          onPress={() => this.props.navigation.navigate('profile')}
+                    >
+                        Brock Acosta
+                    </Text>
+                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
+                              borderColor: '#ddd',}} //location pin
+                      >
+                        <Image 
+                            source = {require('../images/pin.png')}
+                            style = {{height: 20, width: 20}}
+                        />
+                        <Text > 
+                            San Diego
+                        </Text>
                   </View>
-                   <View style={styles.slide} title={<Text numberOfLines={1}>Big lie behind Nine’s new show</Text>}>
-                      <Image  style={styles.image} source={require('../images/pig.jpg')} />
-                  </View>
-                 <View style={styles.slide} title={<Text style = {styles.text } numberOfLines={1}>Why Stone split from Garfield</Text>}>
-                    <Image resizeMode='cover' style={styles.image} source={require('../images/ireland.png')} />
-                  </View>
-                  <View style={styles.slide} title={<Text numberOfLines={1}>Learn from Kim K to land that job</Text>}>
-                     <Image resizeMode='cover' style={styles.image} source={require('../images/ireland.png')} />
-                  </View>
-               </Swiper>
-        </CardSection>
+                  <Image 
+                        source = {require('../images/bookmark_fill.png')}
+                        style = {{height: 100, width: 100, padding: 15}}
+                        onPress = {this.bookmark_filled.bind(this)}
+              />
+                </View>
+                  <ScrollView horizontal style = {{}}>
+                     {this.renderImages()} 
+                  </ScrollView>
+              </View>
+          </View>
+            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
+            <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
+                   Secret Beach
+              </Text>
+            </View>
     </ScrollView>
     );
   };
-
- 
 
   renderImages = () =>{
        //item, i is the index
@@ -123,8 +143,12 @@ class DashboardScreen extends React.Component {
      })
    }
 
-
-
+bookmark_filled() {
+  return (
+    <Image  source = {require('../images/bookmark_fill.png')}
+    style = {{height: 100, width: 100, padding: 15}}/>
+  );
+}   
 }
 const styles = {
   container: {
