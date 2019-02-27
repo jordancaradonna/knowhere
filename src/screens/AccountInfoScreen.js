@@ -15,7 +15,7 @@ class AccountInfoScreen extends React.Component {
 
        
         <Image 
-            style={{width: 300, height: 100}} 
+            style={{width: 300, height: 120}} 
             source={require('../images/kwLogo.png')} />
 
         <Text> </Text>

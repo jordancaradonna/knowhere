@@ -55,7 +55,7 @@ class CreateUserScreen extends React.Component {
                        style={styles.container}>
 
         <Image 
-            style={{width: 300, height: 100}} 
+            style={{width: 300, height: 120}} 
             source={require('../images/kwLogo.png')} />
 
         <Text >   </Text>

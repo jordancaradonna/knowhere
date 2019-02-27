@@ -46,7 +46,7 @@ class LoginScreen extends React.Component {
       );
     }
   }
-
+ 
 
 
   render () {
@@ -59,7 +59,7 @@ class LoginScreen extends React.Component {
        <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
       <Image 
-            style={{width: 300, height: 150}} 
+            style={{width: 300, height: 140}} 
             source={require('../images/kwLogo.png')} />
 
       
