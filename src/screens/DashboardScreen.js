@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image,
+import { View, Text, Image, StyleSheet,
          Dimensions, Animated, PanResponder, ScrollView
         } from 'react-native';
 import {Avatar} from 'react-native-elements';
@@ -22,16 +22,19 @@ class DashboardScreen extends React.Component {
   }
   render = () => {
     return (
-      <ScrollView style = {{flex: 1}}>
-          <View // contains the CardSection  
-          >
-              <Text
-                onPress = {this.onViewAllPress.bind(this)}
-                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} 
-              >
-                  View Post
-              </Text>
-            <View style = {{flex: 1, flexDirection: 'row' }}>
+      
+      
+
+        <ScrollView style = {{flex: 1}}>
+            <View // contains the CardSection  
+            >
+                <Text
+                  onPress = {this.onViewAllPress.bind(this)}
+                  style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
+                    View Post
+                </Text>
+                <View style = {{flex: 1, flexDirection: 'row' }}>
+                
                 <View //contains info on the left
                 >
                     <Avatar
@@ -66,18 +69,19 @@ class DashboardScreen extends React.Component {
                      {this.renderImages()} 
                   </ScrollView>
               </View>
-          </View>
+            </View>
+            
             <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
-            <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
+              <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
                    Trip to Ireland
               </Text>
             </View>
+            
             <View // contains the CardSection  
           >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
-                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} 
-              >
+                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                   View Post
               </Text>
             <View style = {{flex: 1, flexDirection: 'row' }}>
@@ -115,16 +119,19 @@ class DashboardScreen extends React.Component {
                   <ScrollView horizontal style = {{}}>
                      {this.renderImages()} 
                   </ScrollView>
-              </View>
-          </View>
+                </View>
+            </View>
             <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
             <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
                    Secret Beach
               </Text>
             </View>
-    </ScrollView>
+        </ScrollView>
+
+     
     );
   };
+
 
   renderImages = () =>{
        //item, i is the index
@@ -143,6 +150,8 @@ class DashboardScreen extends React.Component {
      })
    }
 
+
+
 bookmark_filled() {
   return (
     <Image  source = {require('../images/bookmark_fill.png')}
@@ -150,6 +159,9 @@ bookmark_filled() {
   );
 }   
 }
+
+
+
 const styles = {
   container: {
     justifyContent: 'center',
@@ -200,6 +212,22 @@ const styles = {
     marginBottom: 20,
     marginLeft: 5,
     paddingLeft: 10
+    },
+    container2:{
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    buttonTitle:{
+      fontSize: 28,
+      letterSpacing: 2,
+    },
+    buttonStyle:{
+      width: 160,
+      height: 44,
+      //backgroundColor: "#83b4ff",
+      //borderRadius: 100, //makes it oval not squared
+      elevation: 5,
     }
 }
 

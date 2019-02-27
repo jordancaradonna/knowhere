@@ -23,6 +23,7 @@ onCreateOutingPress() {
 }
 
 
+
   render () {
     return (
       <View>
@@ -61,16 +62,8 @@ onCreateOutingPress() {
             backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
           />
-          <Button
-            small
-            rounded
-            title='add'
-            color='black'
-            backgroundColor = '#f8f8f8'
-            style = {{padding: 5}}
-          />
-         
-          <Text></Text>
+          
+
           <Text></Text>
           <Text></Text>
         </View>
@@ -101,6 +94,28 @@ onCreateOutingPress() {
         </View>
 
 
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+      
+        <Button
+            small
+            rounded
+            title='Create Trip'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onCreateTripPress.bind(this) } />
+
+          <Button
+            small
+            rounded
+            title='Create Outing'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onCreateOutingPress.bind(this) } />
 
 
 
