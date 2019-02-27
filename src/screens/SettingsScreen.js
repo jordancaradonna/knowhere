@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 
-class OutingScreen extends React.Component {
+class SettingsScreen extends React.Component {
   render () {
     return (
       <View>
         <Text>
-          OutingScreen
-          
+          Settings
         </Text>
       </View>
     )
   }
 }
 
-export default OutingScreen;
+export default SettingsScreen;

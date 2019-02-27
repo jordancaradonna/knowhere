@@ -7,11 +7,7 @@ class MessagesScreen extends React.Component {
       <View>
         <Text>
           MessagesScreen
-          MessagesScreen
-          MessagesScreen
-          MessagesScreen
-          MessagesScreen
-          MessagesScreen
+          
         </Text>
       </View>
     )

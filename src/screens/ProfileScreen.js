@@ -9,6 +9,11 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class ProfileScreen extends React.Component {
 
+
+  onSettingsPress() {
+    this.props.navigation.navigate('settings');
+  }
+
 onCreateTripPress() {
   this.props.navigation.navigate('createtrip');
 }
@@ -16,6 +21,7 @@ onCreateTripPress() {
 onCreateOutingPress() {
   this.props.navigation.navigate('createouting');
 }
+
 
   render () {
     return (
@@ -41,9 +47,18 @@ onCreateOutingPress() {
           <Button
             small
             rounded
+            title='settings'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}}
+            onPress={this.onSettingsPress.bind(this)}
+          />
+          <Button
+            small
+            rounded
             title='myMap'
             color='black'
-            backgroundColor = '#f4f4ff'
+            backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
           />
           <Button
@@ -51,9 +66,10 @@ onCreateOutingPress() {
             rounded
             title='add'
             color='black'
-            backgroundColor = '#f4f4ff'
+            backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
           />
+         
           <Text></Text>
           <Text></Text>
           <Text></Text>

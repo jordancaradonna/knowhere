@@ -1,17 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-
+import { createStackNavigator, createAppContainer } from 'react-navigation'
 
 
 class DashboardScreen extends React.Component {
 
   
   onTripsPress() {
-    this.props.navigation.navigate('dash');
+    this.props.navigation.navigate('dash'); 
   }
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
+  }
+  onMessagesPress(){
+    this.props.navigation.navigate('messages');
+  }
+
+
+  static navigatinoOptions = {
+    title:'Home',
   }
   
   render () {
@@ -20,9 +28,18 @@ class DashboardScreen extends React.Component {
         
 
 
-        <Text style={[styles.title,]}> Knowhere </Text>
+        <Text style={[styles.title,]}> Dash </Text>
 
 
+        <Button
+            small 
+            rounded
+            title='messages'
+            color="black"
+            backgroundColor='#f8f8f8'
+            marginBottom= '15'
+            onPress={this.onMessagesPress.bind(this)}
+        />
 
 
         <View style={styles.container2}>
@@ -48,6 +65,9 @@ class DashboardScreen extends React.Component {
            </View>
         </View>
 
+
+
+      
 
 
 

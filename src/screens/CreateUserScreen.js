@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput,
-        View, ImageBackground} from 'react-native';
+        View, ImageBackground, Image} from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import {
@@ -54,8 +54,9 @@ class CreateUserScreen extends React.Component {
       <ImageBackground source={require('../images/background1.jpg')}
                        style={styles.container}>
 
-
-        <Text style={[styles.title,]}> Knowhere </Text>
+        <Image 
+            style={{width: 300, height: 120}} 
+            source={require('../images/kwLogo.png')} />
 
         <Text >   </Text>
         <Text >   </Text>
@@ -78,8 +79,8 @@ class CreateUserScreen extends React.Component {
         />
              <Text >   </Text>
          <TextInput
-          style={{height: 40, width: 250, backgroundColor: 'white',
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+          style={{height: 45, width: 250, backgroundColor: 'white',
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Email:'
           onChangeText={this.onEmailChange.bind(this)}
           value={this.props.email}
@@ -87,8 +88,8 @@ class CreateUserScreen extends React.Component {
              <Text >   </Text>
         <TextInput
            secureTextEntry
-           style={{height: 40, width: 200, backgroundColor: 'white',
-                   borderColor: '#83b4ff', borderWidth: 0.5}}
+           style={{height: 45, width: 250, backgroundColor: 'white',
+                   borderColor: 'black', borderWidth: 0.5}}
            placeholder=' Password:'
            onChangeText={this.onPasswordChange.bind(this)}
            value={this.props.password}
@@ -96,8 +97,8 @@ class CreateUserScreen extends React.Component {
              <Text >   </Text>
         <TextInput
            secureTextEntry
-           style={{height: 40, width: 200, backgroundColor: 'white',
-                   borderColor: '#83b4ff', borderWidth: 0.5}}
+           style={{height: 45, width: 250, backgroundColor: 'white',
+                   borderColor: 'black', borderWidth: 0.5}}
            placeholder=' Confirm Password:'
            onChangeText={this.onConfirmPasswordChange.bind(this)}
            value={this.props.confirmPassword}

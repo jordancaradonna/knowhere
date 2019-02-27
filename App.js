@@ -3,22 +3,30 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
+
+
+
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
 import reducers from './src/reducers';
 
-import LoginScreen from './src/screens/LoginScreen';
-import CreateUserScreen from './src/screens/CreateUserScreen';
 import AccountInfoScreen from './src/screens/AccountInfoScreen';
-import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import CreateOutingScreen from './src/screens/CreateOutingScreen';
+import CreateTripScreen from './src/screens/CreateTripScreen';
+import CreateUserScreen from './src/screens/CreateUserScreen';
 import DashboardScreen from './src/screens/DashboardScreen'; //trip
 import DashboardOutingScreen from './src/screens/DashboardOutingScreen'; //outing
-import ProfileScreen from './src/screens/ProfileScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-import CreateTripScreen from './src/screens/CreateTripScreen';
-import CreateOutingScreen from './src/screens/CreateOutingScreen';
+import OutingScreen from './src/screens/OutingScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import TripScreen from './src/screens/TripScreen';
+
 
 
 export default class App extends React.Component {
@@ -33,35 +41,31 @@ export default class App extends React.Component {
     };
     firebase.initializeApp(config);
   }
+
+
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 
     const MainNavigator = createStackNavigator(
     {
+        //forgotpassword: ForgotPasswordScreen,
+        //accountinfo:AccountInfoScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
+        dashOutings: DashboardOutingScreen,
+        settings: SettingsScreen,
+        messages: MessagesScreen,
+        explore: ExploreScreen,
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
-        main: createBottomTabNavigator(
-          {
-            Dash: DashboardScreen,
-            Profile: ProfileScreen,
-            Explore: ExploreScreen,
-            Notifications: NotificationsScreen
-          }
-        )
-      }
-=======
-<<<<<<< HEAD
-=======
+        
 
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
-        dashOutings: DashboardOutingScreen,
         main: createBottomTabNavigator({
-            Dash: {
+            dash: {
               screen: DashboardScreen,
               navigationOptions: {
                 tabBarLabel: 'dash',
@@ -72,7 +76,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Notifications: {
+            notifications: {
               screen: NotificationsScreen,
               navigationOptions: {
                 tabBarLabel: 'notifications',
@@ -83,7 +87,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Explore: {
+            explore: {
               screen: ExploreScreen,
               navigationOptions: {
                 tabBarLabel: 'explore',
@@ -94,7 +98,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Profile: {
+            profile: {
               screen: ProfileScreen,
               navigationOptions: {
                 tabBarLabel: 'profile',
@@ -114,33 +118,27 @@ export default class App extends React.Component {
                 //activeTintColor: 'purple',
                 //inactiveTintColor: '#black'
               //}
-          })
-    })
+        })
 
 
 
-<<<<<<< HEAD
-    },
-    navigationOptions = { header: null }
->>>>>>> 41cedff96e407fb6b1e6b88389a67406314a8535
-  );
-=======
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
+   // navigationOptions = { header: null }
+
+  
+
+
+        
+    }) //End of Main Navigator
 
     const Navigator = createAppContainer(MainNavigator);
 
+   
 
-
-    return (
-<<<<<<< HEAD
-      <View style={styles.container}>
-        <Text>welcome knowhere dudes!</Text>
-      </View>
-=======
+    return  (
       <Provider store={store} >
         <Navigator />
       </Provider>
->>>>>>> 27efc22160af6cf23b3f32e9cf7577d69ceb609c
-    );
+    )
   }
 }
+

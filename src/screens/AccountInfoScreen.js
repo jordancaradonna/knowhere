@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, 
-        Text, TextInput } from 'react-native';
+        Text, TextInput, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
 class AccountInfoScreen extends React.Component {
@@ -13,14 +13,17 @@ class AccountInfoScreen extends React.Component {
       <ImageBackground source={require('../images/finalBackground2.jpg')}
                        style={styles.container}> 
 
-        <Text style={[styles.title,]}> Knowhere </Text>
+       
+        <Image 
+            style={{width: 300, height: 120}} 
+            source={require('../images/kwLogo.png')} />
+
         <Text> </Text>
 
         <Text style={[styles.otherText,]}> Welcome! </Text>
         <Text style={[styles.otherText,]}> Just a couple more things </Text>
         <Text style={[styles.otherText,]}> to set up your account. </Text>
         
-        <Text> </Text>
         <Text> </Text>
         <Text> </Text>
 
