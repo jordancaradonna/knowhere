@@ -45,21 +45,7 @@ export default class App extends React.Component {
         forgotpassword: ForgotPasswordScreen,
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
-        main: createBottomTabNavigator(
-          {
-            Dash: DashboardScreen,
-            Profile: ProfileScreen,
-            Explore: ExploreScreen,
-            Notifications: NotificationsScreen
-          }
-        )
-      }
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
-        dashOutings: DashboardOutingScreen,
+        
         main: createBottomTabNavigator({
             Dash: {
               screen: DashboardScreen,
@@ -117,15 +103,11 @@ export default class App extends React.Component {
           })
     })
 
-
-
-<<<<<<< HEAD
-    },
     navigationOptions = { header: null }
->>>>>>> 41cedff96e407fb6b1e6b88389a67406314a8535
-  );
-=======
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
+
+  
+
+
 
     const Navigator = createAppContainer(MainNavigator);
 
