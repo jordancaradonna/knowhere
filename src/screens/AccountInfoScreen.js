@@ -26,7 +26,6 @@ class AccountInfoScreen extends React.Component {
         
         <Text> </Text>
         <Text> </Text>
-        <Text> </Text>
 
         <TextInput
           style={{height: 40, width: 200,
