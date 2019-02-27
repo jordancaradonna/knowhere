@@ -17,6 +17,7 @@ import CreateTripScreen from './src/screens/CreateTripScreen';
 import CreateUserScreen from './src/screens/CreateUserScreen';
 import DashboardScreen from './src/screens/DashboardScreen'; //trip
 import DashboardOutingScreen from './src/screens/DashboardOutingScreen'; //outing
+import DreamListScreen from './src/screens/DreamListScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import LoginScreen from './src/screens/LoginScreen';
@@ -62,6 +63,7 @@ export default class App extends React.Component {
         explore: ExploreScreen,
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
+        dreamlist: DreamListScreen,
         
 
         main: createBottomTabNavigator({

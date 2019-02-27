@@ -21,7 +21,9 @@ onCreateTripPress() {
 onCreateOutingPress() {
   this.props.navigation.navigate('createouting');
 }
-
+onDreamListPress(){
+  this.props.navigation.navigate('dreamlist');
+}
 
 
   render () {
@@ -62,8 +64,20 @@ onCreateOutingPress() {
             backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
           />
+
+          <Button
+            small
+            rounded
+            title='Dream List'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onDreamListPress.bind(this) } />
+
           
 
+          <Text></Text>
+          <Text></Text>
           <Text></Text>
           <Text></Text>
         </View>
@@ -116,6 +130,8 @@ onCreateOutingPress() {
             backgroundColor = '#f8f8f8'
             style = {{padding: 5}} 
             onPress={this.onCreateOutingPress.bind(this) } />
+
+
 
 
 
