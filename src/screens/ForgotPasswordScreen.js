@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageBackground, Text, 
-        TextInput, StyleSheet } from 'react-native';
+        TextInput, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
 class ForgotPasswordScreen extends React.Component {
@@ -13,7 +13,9 @@ class ForgotPasswordScreen extends React.Component {
       <ImageBackground source={require('../images/finalBackground2.jpg')}
                        style={styles.container}> 
 
-        <Text style={[styles.title,]}> Knowhere </Text>
+        <Image 
+            style={{width: 300, height: 100}} 
+            source={require('../images/kwLogo.png')} />
         <Text> </Text>
         <Text> </Text>
         <Text> </Text>

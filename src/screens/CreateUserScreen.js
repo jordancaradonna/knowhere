@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput,
-        View, ImageBackground} from 'react-native';
+        View, ImageBackground, Image} from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import {
@@ -54,8 +54,9 @@ class CreateUserScreen extends React.Component {
       <ImageBackground source={require('../images/background1.jpg')}
                        style={styles.container}>
 
-
-        <Text style={[styles.title,]}> Knowhere </Text>
+        <Image 
+            style={{width: 300, height: 100}} 
+            source={require('../images/kwLogo.png')} />
 
         <Text >   </Text>
         <Text >   </Text>

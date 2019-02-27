@@ -51,14 +51,15 @@ export default class App extends React.Component {
 
     const MainNavigator = createStackNavigator(
     {
-        dashOutings: DashboardOutingScreen,
+        //accountinfo:AccountInfoScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
-        accountinfo: AccountInfoScreen,
+       // accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-        //dashOutings: DashboardOutingScreen,
+        dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
+        explore: ExploreScreen,
 
 
         main: createBottomTabNavigator({

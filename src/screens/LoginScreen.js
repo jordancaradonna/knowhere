@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text,
         TextInput, StyleSheet,
-        ImageBackground, View } from 'react-native';
+        ImageBackground, View, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 
 import { connect } from 'react-redux';
@@ -60,12 +60,16 @@ class LoginScreen extends React.Component {
                         alignItems: 'center'}}>
 
 
-        <Text style={[styles.title,]}>Knowhere
-        </Text>
+      <Image 
+            style={{width: 300, height: 100}} 
+            source={require('../images/kwLogo.png')} />
 
-        <Text> </Text>
-       
-
+      <Text> </Text>
+      <Text> </Text>
+      <Text> </Text>
+      <Text> </Text>
+      <Text> </Text>
+      <Text> </Text> 
 
         {this.renderError()}
 
@@ -73,8 +77,7 @@ class LoginScreen extends React.Component {
         <TextInput
           style={{height: 45, width: 250,
                   backgroundColor: 'white',
-
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Email: '
           onChangeText={this.onEmailChange.bind(this)}
         />
@@ -83,7 +86,7 @@ class LoginScreen extends React.Component {
           secureTextEntry
           style={{height: 45, width: 250,
                   backgroundColor: 'white',
-                  borderColor: '#83b4ff', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Password:'
           onChangeText={this.onPasswordChange.bind(this)}
         />
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  title:{ //Knowhere
+  title:{ //Knowhere - nope
     fontSize: 33,
     padding: 40,
     marginBottom: 50,
