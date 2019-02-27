@@ -56,17 +56,13 @@ class LoginScreen extends React.Component {
                        style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between',
-                        alignItems: 'center'}}>
-
+       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
 
       <Image 
-            style={{width: 300, height: 100}} 
+            style={{width: 300, height: 150}} 
             source={require('../images/kwLogo.png')} />
 
-      <Text> </Text>
-      <Text> </Text>
-      <Text> </Text>
+      
       <Text> </Text>
       <Text> </Text>
       <Text> </Text> 
@@ -92,11 +88,11 @@ class LoginScreen extends React.Component {
         />
         <Text> </Text>
 
-       
+
 
 
         <Button
-            small 
+            small
             rounded
             title='Forgot Password?'
             color="black"
@@ -107,8 +103,8 @@ class LoginScreen extends React.Component {
 
 
         <View style={styles.container2}>
-        
-          <View style={styles.buttonContainer}> 
+
+          <View style={styles.buttonContainer}>
             <Button
              title='Sing Up'
              titleStyle={styles.buttonTitle}
@@ -119,7 +115,7 @@ class LoginScreen extends React.Component {
              onPress={this.onSignUpPress.bind(this)}   />
           </View>
 
-          <View style={styles.buttonContainer}>   
+          <View style={styles.buttonContainer}>
             <Button
               title='Sign In'
               titleStyle={styles.buttonTitle}

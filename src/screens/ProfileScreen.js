@@ -9,9 +9,19 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class ProfileScreen extends React.Component {
 
+
   onSettingsPress() {
     this.props.navigation.navigate('settings');
   }
+
+onCreateTripPress() {
+  this.props.navigation.navigate('createtrip');
+}
+
+onCreateOutingPress() {
+  this.props.navigation.navigate('createouting');
+}
+
 
   render () {
     return (

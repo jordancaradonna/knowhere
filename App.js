@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer, createBottomTabNavigator } fr
 import Icon from 'react-native-vector-icons/Ionicons'
 
 
+
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
@@ -28,8 +29,6 @@ import TripScreen from './src/screens/TripScreen';
 
 
 
-
-
 export default class App extends React.Component {
   componentWillMount() { // Initialize Firebase
     const config = {
@@ -47,20 +46,22 @@ export default class App extends React.Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-    
+
 
     const MainNavigator = createStackNavigator(
     {
-        accountinfo:AccountInfoScreen,
+        //accountinfo:AccountInfoScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
-       // accountinfo: AccountInfoScreen,
+        accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
         dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
-
+        createtrip: CreateTripScreen,
+        createouting: CreateOutingScreen,
+        
 
         main: createBottomTabNavigator({
             dash: {
@@ -68,8 +69,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'dash',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-today" 
-                        color={ tintColor } 
+                  <Icon name="ios-today"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -79,8 +80,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'notifications',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-notifications" 
-                        color={ tintColor } 
+                  <Icon name="ios-notifications"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -90,8 +91,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'explore',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-compass" 
-                        color={ tintColor } 
+                  <Icon name="ios-compass"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -101,8 +102,8 @@ export default class App extends React.Component {
               navigationOptions: {
                 tabBarLabel: 'profile',
                 tabBarIcon:({tintColor}) => (
-                  <Icon name="ios-contact" 
-                        color={ tintColor } 
+                  <Icon name="ios-contact"
+                        color={ tintColor }
                         size={24} />
                 )
               }
@@ -117,6 +118,13 @@ export default class App extends React.Component {
                 //inactiveTintColor: '#black'
               //}
         })
+
+
+
+   // navigationOptions = { header: null }
+
+  
+
 
         
     }) //End of Main Navigator
@@ -134,6 +142,4 @@ export default class App extends React.Component {
     
   }
 }
-
-
 

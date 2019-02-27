@@ -28,7 +28,7 @@ class DashboardScreen extends React.Component {
         
 
 
-        <Text style={[styles.title,]}> Knowhere </Text>
+        <Text style={[styles.title,]}> Dash </Text>
 
 
         <Button

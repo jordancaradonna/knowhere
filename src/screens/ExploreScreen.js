@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet } from 'react-native';
 
 class ExploreScreen extends React.Component {
+
   render () {
     return (
       <View style={styles.container} >
