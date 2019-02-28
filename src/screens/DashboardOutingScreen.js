@@ -16,9 +16,7 @@ class DashboardOutingScreen extends React.Component {
       <View style={styles.container} >
         
 
-        <Text style={[styles.title,]}> Knowhere </Text>
-
-
+        <Text style={[styles.title,]}> Dashboard </Text>
 
 
         <View style={styles.container2}>
@@ -56,7 +54,7 @@ class DashboardOutingScreen extends React.Component {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    alignItems: 'center',
+    //alignItems: 'center',
   },
   container2:{
     flex: 1,
