@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class TripScreen extends React.Component {
+class TripsScreen extends React.Component {
   render () {
     return (
       <View>
@@ -18,4 +18,4 @@ class TripScreen extends React.Component {
   }
 }
 
-export default TripScreen;
+export default TripsScreen;

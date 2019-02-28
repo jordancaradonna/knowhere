@@ -35,7 +35,8 @@ class DashboardScreen extends React.Component {
 
         <ScrollView style = {{flex: 1}} > 
 
-            <Text style={[styles1.title,]}> Dashboard </Text>
+            <Text //Reminder:after "Dashboard" we need to add a small button for "messages"
+                style={[styles1.title,]}> Dashboard  </Text>
 
 
             <View style={styles1.container2} //Trip/Outing BUttons

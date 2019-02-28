@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class OutingScreen extends React.Component {
+class OutingsScreen extends React.Component {
   render () {
     return (
       <View>
@@ -14,4 +14,4 @@ class OutingScreen extends React.Component {
   }
 }
 
-export default OutingScreen;
+export default OutingsScreen;

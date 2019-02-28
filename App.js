@@ -23,10 +23,10 @@ import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-import OutingScreen from './src/screens/OutingScreen';
+import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import TripScreen from './src/screens/TripScreen';
+import TripsScreen from './src/screens/TripsScreen';
 
 
 
@@ -61,7 +61,9 @@ export default class App extends React.Component {
         settings: SettingsScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
+        trips: TripsScreen,
         createtrip: CreateTripScreen,
+        outings: OutingsScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
         
