@@ -17,9 +17,11 @@ class ProfileScreen extends React.Component {
     this.props.navigation.navigate('dreamlist');
   }
   onTripsPress() {
+    console.log("DOES IT WORK?");
     this.props.navigation.navigate('trips');
   }
   onOutingsPress() {
+    console.log("DOES IT WORK?");
     this.props.navigation.navigate('outings');
   }
   onCreateTripPress() {
@@ -99,7 +101,8 @@ class ProfileScreen extends React.Component {
               buttonStyle={styles.buttonStyle}
               color='#83b4ff'
               backgroundColor='#f4f4ff' 
-              onPress={this.onTripsPress.bind(this) }/>
+              onPress={this.onTripsPress.bind(this)}
+               />
            </View>
         <View style={styles.buttonContainer}> 
             <Button
@@ -109,7 +112,8 @@ class ProfileScreen extends React.Component {
               buttonStyle={styles.buttonStyle}
               color='white'
               backgroundColor='#b0d0ff'
-              onPress={this.onOutingsPress.bind(this) }/>
+              onPress={this.onOutingsPress.bind(this)}
+               />
            </View>
         </View>
 

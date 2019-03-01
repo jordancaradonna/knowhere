@@ -86,7 +86,7 @@ class DashboardScreen extends React.Component {
                       />
                       <Text style={{  fontSize: 10, paddingLeft: 6}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                        Jordan Caradonna
+                          Jordan Caradonna
                       </Text>
                       <View style = {{flexDirection: 'row', paddingTop: 5, 
                                       paddingBottom: 15, paddingRight: 5, 

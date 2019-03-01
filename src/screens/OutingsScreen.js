@@ -7,7 +7,6 @@ class OutingsScreen extends React.Component {
       <View>
         <Text>
           OutingScreen
-          
         </Text>
       </View>
     )

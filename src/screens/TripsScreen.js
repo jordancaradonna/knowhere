@@ -7,11 +7,6 @@ class TripsScreen extends React.Component {
       <View>
         <Text>
           TripScreen
-          TripScreen
-          TripScreen
-          TripScreen
-          TripScreen
-          TripScreen
         </Text>
       </View>
     )
