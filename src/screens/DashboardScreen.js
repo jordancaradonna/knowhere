@@ -4,11 +4,11 @@ import { View, Text, Image, StyleSheet,
         } from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Slide from '../components/Slide';
+//import Slide from '../components/Slide';
 
 const Users = [
   { id: "first", uri: require('../images/background1.jpg') },
-  { id: "second", uri: require('../images/ireland.png')},
+  { id: "second", uri: require('../images/jprofile.png')},
   { id: "third", uri: require('../images/finalBackground.jpg')},
   { id: "fourth", uri: require('../images/pig.jpg')}
 ]
@@ -35,7 +35,7 @@ class DashboardScreen extends React.Component {
 
         <ScrollView style = {{flex: 1}} > 
 
-            <Text //Reminder:after "Dashboard" we need to add a small button for "messages"
+            <Text //Reminder: After "Dashboard" we need to add a small button for "messages"
                 style={[styles1.title,]}> Dashboard  </Text>
 
 
@@ -46,7 +46,7 @@ class DashboardScreen extends React.Component {
                     title='trips'
                     titleStyle={styles1.buttonTitle}
                     buttonStyle={styles1.buttonStyle}
-                    color='white'
+                    color='black'
                     backgroundColor='#b0d0ff'
                     onPress={this.onTripsPress.bind(this)}   />
                 </View>
@@ -56,7 +56,7 @@ class DashboardScreen extends React.Component {
                     title='outings'
                     titleStyle={styles1.buttonTitle}
                     buttonStyle={styles1.buttonStyle}
-                    color='#83b4ff'
+                    color='grey'
                     backgroundColor='#f4f4ff'
                     onPress={this.onOutingsPress.bind(this)}  />
               </View>
@@ -79,7 +79,7 @@ class DashboardScreen extends React.Component {
                   >
                       <Avatar
                         large
-                        source={require('../images/ireland.png')}
+                        source={require('../images/jprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
@@ -137,7 +137,7 @@ class DashboardScreen extends React.Component {
                 >
                     <Avatar
                         large
-                        source={require('../images/ireland.png')}
+                        source={require('../images/aprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
@@ -268,7 +268,7 @@ const styles = {
 }
 
 
-
+//Button styling
 const styles1 = StyleSheet.create({
   container:{
     flex: 1,
@@ -281,8 +281,8 @@ const styles1 = StyleSheet.create({
   },
   title:{
     fontSize: 28,
-    fontFamily: 'Chalkboard SE',
-    padding: 10,
+    //fontFamily: 'Chalkboard SE',
+    padding: 5,
     color: 'black',
   },
   buttonTitle:{
@@ -291,7 +291,7 @@ const styles1 = StyleSheet.create({
     //color: "white",
   },
   buttonStyle:{
-    width: 160,
+    width: 165,
     height: 44,
     //backgroundColor: "#83b4ff",
     //borderRadius: 100, //makes it oval not squared

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class DashboardOutingScreen extends React.Component {
   
@@ -26,7 +27,7 @@ class DashboardOutingScreen extends React.Component {
               title='trips'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
-              color='#83b4ff'
+              color='grey'
               backgroundColor='#f4f4ff'
               onPress={this.onTripsPress.bind(this)}   />
           </View>
@@ -36,7 +37,7 @@ class DashboardOutingScreen extends React.Component {
               title='outings'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
-              color='white'
+              color='black'
               backgroundColor='#b0d0ff'
               onPress={this.onOutingsPress.bind(this)}  />
            </View>
@@ -63,8 +64,8 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: 28,
-    fontFamily: 'Chalkboard SE',
-    padding: 10,
+    //fontFamily: 'Chalkboard SE',
+    padding: 5,
     color: 'black',
   },
   buttonTitle:{
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     //color: "white",
   },
   buttonStyle:{
-    width: 160,
+    width: 165,
     height: 44,
     //backgroundColor: "#83b4ff",
     //borderRadius: 100, //makes it oval not squared

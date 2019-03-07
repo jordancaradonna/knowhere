@@ -38,7 +38,7 @@ class ProfileScreen extends React.Component {
         <Avatar
           medium
           rounded
-          source={require('../images/ireland.png')}
+          source={require('../images/jprofile.png')}
           containerStyle={styles.AvatarStyle}
           onPress={() => console.log("Works!")}
           activeOpacity={0.7}

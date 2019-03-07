@@ -121,7 +121,6 @@ class LoginScreen extends React.Component {
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
               //color="white"
-
               backgroundColor='#b0d0ff'
               //style={{padding: 15}}
               onPress={this.onSignInPress.bind(this)}  />
