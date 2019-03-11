@@ -51,7 +51,7 @@ export default class App extends React.Component {
 
     const MainNavigator = createStackNavigator(
     {
-        
+        accountinfo: AccountInfoScreen,
         dashOutings: DashboardOutingScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
