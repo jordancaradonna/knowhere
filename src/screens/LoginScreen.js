@@ -56,9 +56,9 @@ class LoginScreen extends React.Component {
                        style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
+       <View style = {{justifyContent: 'space-between',  alignItems: 'center'}}>
 
-      <Image 
+       <Image 
             style={{width: 300, height: 140}} 
             source={require('../images/kwLogo.png')} />
 

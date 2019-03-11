@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { Button, Tile, Avatar} from 'react-native-elements';
+import { Button, Tile, Avatar, ThemeProvider} from 'react-native-elements';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;

@@ -83,10 +83,10 @@ class ExploreScreen extends React.Component {
                                       paddingBottom: 15, paddingRight: 5, 
                                       borderBottomWidth: 1, borderColor: '#ddd',}} >
                           <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}/>
-                          <Text > 
-                            Los Angeles
+                            source = {require('../images/home.png')}
+                            style = {{height: 15, width: 15}}/>
+                          <Text style={{  fontSize: 13}}> 
+                            : Los Angeles
                           </Text>
                     </View>
 
@@ -127,10 +127,10 @@ class ExploreScreen extends React.Component {
                                       paddingBottom: 15, paddingRight: 5, 
                                       borderBottomWidth: 1, borderColor: '#ddd',}} >
                           <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}/>
-                          <Text > 
-                            Los Angeles
+                            source = {require('../images/home.png')}
+                            style = {{height: 15, width: 15}}/>
+                          <Text style={{ fontSize: 13}}> 
+                            : Los Angeles
                           </Text>
                     
                     </View>
@@ -171,11 +171,11 @@ class ExploreScreen extends React.Component {
                                       paddingBottom: 15, paddingRight: 5, 
                                       borderBottomWidth: 1, borderColor: '#ddd',}} >
                           <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}/>
+                            source = {require('../images/home.png')}
+                            style = {{height: 15, width: 15}}/>
                           <Text 
                             style={{ fontSize: 13}}> 
-                            Los Angeles
+                            : Hilo
                           </Text>
                     </View>
 
@@ -215,11 +215,11 @@ class ExploreScreen extends React.Component {
                                       paddingBottom: 15, paddingRight: 5, 
                                       borderBottomWidth: 1, borderColor: '#ddd',}} >
                           <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}/>
+                            source = {require('../images/home.png')}
+                            style = {{height: 15, width: 15}}/>
                           <Text 
                             style={{ fontSize: 13}}> 
-                            Los Angeles
+                            : Kailua Kona
                           </Text>
                     </View>
 
@@ -242,6 +242,7 @@ class ExploreScreen extends React.Component {
     );
   };
 
+  
     renderImages = () =>{
     //item, i is the index
       return Users.map((item, currentIndex) =>{
