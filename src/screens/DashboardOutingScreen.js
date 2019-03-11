@@ -36,8 +36,8 @@ class DashboardOutingScreen extends React.Component {
           <View style={styles1.buttonContainer}> 
             <Button
               title='trips'
-              titleStyle={styles.buttonTitle}
-              buttonStyle={styles.buttonStyle}
+              titleStyle={styles1.buttonTitle}
+              buttonStyle={styles1.buttonStyle}
               color='grey'
               backgroundColor='#f4f4ff'
               onPress={this.onTripsPress.bind(this)}   />
@@ -46,8 +46,8 @@ class DashboardOutingScreen extends React.Component {
           <View style={styles1.buttonContainer}>   
            <Button
               title='outings'
-              titleStyle={styles.buttonTitle}
-              buttonStyle={styles.buttonStyle}
+              titleStyle={styles1.buttonTitle}
+              buttonStyle={styles1.buttonStyle}
               color='black'
               backgroundColor='#b0d0ff'
               onPress={this.onOutingsPress.bind(this)}  />
@@ -142,7 +142,7 @@ class DashboardOutingScreen extends React.Component {
         
 
 
-        <View //contains the CardSection  ---------NAMIBIA----------
+        <View //contains the CardSection  ---------Sanctuary----------
         >      
             <View style = {{flex: 1, flexDirection: 'column' }}>  
             
