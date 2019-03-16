@@ -5,7 +5,8 @@ import {
   LNAME_CHANGED,
   USERNAME_CHANGED,
   CITY_CHANGED,
-  CREATE_PROFILE
+  CREATE_PROFILE,
+  PROFILE_FETCH_SUCCESS
 } from './types.js';
 
 export const fnameChanged = (text) => {
@@ -46,4 +47,16 @@ export const createProfile = ({fname, lname, username, city}, callbackFunction )
         createProfileFail(dispatch, error.message)
       });
     };
+};
+
+export const profileFetch = () => {
+  const currentUser = firebase.auth().O;
+
+  return (dispatch) => {
+    firebase.database().ref(`users/${currentUser}/account`)
+      .on('value', snapshot => {
+        console.log(snapshot.val())
+        dispatch({ type: PROFILE_FETCH_SUCCESS, payload: snapshot.val() });
+      });
+  }
 };

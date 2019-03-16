@@ -5,7 +5,8 @@ import {
   CITY_CHANGED,
   CREATE_PROFILE,
   CREATE_PROFILE_SUCCESS,
-  CREATE_PROFILE_FAIL
+  CREATE_PROFILE_FAIL,
+  PROFILE_FETCH_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -39,7 +40,13 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case CREATE_PROFILE_FAIL:
       return { ...state, error: action.payload, loading: false };
-
+    case PROFILE_FETCH_SUCCESS:
+      console.log(action.payload);  
+      return { ...state,
+        city: action.payload.city,
+        username: action.payload.username,
+        fname: action.payload.fname,
+        lname: action.payload.lname };
     default:
       return state;
   }
