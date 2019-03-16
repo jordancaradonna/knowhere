@@ -3,20 +3,30 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
+
+
+
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
 
 import reducers from './src/reducers';
 
-import LoginScreen from './src/screens/LoginScreen';
-import CreateUserScreen from './src/screens/CreateUserScreen';
 import AccountInfoScreen from './src/screens/AccountInfoScreen';
-import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import CreateOutingScreen from './src/screens/CreateOutingScreen';
+import CreateTripScreen from './src/screens/CreateTripScreen';
+import CreateUserScreen from './src/screens/CreateUserScreen';
 import DashboardScreen from './src/screens/DashboardScreen'; //trip
 import DashboardOutingScreen from './src/screens/DashboardOutingScreen'; //outing
-import ProfileScreen from './src/screens/ProfileScreen';
+import DreamListScreen from './src/screens/DreamListScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
+import OutingScreen from './src/screens/OutingScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import TripScreen from './src/screens/TripScreen';
 
 
 
@@ -32,6 +42,9 @@ export default class App extends React.Component {
     };
     firebase.initializeApp(config);
   }
+
+
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
 
@@ -39,16 +52,21 @@ export default class App extends React.Component {
     const MainNavigator = createStackNavigator(
     {
         login: LoginScreen,
-        createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
-        forgotpassword: ForgotPasswordScreen,
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
+        createuser: CreateUserScreen,
         dashOutings: DashboardOutingScreen,
+        forgotpassword: ForgotPasswordScreen,
+        //dashOutings: DashboardOutingScreen,
+        settings: SettingsScreen,
+        messages: MessagesScreen,
+        explore: ExploreScreen,
+        createtrip: CreateTripScreen,
+        createouting: CreateOutingScreen,
+        dreamlist: DreamListScreen,
+
+
         main: createBottomTabNavigator({
-            Dash: {
+            dash: {
               screen: DashboardScreen,
               navigationOptions: {
                 tabBarLabel: 'dash',
@@ -59,7 +77,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Notifications: {
+            notifications: {
               screen: NotificationsScreen,
               navigationOptions: {
                 tabBarLabel: 'notifications',
@@ -70,7 +88,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Explore: {
+            explore: {
               screen: ExploreScreen,
               navigationOptions: {
                 tabBarLabel: 'explore',
@@ -81,7 +99,7 @@ export default class App extends React.Component {
                 )
               }
             },
-            Profile: {
+            profile: {
               screen: ProfileScreen,
               navigationOptions: {
                 tabBarLabel: 'profile',
@@ -101,26 +119,26 @@ export default class App extends React.Component {
                 //activeTintColor: 'purple',
                 //inactiveTintColor: '#black'
               //}
-          })
-    })
+        })
 
 
 
-<<<<<<< HEAD
-    },
-    navigationOptions = { header: null }
-  );
-=======
->>>>>>> 2ce0b897030133ba990bf18c9b4355a05ddebfa9
+   // navigationOptions = { header: null }
+
+
+
+
+
+    }) //End of Main Navigator
 
     const Navigator = createAppContainer(MainNavigator);
 
 
 
-    return (
+    return  (
       <Provider store={store} >
         <Navigator />
       </Provider>
-    );
+    )
   }
 }

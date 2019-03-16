@@ -8,6 +8,24 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 class ProfileScreen extends React.Component {
+
+
+  onSettingsPress() {
+    this.props.navigation.navigate('settings');
+  }
+
+onCreateTripPress() {
+  this.props.navigation.navigate('createtrip');
+}
+
+onCreateOutingPress() {
+  this.props.navigation.navigate('createouting');
+}
+onDreamListPress(){
+  this.props.navigation.navigate('dreamlist');
+}
+
+
   render () {
     return (
       <View>
@@ -32,19 +50,33 @@ class ProfileScreen extends React.Component {
           <Button
             small
             rounded
-            title='myMap'
+            title='settings'
             color='black'
-            backgroundColor = '#f4f4ff'
+            backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
+            onPress={this.onSettingsPress.bind(this)}
           />
           <Button
             small
             rounded
-            title='add'
+            title='myMap'
             color='black'
-            backgroundColor = '#f4f4ff'
+            backgroundColor = '#f8f8f8'
             style = {{padding: 5}}
           />
+
+          <Button
+            small
+            rounded
+            title='Dream List'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onDreamListPress.bind(this) } />
+
+          
+
+          <Text></Text>
           <Text></Text>
           <Text></Text>
           <Text></Text>
@@ -74,6 +106,30 @@ class ProfileScreen extends React.Component {
               backgroundColor='#b0d0ff'/>
            </View>
         </View>
+
+
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+      
+        <Button
+            small
+            rounded
+            title='Create Trip'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onCreateTripPress.bind(this) } />
+
+          <Button
+            small
+            rounded
+            title='Create Outing'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}} 
+            onPress={this.onCreateOutingPress.bind(this) } />
 
 
 
