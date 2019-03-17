@@ -82,7 +82,7 @@ class DashboardOutingScreen extends React.Component {
                     
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 35, marginTop: 11}}/>
+                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
                               Namibia
                     </Text>
@@ -90,7 +90,7 @@ class DashboardOutingScreen extends React.Component {
 
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 40, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
                     />
                 </View>   
             </View>
@@ -125,15 +125,15 @@ class DashboardOutingScreen extends React.Component {
                     
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 35, marginTop: 11}}/>
+                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Portland
+                              Portland, OR
                     </Text>
 
 
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 40, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
                     />
                 </View>   
             </View>
@@ -145,38 +145,43 @@ class DashboardOutingScreen extends React.Component {
         <View //contains the CardSection  ---------Sanctuary----------
         >      
             <View style = {{flex: 1, flexDirection: 'column' }}>  
-            
-              <Image 
-                style={{width: 375, height: 260, marginTop: 10, marginBottom: 5}} 
-                source={require('../images/namibiaDrinks.png')} />
-                
+              <View style = {{aligntItems: 'center', flexDirection: 'row'}} >
+                <Image 
+                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  source={require('../images/sanctuary1.png')} />
+                <Image 
+                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  source={require('../images/sanctuary2.png')} />
+              </View>
+
+
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
                     <Avatar
                         small
-                        source={require('../images/jprofile.png')}
+                        source={require('../images/fprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                          Jordan Caradonna     
+                          Frida Martinez    
                     </Text>
 
                     
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 35, marginTop: 11}}/>
+                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Namibia
+                              Claremont, CA
                     </Text>
 
 
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 40, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 20, marginTop: 10}}
                     />
                 </View>   
             </View>

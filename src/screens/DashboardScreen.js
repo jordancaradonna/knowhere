@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet,
-         Dimensions, Animated, PanResponder, ScrollView
-        } from 'react-native';
+         Dimensions, Animated, PanResponder, ScrollView,
+        TouchableWithoutFeedback} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 //import Slide from '../components/Slide';
@@ -26,6 +26,9 @@ class DashboardScreen extends React.Component {
   }
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
+  }
+  onPhototPress(){
+    this.props.navigation.navigate('profile');
   }
 
   render = () => {
@@ -102,6 +105,7 @@ class DashboardScreen extends React.Component {
                         style = {{height: 100, width: 100, padding: 15}}
                       />
                   </View>
+                 
 
                   <ScrollView horizontal style = {{}}>
                      {this.renderImages()} 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet, 
-          Dimensions, Animated, ScrollView } from 'react-native';
+          Dimensions, Animated, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
 //import SearchBar from 'react-native-search-bar';
 
@@ -85,8 +85,8 @@ class ExploreScreen extends React.Component {
                           <Image 
                             source = {require('../images/home.png')}
                             style = {{height: 15, width: 15}}/>
-                          <Text style={{  fontSize: 13}}> 
-                            : Los Angeles
+                          <Text style={{  fontSize: 10}}> 
+                            : Orange County
                           </Text>
                     </View>
 
@@ -94,6 +94,7 @@ class ExploreScreen extends React.Component {
                         source = {require('../images/bookmark_.png')}
                         style = {{height: 100, width: 100, padding: 15}}
                     />
+                    
                 </View>
 
                 <ScrollView horizontal style = {{}}>
