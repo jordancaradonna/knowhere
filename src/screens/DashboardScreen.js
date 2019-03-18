@@ -130,29 +130,29 @@ class DashboardScreen extends React.Component {
                             San Diego
                         </Text>
                     </View>
-                  
-                    <Image 
-                        source = {require('../images/bookmark_fill.png')}
-                        style = {{height: 100, width: 100, padding: 15}}
-                        onPress = {this.bookmark_filled.bind(this)}
-                    />
+
+
+                    <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
                     </View>
-                 
-                    <ScrollView horizontal style = {{}}>
+                </View>
+                  <ScrollView horizontal //view of stuff on right
+                   
+                  style = {{}}>
                      {this.renderImages()} 
-                    </ScrollView>
+                  </ScrollView>
                 </View>
             </View>
-            
-            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
-                <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
+            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd', justifyContent: 'flex-start'}}>
+            <Text style ={{paddingLeft: 100, }}>
                    Secret Beach
-                </Text>
+              </Text>
             </View>
-        
-        
         </ScrollView>
-
+                
      
     );
   };
