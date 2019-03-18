@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet,
-         Dimensions, Animated, PanResponder, ScrollView
+import { View, Text, Image,
+         Dimensions, Animated, ScrollView, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity
         } from 'react-native';
-import {Avatar} from 'react-native-elements';
+import {Avatar, Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Slide from '../components/Slide';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducers from '../reducers';
+
 
 const Users = [
   { id: "first", uri: require('../images/background1.jpg') },
@@ -12,21 +16,34 @@ const Users = [
   { id: "third", uri: require('../images/finalBackground.jpg')},
   { id: "fourth", uri: require('../images/pig.jpg')}
 ]
-
 const SCREEN_WIDTH = Dimensions.get('window').width;
-
 class DashboardScreen extends React.Component {
- 
-  onViewAllPress() {
-    this.props.navigation.navigate('profile');
+  state = {
+    toggle: false //for bookmark icon switch
+  }
+  changeIcon() {
+    const newState = !this.state.toggle;
+    this.setState({toggle: newState})
+    this.props.onStateChange && this.props.onStateChange(newState)
   }
   render = () => {
+    const {toggle} = this.state;
+    const textValue = toggle ? "ON" : "Off";
+    const iconName = toggle ? "bookmark" : "bookmark-o";
+    const buttonBg = toggle ? "dodgerblue" : "white";
+    const textColor = toggle ? "white" : 'black';
     return (
-      
-      
-
         <ScrollView style = {{flex: 1}}>
+          <TouchableOpacity
+          onPress = {() => this.changeIcon()}
+          style = {{backgroundColor: buttonBg, borderColor: 'dodgerblue'}}
+          >
+            <Text>
+              {textValue}
+            </Text>
+          </TouchableOpacity>
             <View // contains the CardSection  
+            style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
                 <Text
                   onPress = {this.onViewAllPress.bind(this)}
@@ -36,6 +53,7 @@ class DashboardScreen extends React.Component {
                 <View style = {{flex: 1, flexDirection: 'row' }}>
                 
                 <View //contains info on the left
+                style = {{alignItems: 'center'}}
                 >
                     <Avatar
                         large
@@ -44,12 +62,11 @@ class DashboardScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 10, paddingLeft: 6}} 
-                          onPress={() => this.props.navigation.navigate('profile')}
-                    >
+                    <Text style={{  fontSize: 10, }} 
+                          onPress={() => this.props.navigation.navigate('profile')}>
                         Jordan Caradonna
                     </Text>
-                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
+                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
                               borderColor: '#ddd',}} //location pin
                       >
                         <Image 
@@ -60,25 +77,28 @@ class DashboardScreen extends React.Component {
                             Los Angeles
                         </Text>
                   </View>
-                  <Image 
-                        source = {require('../images/bookmark_.png')}
-                        style = {{height: 100, width: 100, padding: 15}}
-              />
+                    <View style = {{alignItems: 'center', paddingTop: 25}}//icon view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
+                    </View>
                 </View>
-                  <ScrollView horizontal style = {{}}>
+                  <TouchableWithoutFeedback
+                    onPress = {(this._onPhotoPressed.bind(this))}
+                  >
+                  <ScrollView horizontal style = {{}}
+                  //content on the right, all of the pictures
+                  >
                      {this.renderImages()} 
                   </ScrollView>
+                  </TouchableWithoutFeedback>
               </View>
             </View>
             
-            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
-              <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
-                   Trip to Ireland
-              </Text>
-            </View>
             
             <View // contains the CardSection  
-          >
+            >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
                 style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
@@ -110,29 +130,35 @@ class DashboardScreen extends React.Component {
                             San Diego
                         </Text>
                   </View>
-                  <Image 
-                        source = {require('../images/bookmark_fill.png')}
-                        style = {{height: 100, width: 100, padding: 15}}
-                        onPress = {this.bookmark_filled.bind(this)}
-              />
+                  <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
+                    </View>
                 </View>
-                  <ScrollView horizontal style = {{}}>
+                  <ScrollView horizontal //view of stuff on right
+                   
+                  style = {{}}>
                      {this.renderImages()} 
                   </ScrollView>
                 </View>
             </View>
-            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd',}}>
-            <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
+            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd', justifyContent: 'flex-start'}}>
+            <Text style ={{paddingLeft: 100, }}>
                    Secret Beach
               </Text>
             </View>
         </ScrollView>
-
-     
     );
   };
 
-
+  onViewAllPress() {
+    this.props.navigation.navigate('trip');
+  }
+  _onPhotoPressed() {
+    this.props.navigation.navigate('profile');
+  }
   renderImages = () =>{
        //item, i is the index
      return Users.map((item, currentIndex) =>{
@@ -149,18 +175,7 @@ class DashboardScreen extends React.Component {
        );
      })
    }
-
-
-
-bookmark_filled() {
-  return (
-    <Image  source = {require('../images/bookmark_fill.png')}
-    style = {{height: 100, width: 100, padding: 15}}/>
-  );
-}   
 }
-
-
 
 const styles = {
   container: {
@@ -172,32 +187,6 @@ const styles = {
     padding: 10,
     position:'relative' 
   },
-  slide: {
-    flex: 2,
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
-    alignSelf: 'stretch',
-  },
-  slide1: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9DD6EB'
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5'
-  },
-
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9'
-  },
-
   text: {
     color: '#fff',
     fontSize: 30,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 
@@ -47,8 +47,12 @@ export default class App extends React.Component {
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
-
-
+    const topNavigator = createMaterialTopTabNavigator({
+      Trips: DashboardScreen,
+      Outings: OutingScreen,
+    },
+    );
+   
     const MainNavigator = createStackNavigator(
     {
         //forgotpassword: ForgotPasswordScreen,
@@ -64,12 +68,13 @@ export default class App extends React.Component {
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
-        
+        trip: TripScreen,
 
         main: createBottomTabNavigator({
             dash: {
-              screen: DashboardScreen,
+              screen: topNavigator,
               navigationOptions: {
+                title: 'Dash',
                 tabBarLabel: 'dash',
                 tabBarIcon:({tintColor}) => (
                   <Icon name="ios-today"
@@ -108,32 +113,28 @@ export default class App extends React.Component {
                   <Icon name="ios-contact"
                         color={ tintColor }
                         size={24} />
-                )
+                ),
+                header: 'title'
               }
             },
 
-          }, {
+          },
+          {
               navigationOptions:{
-                tabBarVisible:true
+                tabBarVisible:true,
+                header: null
+
               },
               //tablBarOptions:{
                 //activeTintColor: 'purple',
                 //inactiveTintColor: '#black'
               //}
         })
-
-
-
    // navigationOptions = { header: null }
-
-  
-
-
-        
     }) //End of Main Navigator
 
     const Navigator = createAppContainer(MainNavigator);
-
+    
    
 
     return  (
