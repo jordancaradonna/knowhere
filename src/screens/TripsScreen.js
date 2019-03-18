@@ -10,7 +10,8 @@ import reducers from '../reducers';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-class TripScreen extends React.Component {
+
+class TripsScreen extends React.Component {
   state = {
     toggle: false //for bookmark icon switch
   }
@@ -66,7 +67,7 @@ class TripScreen extends React.Component {
                       <Avatar
                           medium
                           rounded
-                          source={require('../images/ireland.png')}
+                          source={require('../images/jprofile.png')}
                           containerStyle={styles.AvatarStyle}
                           onPress={() => console.log("Works!")}
                           activeOpacity={0.7}
@@ -81,7 +82,7 @@ class TripScreen extends React.Component {
                       <Avatar
                           medium
                           rounded
-                          source={require('../images/ireland.png')}
+                          source={require('../images/jprofile.png')}
                           containerStyle={styles.AvatarStyle}
                           onPress={() => console.log("Works!")}
                           activeOpacity={0.7}
@@ -96,7 +97,7 @@ class TripScreen extends React.Component {
                       <Avatar
                           medium
                           rounded
-                          source={require('../images/ireland.png')}
+                          source={require('../images/jprofile.png')}
                           containerStyle={styles.AvatarStyle}
                           onPress={() => console.log("Works!")}
                           activeOpacity={0.7}
