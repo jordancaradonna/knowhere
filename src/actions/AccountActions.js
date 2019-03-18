@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-
 import {
   FNAME_CHANGED,
   LNAME_CHANGED,
   USERNAME_CHANGED,
   CITY_CHANGED,
   CREATE_PROFILE,
-  PROFILE_FETCH_SUCCESS
+  PROFILE_FETCH_SUCCESS,
+  PHOTO_CHANGED
 } from './types.js';
 
 export const fnameChanged = (text) => {
@@ -33,12 +33,18 @@ export const cityChanged = (text) => {
     payload: text
   };
 };
+export const photoChanged = (image) => {
+  return {
+    type: PHOTO_CHANGED,
+    payload: image
+  };
+};
 
 export const createProfile = ({fname, lname, username, city}, callbackFunction ) => {
+  const currentUser = firebase.auth().O;
+
   return (dispatch) => {
     dispatch({ type: CREATE_PROFILE });
-    const currentUser = firebase.auth().O;
-    console.log('currentUser:', currentUser);
     firebase.database().ref(`users/${currentUser}/account`)
       .set({ fname, lname, username, city })
       .then(user => createProfileSuccess(dispatch, user, callbackFunction))

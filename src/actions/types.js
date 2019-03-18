@@ -17,3 +17,4 @@ export const CREATE_PROFILE = 'create_profile';
 export const CREATE_PROFILE_SUCCESS = 'create_profile_success';
 export const CREATE_PROFILE_FAIL = 'create_profile_fail';
 export const PROFILE_FETCH_SUCCESS = 'profile_fetch_success';
+export const PHOTO_CHANGED = 'photo_changed';
