@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, Dimensions, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Dimensions, ImageBackground, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
 import Modal from 'react-native-modal';
 
@@ -86,9 +86,10 @@ _renderModalContent = () => (
 
   render () {
     return (
+      <SafeAreaView style={{flex:1}}> 
       <View justifyContent='space-between' alignItems=''>
 
-        <ImageBackground  source={require('../images/background1.jpg')}
+        <ImageBackground  source={require('../images/ireland1.png')}
                           style={styles.coverPhoto}>
           
           
@@ -167,7 +168,7 @@ _renderModalContent = () => (
         </ImageBackground>
 
       </View>
-     
+      </SafeAreaView>
     )
     
   }
