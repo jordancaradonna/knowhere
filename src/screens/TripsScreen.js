@@ -7,6 +7,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import Icon from 'react-native-vector-icons/FontAwesome'
+
 import reducers from '../reducers';
 
 
@@ -37,6 +38,7 @@ class TripsScreen extends React.Component {
     const {toggle} = this.state;
     const textValue = toggle ? "ON" : "Off";
     const iconName = toggle ? "bookmark" : "bookmark-o";
+    const addStoryIcon = "plus-circle";
     return (
         <ScrollView style = {{flex: 1}}>
             <View // contains the CardSection  
@@ -149,17 +151,67 @@ class TripsScreen extends React.Component {
                 <View style = {{flex: 1, flexDirection: 'row' }}>
                     <ScrollView horizontal // sliding pictures
                     >
-                      {this.renderImages()} 
+                      {this.renderSecondSetImages()} 
                     </ScrollView>
                 </View>
-                <View style = {{flexDirection: 'row', paddingTop: -5,  //text and bookmark view
-                                borderBottomWidth: 1,borderColor: '#ddd',  
-                                justifyContent: 'flex-start'}}>
-                    <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
-                        Secret Beach
-                   </Text>
-                   
-                </View>
+                <ScrollView //story view
+                        horizontal style = {{paddingLeft: 3,borderBottomWidth: 1,borderColor: '#ddd',  }}
+                    >
+                      <View style = {{alignItems: 'center'}}>
+                      <Avatar
+                          medium
+                          rounded
+                          source={require('../images/jprofile.png')}
+                          containerStyle={styles.AvatarStyle}
+                          onPress={() => console.log("Works!")}
+                          activeOpacity={0.7}
+                          justifyContent='center'
+                          alignItems='center'
+                      />
+                      <Text style = {{fontSize: 12, }}>
+                        Photos
+                      </Text>
+                      </View>
+                      <View style = {{alignItems: 'center'}}>
+                      <Avatar
+                          medium
+                          rounded
+                          source={require('../images/jprofile.png')}
+                          containerStyle={styles.AvatarStyle}
+                          onPress={() => console.log("Works!")}
+                          activeOpacity={0.7}
+                          justifyContent='center'
+                          alignItems='center'
+                      />
+                      <Text style = {{fontSize: 12,}}>
+                        Videos
+                      </Text>
+                      </View>
+                      <View style = {{alignItems: 'center'}}>
+                      <Avatar
+                          medium
+                          rounded
+                          source={require('../images/jprofile.png')}
+                          containerStyle={styles.AvatarStyle}
+                          onPress={() => console.log("Works!")}
+                          activeOpacity={0.7}
+                          justifyContent='center'
+                          alignItems='center'
+                      />
+                      <Text style = {{fontSize: 12, }}>
+                        Vlogs
+                      </Text>
+                      </View>
+                      <View style = {{alignItems: 'center', paddingLeft: 10, paddingTop: 10}}>
+                      <Icon 
+                      size = {60}
+                      name = {addStoryIcon}
+                      />
+                      <Text style = {{fontSize: 12, }}>
+                        New
+                      </Text>
+                      </View>
+                    </ScrollView>
             </View>
             
         </ScrollView>
@@ -188,7 +240,7 @@ class TripsScreen extends React.Component {
    }
    renderSecondSetImages = () =>{
     //item, i is the index
-  return Users.map((item, currentIndex) =>{
+  return test.map((item, currentIndex) =>{
     return (
       <Animated.View 
         key = {item.id}

@@ -48,35 +48,20 @@ class DashboardScreen extends React.Component {
     return (
 
         <ScrollView style = {{flex: 1}}>
-          <TouchableOpacity
-          onPress = {() => this.changeIcon()}
-          style = {{backgroundColor: buttonBg, borderColor: 'dodgerblue'}}
-          >
-            <Text>
-              {textValue}
-            </Text>
-          </TouchableOpacity>
             <View // contains the CardSection  
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
-
             >
-              <Text
-                  onPress = {this.onViewAllPress.bind(this)}
-                  style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
-                    View Post
-              </Text>
-
-
-              <View style = {{flex: 1, flexDirection: 'row' }}>
-                
-
-
-                
-                <View //contains info on the left
-                style = {{alignItems: 'center'}}
+                    <Text 
+                       onPress = {this.onViewAllPress.bind(this)}
+                        style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
+                       View Post
+                    </Text>
+              <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
                 >
+                <View //contains bio info on the left
+                  style = {{alignItems: 'center'}}
+                  >
                     <Avatar
-
                         large
                         source={require('../images/jprofile.png')}
                         containerStyle={styles.AvatarStyle}
@@ -89,7 +74,7 @@ class DashboardScreen extends React.Component {
                         Jordan Caradonna
                     </Text>
                   <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
-                              borderColor: '#ddd',}} //location pin
+                              borderColor: '#ddd',}} //location pin 
                       >
                         <Image 
                             source = {require('../images/pin.png')}
@@ -99,7 +84,7 @@ class DashboardScreen extends React.Component {
                             Los Angeles
                         </Text>
                   </View>
-                    <View style = {{alignItems: 'center', paddingTop: 25}}//icon view
+                    <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
                           <Icon 
                           onPress = {()=> this.changeIcon()}
@@ -118,12 +103,10 @@ class DashboardScreen extends React.Component {
                         </ScrollView>
                   </TouchableWithoutFeedback>
               </View>
-              </View>
-    
-        
-            
-            <View // contains the CardSection  
+            </View> 
 
+            <View // contains the second CardSection 
+            style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
             >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
@@ -131,7 +114,8 @@ class DashboardScreen extends React.Component {
                   View Post
               </Text>
             
-              <View style = {{flex: 1, flexDirection: 'row' }}>
+              <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
+              >
                 
                 <View //contains info on the left
                 >
@@ -158,30 +142,18 @@ class DashboardScreen extends React.Component {
                         </Text>
 
                   </View>
-                  <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
+                  <View style = {{paddingLeft: 35, paddingTop: 30}}//bookmark view
                       >
                           <Icon 
-                          onPress = {()=> this.changeIcon()}
-                          name={iconName} size={35}/>
+                          name= 'bookmark-o' size={35}/>
                     </View>
                 </View>
                   <ScrollView horizontal //view of stuff on right
-                   
-                  style = {{}}>
-
+                  >
                      {this.renderImages()} 
                     </ScrollView>
                 </View>
             </View>
-
-            <View style = {{ borderBottomWidth: 1,borderColor: '#ddd', justifyContent: 'flex-start'}}>
-            <Text style ={{paddingLeft: 100, }}>
-
-                   Secret Beach
-                </Text>
-            </View>
-        
-        
        </ScrollView>
     );
   };
