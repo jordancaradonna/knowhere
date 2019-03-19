@@ -27,7 +27,7 @@ import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import TripsScreen from './src/screens/TripsScreen';
-
+import ViewProfileScreen from './src/screens/ViewProfileScreen';
 
 
 export default class App extends React.Component {
@@ -57,6 +57,7 @@ export default class App extends React.Component {
     {
         //explore: ExploreScreen,
         login: LoginScreen,
+        viewprofile: ViewProfileScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
