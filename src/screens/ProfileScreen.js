@@ -87,7 +87,7 @@ _renderModalContent = () => (
 
   render () {
     return (
-      <SafeAreaView style={{flex:'1'}}>
+      <SafeAreaView style={{flex:1}}>
       <ImageBackground  source={require('../images/background1.jpg')}
                         style={styles.coverPhoto}>
       <View justifyContent='space-between'>
