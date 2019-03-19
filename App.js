@@ -23,15 +23,15 @@ import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-import OutingScreen from './src/screens/OutingScreen';
+import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import TripScreen from './src/screens/TripScreen';
+import TripsScreen from './src/screens/TripsScreen';
 
 
 
 export default class App extends React.Component {
-  componentWillMount() { // Initialize Firebase
+  componentWillMount() {   // Initialize Firebase
     const config = {
     apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
     authDomain: 'knowhere.firebaseapp.com',
@@ -55,17 +55,19 @@ export default class App extends React.Component {
    
     const MainNavigator = createStackNavigator(
     {
-        //forgotpassword: ForgotPasswordScreen,
-        //accountinfo:AccountInfoScreen,
+      
+        dashOutings: DashboardOutingScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-        dashOutings: DashboardOutingScreen,
+        //dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
+        trips: TripsScreen,
         createtrip: CreateTripScreen,
+        outings: OutingsScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
         trip: TripScreen,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { Button, Tile, Avatar} from 'react-native-elements';
+import { Button, Tile, Avatar, ThemeProvider} from 'react-native-elements';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -13,17 +13,23 @@ class ProfileScreen extends React.Component {
   onSettingsPress() {
     this.props.navigation.navigate('settings');
   }
-
-onCreateTripPress() {
-  this.props.navigation.navigate('createtrip');
-}
-
-onCreateOutingPress() {
-  this.props.navigation.navigate('createouting');
-}
-onDreamListPress(){
-  this.props.navigation.navigate('dreamlist');
-}
+  onDreamListPress(){
+    this.props.navigation.navigate('dreamlist');
+  }
+  onTripsPress() {
+    console.log("DOES IT WORK?");
+    this.props.navigation.navigate('trips');
+  }
+  onOutingsPress() {
+    console.log("DOES IT WORK?");
+    this.props.navigation.navigate('outings');
+  }
+  onCreateTripPress() {
+    this.props.navigation.navigate('createtrip');
+  }
+  onCreateOutingPress() {
+    this.props.navigation.navigate('createouting');
+  }
 
 
   render () {
@@ -32,7 +38,7 @@ onDreamListPress(){
         <Avatar
           medium
           rounded
-          //source={require('../static/temp_profile.jpg')}
+          source={require('../images/jprofile.png')}
           containerStyle={styles.AvatarStyle}
           onPress={() => console.log("Works!")}
           activeOpacity={0.7}
@@ -44,7 +50,7 @@ onDreamListPress(){
         <View // imageSrc={require()}
             style={styles.TopProfileStyle} >
 
-          <Text style={styles.NameStyle}>User Name</Text>
+          <Text style={styles.NameStyle}> User Name</Text>
           <Text></Text>
 
           <Button
@@ -94,7 +100,9 @@ onDreamListPress(){
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
               color='#83b4ff'
-              backgroundColor='#f4f4ff'/>
+              backgroundColor='#f4f4ff' 
+              onPress={this.onTripsPress.bind(this)}
+               />
            </View>
         <View style={styles.buttonContainer}> 
             <Button
@@ -103,7 +111,9 @@ onDreamListPress(){
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
               color='white'
-              backgroundColor='#b0d0ff'/>
+              backgroundColor='#b0d0ff'
+              onPress={this.onOutingsPress.bind(this)}
+               />
            </View>
         </View>
 

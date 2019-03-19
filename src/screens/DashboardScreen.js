@@ -10,9 +10,11 @@ import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
 
+
+
 const Users = [
   { id: "first", uri: require('../images/background1.jpg') },
-  { id: "second", uri: require('../images/ireland.png')},
+  { id: "second", uri: require('../images/jprofile.png')},
   { id: "third", uri: require('../images/finalBackground.jpg')},
   { id: "fourth", uri: require('../images/pig.jpg')}
 ]
@@ -26,6 +28,17 @@ class DashboardScreen extends React.Component {
     this.setState({toggle: newState})
     this.props.onStateChange && this.props.onStateChange(newState)
   }
+
+  onTripsPress() {
+    this.props.navigation.navigate('dash');
+  }
+  onOutingsPress(){
+    this.props.navigation.navigate('dashOutings');
+  }
+  onPhototPress(){
+    this.props.navigation.navigate('profile');
+  }
+
   render = () => {
     const {toggle} = this.state;
     const textValue = toggle ? "ON" : "Off";
@@ -33,6 +46,7 @@ class DashboardScreen extends React.Component {
     const buttonBg = toggle ? "dodgerblue" : "white";
     const textColor = toggle ? "white" : 'black';
     return (
+
         <ScrollView style = {{flex: 1}}>
           <TouchableOpacity
           onPress = {() => this.changeIcon()}
@@ -44,23 +58,25 @@ class DashboardScreen extends React.Component {
           </TouchableOpacity>
             <View // contains the CardSection  
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
+
             >
-                <Text
+              <Text
                   onPress = {this.onViewAllPress.bind(this)}
                   style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                     View Post
-                </Text>
-                <View style = {{flex: 1, flexDirection: 'row' }}>
+              </Text>
                 
                 <View //contains info on the left
                 style = {{alignItems: 'center'}}
                 >
                     <Avatar
+
                         large
-                        source={require('../images/ireland.png')}
+                        source={require('../images/jprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
+
                     />
                     <Text style={{  fontSize: 10, }} 
                           onPress={() => this.props.navigation.navigate('profile')}>
@@ -90,38 +106,41 @@ class DashboardScreen extends React.Component {
                   <ScrollView horizontal style = {{}}
                   //content on the right, all of the pictures
                   >
+
                      {this.renderImages()} 
                   </ScrollView>
                   </TouchableWithoutFeedback>
               </View>
+
             </View>
             
-            
             <View // contains the CardSection  
+
             >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
                 style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                   View Post
               </Text>
-            <View style = {{flex: 1, flexDirection: 'row' }}>
+            
+              <View style = {{flex: 1, flexDirection: 'row' }}>
+                
                 <View //contains info on the left
                 >
                     <Avatar
                         large
-                        source={require('../images/ireland.png')}
+                        source={require('../images/aprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 10, paddingLeft: 6}} 
-                          onPress={() => this.props.navigation.navigate('profile')}
-                    >
+                          onPress={() => this.props.navigation.navigate('profile')}>
                         Brock Acosta
                     </Text>
-                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
+                    <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
                               borderColor: '#ddd',}} //location pin
-                      >
+                    >
                         <Image 
                             source = {require('../images/pin.png')}
                             style = {{height: 20, width: 20}}
@@ -129,6 +148,7 @@ class DashboardScreen extends React.Component {
                         <Text > 
                             San Diego
                         </Text>
+
                   </View>
                   <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
                       >
@@ -140,15 +160,20 @@ class DashboardScreen extends React.Component {
                   <ScrollView horizontal //view of stuff on right
                    
                   style = {{}}>
+
                      {this.renderImages()} 
-                  </ScrollView>
+                    </ScrollView>
                 </View>
             </View>
+            
             <View style = {{ borderBottomWidth: 1,borderColor: '#ddd', justifyContent: 'flex-start'}}>
             <Text style ={{paddingLeft: 100, }}>
+
                    Secret Beach
-              </Text>
+                </Text>
             </View>
+        
+        
         </ScrollView>
     );
   };
@@ -201,23 +226,39 @@ const styles = {
     marginBottom: 20,
     marginLeft: 5,
     paddingLeft: 10
-    },
-    container2:{
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
-    buttonTitle:{
-      fontSize: 28,
-      letterSpacing: 2,
-    },
-    buttonStyle:{
-      width: 160,
-      height: 44,
-      //backgroundColor: "#83b4ff",
-      //borderRadius: 100, //makes it oval not squared
-      elevation: 5,
     }
 }
+
+
+//Button styling
+const styles1 = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: 'center',
+  },
+  container2:{
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  title:{
+    fontSize: 28,
+    //fontFamily: 'Chalkboard SE',
+    padding: 5,
+    color: 'black',
+  },
+  buttonTitle:{
+    fontSize: 28,
+    letterSpacing: 2,
+    //color: "white",
+  },
+  buttonStyle:{
+    width: 165,
+    height: 44,
+    //backgroundColor: "#83b4ff",
+    //borderRadius: 100, //makes it oval not squared
+    elevation: 5,
+  }
+});
 
 export default DashboardScreen;
