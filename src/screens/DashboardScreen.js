@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet,
          Dimensions, Animated, PanResponder, ScrollView,
         TouchableWithoutFeedback} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 //import Slide from '../components/Slide';
 
@@ -16,9 +17,17 @@ const Users = [
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class DashboardScreen extends React.Component {
+  state = {
+    toggle: false //for bookmark icon switch 
+  }
+  changeIcon() {
+    const newState = !this.state.toggle;
+    this.setState({toggle: newState})
+    this.props.onStateChange && this.props.onStateChange(newState)
+  }
  
   onViewAllPress() {
-    this.props.navigation.navigate('profile');
+    this.props.navigation.navigate('trip');
   }
 
   onTripsPress() {
@@ -32,6 +41,8 @@ class DashboardScreen extends React.Component {
   }
 
   render = () => {
+    const {toggle} = this.state;
+    const iconName = toggle ? "bookmark" : "bookmark-o";
     return (
         <ScrollView style = {{flex: 1}} > 
 
@@ -72,10 +83,12 @@ class DashboardScreen extends React.Component {
                             </Text>
                       </View>
 
-                      <Image 
-                        source = {require('../images/bookmark_.png')}
-                        style = {{height: 100, width: 100, padding: 15}}
-                      />
+                      <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
+                    </View>
                   </View>
                  
 
@@ -135,8 +148,8 @@ class DashboardScreen extends React.Component {
                     <View style = {{paddingLeft: 35, paddingTop: 30}}//icon view
                       >
                           <Icon 
-                          onPress = {()=> this.changeIcon()}
-                          name={iconName} size={35}/>
+                          //onPress = {()=> this.changeIcon()}
+                          name="bookmark-o" size={35}/>
                     </View>
                 </View>
                   <ScrollView horizontal //view of stuff on right

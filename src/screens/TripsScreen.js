@@ -7,7 +7,12 @@ import thunk from 'redux-thunk';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import reducers from '../reducers';
 
-
+const Users = [
+  { id: "first", uri: require('../images/background1.jpg') },
+  { id: "second", uri: require('../images/jprofile.png')},
+  { id: "third", uri: require('../images/finalBackground.jpg')},
+  { id: "fourth", uri: require('../images/pig.jpg')}
+]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -140,14 +145,6 @@ class TripsScreen extends React.Component {
                       {this.renderImages()} 
                     </ScrollView>
                 </View>
-                <View style = {{flexDirection: 'row', paddingTop: -5,  //text and bookmark view
-                                borderBottomWidth: 1,borderColor: '#ddd',  
-                                justifyContent: 'flex-start'}}>
-                    <Text style ={{paddingLeft: 100, justifyContent: 'center'}}>
-                        Secret Beach
-                   </Text>
-                   
-                </View>
             </View>
             
         </ScrollView>
@@ -190,14 +187,7 @@ class TripsScreen extends React.Component {
       </Animated.View>
     );
   })
-}
-  
-  bookmark_filled() {
-    return (
-     <Image  source = {require('../images/bookmark_fill.png')}
-     style = {{height: 100, width: 100, padding: 15}}/>
-     );
-  }   
+  } 
 }
 
 const styles = {
