@@ -26,34 +26,6 @@ class DashboardOutingScreen extends React.Component {
   render = () => {
     return (
       <ScrollView style={{flex:1}}>
-        
-
-        <Text style={[styles1.title,]}> Dashboard </Text>
-
-
-        <View style={styles1.container2}>
-        
-          <View style={styles1.buttonContainer}> 
-            <Button
-              title='trips'
-              titleStyle={styles1.buttonTitle}
-              buttonStyle={styles1.buttonStyle}
-              color='grey'
-              backgroundColor='#f4f4ff'
-              onPress={this.onTripsPress.bind(this)}   />
-          </View>
-
-          <View style={styles1.buttonContainer}>   
-           <Button
-              title='outings'
-              titleStyle={styles1.buttonTitle}
-              buttonStyle={styles1.buttonStyle}
-              color='black'
-              backgroundColor='#b0d0ff'
-              onPress={this.onOutingsPress.bind(this)}  />
-           </View>
-        </View>
-
 
 
         <View //contains the CardSection  ---------NAMIBIA----------

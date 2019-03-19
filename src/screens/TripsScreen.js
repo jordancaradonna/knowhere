@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image,
-         Dimensions, Animated, ScrollView, 
+         Dimensions, Animated, ScrollView, StyleSheet
         } from 'react-native';
 import {Avatar} from 'react-native-elements';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
@@ -23,7 +23,7 @@ const test = [
   { id: "fourth", uri: require('../images/pig.jpg')}
 ]
 const SCREEN_WIDTH = Dimensions.get('window').width;
-class TripScreen extends React.Component {
+class TripsScreen extends React.Component {
   state = {
     toggle: false //for bookmark icon switch
   }

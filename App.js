@@ -49,28 +49,27 @@ export default class App extends React.Component {
     const store = createStore(reducers, {}, applyMiddleware(thunk));
     const topNavigator = createMaterialTopTabNavigator({
       Trips: DashboardScreen,
-      Outings: OutingScreen,
+      Outings: DashboardOutingScreen,
     },
     );
    
     const MainNavigator = createStackNavigator(
     {
-      
-        dashOutings: DashboardOutingScreen,
+        //explore: ExploreScreen,
         login: LoginScreen,
         createuser: CreateUserScreen,
         accountinfo: AccountInfoScreen,
         forgotpassword: ForgotPasswordScreen,
-        //dashOutings: DashboardOutingScreen,
+        dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
-        explore: ExploreScreen,
+        //explore: ExploreScreen,
         trips: TripsScreen,
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
-        trip: TripScreen,
+        trip: TripsScreen,
 
         main: createBottomTabNavigator({
             dash: {

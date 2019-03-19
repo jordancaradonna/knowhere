@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image,
-         Dimensions, Animated, ScrollView, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity
+         Dimensions, Animated, ScrollView, StyleSheet, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity
         } from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -65,6 +65,12 @@ class DashboardScreen extends React.Component {
                   style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                     View Post
               </Text>
+
+
+              <View style = {{flex: 1, flexDirection: 'row' }}>
+                
+
+
                 
                 <View //contains info on the left
                 style = {{alignItems: 'center'}}
@@ -100,19 +106,21 @@ class DashboardScreen extends React.Component {
                           name={iconName} size={35}/>
                     </View>
                 </View>
+                  
                   <TouchableWithoutFeedback
                     onPress = {(this._onPhotoPressed.bind(this))}
                   >
-                  <ScrollView horizontal style = {{}}
-                  //content on the right, all of the pictures
+                        <ScrollView horizontal style = {{}}
+                          //content on the right, all of the pictures
                   >
 
-                     {this.renderImages()} 
-                  </ScrollView>
+                             {this.renderImages()} 
+                        </ScrollView>
                   </TouchableWithoutFeedback>
               </View>
-
-            </View>
+              </View>
+    
+        
             
             <View // contains the CardSection  
 
@@ -165,7 +173,7 @@ class DashboardScreen extends React.Component {
                     </ScrollView>
                 </View>
             </View>
-            
+
             <View style = {{ borderBottomWidth: 1,borderColor: '#ddd', justifyContent: 'flex-start'}}>
             <Text style ={{paddingLeft: 100, }}>
 
@@ -174,9 +182,11 @@ class DashboardScreen extends React.Component {
             </View>
         
         
-        </ScrollView>
+       </ScrollView>
     );
   };
+
+
 
   onViewAllPress() {
     this.props.navigation.navigate('trip');
