@@ -14,6 +14,7 @@
     "react-native-camera-roll-picker": "^1.2.3",
     "react-native-elements": "^0.19.1",
     "react-native-image-picker": "^0.28.0",
+    "react-native-modal": "^9.0.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-search-bar": "^3.4.2",
     "react-native-swiper": "^1.5.14",

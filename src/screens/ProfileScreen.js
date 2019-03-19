@@ -87,13 +87,15 @@ _renderModalContent = () => (
 
   render () {
     return (
+
       <SafeAreaView style={{flex:1}}>
-      <ImageBackground  source={require('../images/background1.jpg')}
+      <ImageBackground  source={require('../images/ireland1.png')}
                         style={styles.coverPhoto}>
       <View justifyContent='space-between'>
 
         
           <View>
+
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
                 large
@@ -168,8 +170,10 @@ _renderModalContent = () => (
         
 
       </View>
+
       </ImageBackground> 
     </SafeAreaView>
+
     )
     
   }
