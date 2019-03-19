@@ -7,6 +7,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import Icon from 'react-native-vector-icons/FontAwesome'
+
 import reducers from '../reducers';
 
 
@@ -37,6 +38,7 @@ class TripsScreen extends React.Component {
     const {toggle} = this.state;
     const textValue = toggle ? "ON" : "Off";
     const iconName = toggle ? "bookmark" : "bookmark-o";
+    const addStoryIcon = "plus-circle";
     return (
         <ScrollView style = {{flex: 1}}>
             <View // contains the CardSection  
@@ -198,6 +200,15 @@ class TripsScreen extends React.Component {
                       />
                       <Text style = {{fontSize: 12, }}>
                         Vlogs
+                      </Text>
+                      </View>
+                      <View style = {{alignItems: 'center', paddingLeft: 10, paddingTop: 10}}>
+                      <Icon 
+                      size = {60}
+                      name = {addStoryIcon}
+                      />
+                      <Text style = {{fontSize: 12, }}>
+                        New
                       </Text>
                       </View>
                     </ScrollView>
