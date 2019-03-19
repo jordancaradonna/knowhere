@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, Dimensions, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Dimensions, ImageBackground, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
 import Modal from 'react-native-modal';
 
@@ -41,6 +41,7 @@ _renderButton = (text, onPress) => (
 
 // modal content for when creating a new post
 _renderModalContent = () => (
+ 
   <View style={styles2.modalContent}>
 
   <View alignItems='center' fontSize='300'>
@@ -86,22 +87,22 @@ _renderModalContent = () => (
 
   render () {
     return (
-      <View justifyContent='space-between' alignItems=''>
+      <SafeAreaView style={{flex:'1'}}>
+      <ImageBackground  source={require('../images/background1.jpg')}
+                        style={styles.coverPhoto}>
+      <View justifyContent='space-between'>
 
-        <ImageBackground  source={require('../images/background1.jpg')}
-                          style={styles.coverPhoto}>
-          
-          
-            <View>
+        
+          <View>
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
-            <Avatar
-              large
-              rounded
-              source={require('../images/jprofile.png')}
-              containerStyle={styles.AvatarStyle}
-              onPress={() => console.log("Works!")}
-              activeOpacity={1}
-            ></Avatar>
+              <Avatar
+                large
+                rounded
+                source={require('../images/jprofile.png')}
+                containerStyle={styles.AvatarStyle}
+                onPress={() => console.log("Works!")}
+                activeOpacity={1}
+              ></Avatar>
             <View>
               <Button
                 icon={{name: 'settings', color: 'black'}}
@@ -110,9 +111,9 @@ _renderModalContent = () => (
                 onPress={this.onSettingsPress.bind(this)}>
               </Button>
             </View>
-            </View>
-              
-            </View>
+          </View>
+          
+        </View> 
                   
         <View alignItems='center' justifyContent='top'>
           <Text></Text>
@@ -159,15 +160,16 @@ _renderModalContent = () => (
               title='Outings'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
-              color='white'
-              backgroundColor='#b0d0ff'/>
+              color='#83b4ff'
+              backgroundColor='#f4f4ff'/>
            </View>
         </View>
 
-        </ImageBackground>
+        
 
       </View>
-     
+      </ImageBackground> 
+    </SafeAreaView>
     )
     
   }
@@ -222,7 +224,7 @@ const styles = {
   },
   coverPhoto:{
     width: '100%',
-    height: '63%'
+    height: '50%'
   }};
 
   const styles2 = StyleSheet.create({
