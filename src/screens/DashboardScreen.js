@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, Image,
-         Dimensions, Animated, ScrollView, StyleSheet, TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity
-        } from 'react-native';
+         Dimensions, Animated, ScrollView, StyleSheet, 
+         TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity,
+         SafeAreaView} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
@@ -13,12 +14,21 @@ import reducers from '../reducers';
 
 
 const Users = [
-  { id: "first", uri: require('../images/background1.jpg') },
-  { id: "second", uri: require('../images/jprofile.png')},
-  { id: "third", uri: require('../images/finalBackground.jpg')},
-  { id: "fourth", uri: require('../images/pig.jpg')}
+  { id: "first", uri: require('../images/jIreland.jpg') },
+  { id: "second", uri: require('../images/ireland1.png')},
+  { id: "third", uri: require('../images/jprofile.png')},
+  { id: "fourth", uri: require('../images/ireland2.png')}
 ]
+const Users3 = [ //Aidan
+  { id: "first", uri: require('../images/caboSanLucas1.png') },
+  { id: "second", uri: require('../images/caboSanLucas2.png')}, 
+  { id: "third", uri: require('../images/caboSanLucas3.png')},
+  //{ id: "fourth", uri: require('../images/hawaii4.png')}
+]
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
+
 class DashboardScreen extends React.Component {
   state = {
     toggle: false //for bookmark icon switch
@@ -46,7 +56,7 @@ class DashboardScreen extends React.Component {
     const buttonBg = toggle ? "dodgerblue" : "white";
     const textColor = toggle ? "white" : 'black';
     return (
-
+      <SafeAreaView style={{flex:1}}>
         <ScrollView style = {{flex: 1}}>
             <View // contains the CardSection  
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
@@ -77,10 +87,10 @@ class DashboardScreen extends React.Component {
                               borderColor: '#ddd',}} //location pin 
                       >
                         <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}
+                            source = {require('../images/home.png')}
+                            style = {{height: 14, width: 14}}
                         />
-                        <Text > 
+                        <Text style={{fontSize: 12}}> 
                             Los Angeles
                         </Text>
                   </View>
@@ -105,7 +115,9 @@ class DashboardScreen extends React.Component {
               </View>
             </View> 
 
-            <View // contains the second CardSection 
+
+
+         <View // contains the second CardSection 
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
             >
               <Text
@@ -126,19 +138,19 @@ class DashboardScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 10, paddingLeft: 6}} 
+                    <Text style={{  fontSize: 14, paddingLeft: 6}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                        Brock Acosta
+                        Aidan Alcos
                     </Text>
                     <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
                               borderColor: '#ddd',}} //location pin
                     >
                         <Image 
-                            source = {require('../images/pin.png')}
-                            style = {{height: 20, width: 20}}
+                            source = {require('../images/home.png')}
+                            style = {{height: 15, width: 15}}
                         />
-                        <Text > 
-                            San Diego
+                        <Text style={{fontSize: 12}} > 
+                            Kailua Kona
                         </Text>
 
                   </View>
@@ -150,11 +162,12 @@ class DashboardScreen extends React.Component {
                 </View>
                   <ScrollView horizontal //view of stuff on right
                   >
-                     {this.renderImages()} 
+                     {this.renderImages3()} 
                     </ScrollView>
                 </View>
             </View>
        </ScrollView>
+      </SafeAreaView> 
     );
   };
 
@@ -182,7 +195,24 @@ class DashboardScreen extends React.Component {
        );
      })
    }
+   renderImages3 = () =>{
+    //item, i is the index
+      return Users3.map((item, currentIndex) =>{
+        return (
+          <Animated.View 
+            key = {item.id}
+            style = { styles.container}
+          >
+              <Image 
+                style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
+                source = {item.uri}
+              />
+          </Animated.View>
+        );
+      })
+    }
 }
+
 
 const styles = {
   container: {

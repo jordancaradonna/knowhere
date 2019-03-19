@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet, 
-          Dimensions, Animated, ScrollView, TouchableWithoutFeedback} from 'react-native';
+          Dimensions, Animated, ScrollView, TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
 //import SearchBar from 'react-native-search-bar';
 
@@ -45,6 +45,7 @@ class ExploreScreen extends React.Component {
 
   render () {
     return (
+      <SafeAreaView style={{flex:1}}>
       <ScrollView  >
 
         <Image // --KW LOGO-- style={ alignContent= 'center'}
@@ -104,6 +105,48 @@ class ExploreScreen extends React.Component {
             </View>
         </View>
             
+
+        <View //contains the CardSection  ---------CUP & BAR----------
+        >      
+            <View style = {{flex: 1, flexDirection: 'column' }}>  
+            
+              <Image 
+                style={{width: 375, height: 260, marginTop: 10, marginBottom: 5}} 
+                source={require('../images/cupBar.png')} />
+                
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/tiffprofile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
+                          onPress={() => this.props.navigation.navigate('profile')}>
+                          Tiffany Lemke     
+                    </Text>
+
+                    
+                    <Image 
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12}} > 
+                              Portland, OR
+                    </Text>
+
+
+                    <Image 
+                        source = {require('../images/bookmarkOuting.png')}
+                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
+                    />
+                </View>   
+            </View>
+
+        </View>
+
 
 
         <View //contains the 2st CardSection   ---------FRIDA----------
@@ -194,6 +237,53 @@ class ExploreScreen extends React.Component {
         </View>
 
 
+        <View //contains the CardSection  ---------Sanctuary----------
+        >      
+            <View style = {{flex: 1, flexDirection: 'column' }}>  
+              <View style = {{aligntItems: 'center', flexDirection: 'row'}} >
+                <Image 
+                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  source={require('../images/sanctuary1.png')} />
+                <Image 
+                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  source={require('../images/sanctuary2.png')} />
+              </View>
+
+
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/fprofile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
+                          onPress={() => this.props.navigation.navigate('profile')}>
+                          Frida Martinez    
+                    </Text>
+
+                    
+                    <Image 
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12}} > 
+                              Claremont, CA
+                    </Text>
+
+
+                    <Image 
+                        source = {require('../images/bookmarkOuting.png')}
+                        style = {{height: 25, width: 25, marginLeft: 20, marginTop: 10}}
+                    />
+                </View>   
+            </View>
+
+        </View>
+
+
         <View //contains the 4th CardSection  ---------AIDAN----------
         >      
             <View style = {{flex: 1, flexDirection: 'row' }}>
@@ -240,6 +330,7 @@ class ExploreScreen extends React.Component {
 
 
       </ScrollView>
+      </SafeAreaView>
     );
   };
 

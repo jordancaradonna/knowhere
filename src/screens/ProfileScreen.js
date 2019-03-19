@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { View, Text, Dimensions, ImageBackground, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Dimensions, ImageBackground, 
+        TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
 import Modal from 'react-native-modal';
 
