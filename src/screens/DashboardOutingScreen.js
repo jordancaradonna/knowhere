@@ -33,7 +33,7 @@ class DashboardOutingScreen extends React.Component {
             <View style = {{flex: 1, flexDirection: 'column' }}>  
             
               <Image 
-                style={{width: 375, height: 260, marginTop: 10, marginBottom: 5}} 
+                style={{width: 420, height: 260, marginTop: 10, marginBottom: 5}} 
                 source={require('../images/namibiaDrinks.png')} />
                 
                 <View //contains info on the BOTTOM
@@ -76,7 +76,7 @@ class DashboardOutingScreen extends React.Component {
             <View style = {{flex: 1, flexDirection: 'column' }}>  
             
               <Image 
-                style={{width: 375, height: 260, marginTop: 10, marginBottom: 5}} 
+                style={{width: 420, height: 260, marginTop: 10, marginBottom: 5}} 
                 source={require('../images/cupBar.png')} />
                 
                 <View //contains info on the BOTTOM
@@ -119,10 +119,10 @@ class DashboardOutingScreen extends React.Component {
             <View style = {{flex: 1, flexDirection: 'column' }}>  
               <View style = {{aligntItems: 'center', flexDirection: 'row'}} >
                 <Image 
-                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  style={{width: 210, height: 190, marginTop: 10, marginBottom: 5}} 
                   source={require('../images/sanctuary1.png')} />
                 <Image 
-                  style={{width: 190, height: 190, marginTop: 10, marginBottom: 5}} 
+                  style={{width: 210, height: 190, marginTop: 10, marginBottom: 5}} 
                   source={require('../images/sanctuary2.png')} />
               </View>
 

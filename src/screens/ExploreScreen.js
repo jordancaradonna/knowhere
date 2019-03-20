@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet, 
-          Dimensions, Animated, ScrollView, TouchableWithoutFeedback, SafeAreaView} from 'react-native';
+          Dimensions, Animated, ScrollView, 
+          TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
 //import SearchBar from 'react-native-search-bar';
 
