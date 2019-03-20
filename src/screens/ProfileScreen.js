@@ -3,7 +3,7 @@ import { View, Text, Dimensions, ImageBackground,
         TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
 import Modal from 'react-native-modal';
-import { connect } from 'react-native-redux'
+import { connect } from 'react-redux'
 import { profileFetch } from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -171,6 +171,11 @@ _renderModalContent = () => (
                 backgroundColor='#f4f4ff'/>
             </View>
           </View>
+        </View>
+        <View>
+          <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
+          <Text style={styles.NameStyle}>{this.props.username}</Text>
+          <Text style={styles.NameStyle}>{this.props.city}</Text>
         </View>
       </View>
 

@@ -29,7 +29,7 @@ class LoginScreen extends React.Component {
     const { email, password } = this.props
 
     this.props.loginUser({ email, password}, () => {
-      this.props.navigation.navigate('accountinfo')
+      this.props.navigation.navigate('main')
     });
   }
   onForgotPasswordPress() {
