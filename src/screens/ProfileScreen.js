@@ -2,17 +2,43 @@ import React, {Component} from 'react';
 import { View, Text, Dimensions, ImageBackground, 
         TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
+<<<<<<< HEAD
 import Modal from 'react-native-modal';
+=======
+import { connect } from 'react-redux';
+import { profileFetch } from '../actions';
+>>>>>>> Development/9-Initial-Database
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class ProfileScreen extends React.Component {
+<<<<<<< HEAD
+=======
+  componentWillMount() {
+    this.props.profileFetch();
+
+    //this.createDataSource(this.props);
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   // nextProps are the next set of props that this component
+  //   // will be rendered with
+  //   // this.props is still the old set of props
+  //
+  //   this.createDataSource(nextProps);
+  // }
+  //
+  // createDataSource({ fname, lname, city, username }) {
+  //   console.log('idk what I\'m doing')
+  // }
+>>>>>>> Development/9-Initial-Database
 
 // Buttons to navigate to each branch
 onSettingsPress() {
   this.props.navigation.navigate('settings');
 }
 
+<<<<<<< HEAD
 onCreateTripPress() {
   this.props.navigation.navigate('createtrip')
   this.setState({ visibleModal: null });
@@ -26,6 +52,18 @@ onCreateOutingPress() {
 onDreamListPress(){
   this.props.navigation.navigate('dreamlist');
 }
+=======
+  onCreateTripPress() {
+    this.props.navigation.navigate('createtrip');
+  }
+
+  onCreateOutingPress() {
+    this.props.navigation.navigate('createouting');
+  }
+  onDreamListPress(){
+    this.props.navigation.navigate('dreamlist');
+  }
+>>>>>>> Development/9-Initial-Database
 
 state = {
   visibleModal: null,
@@ -86,6 +124,7 @@ _renderModalContent = () => (
 );
 
 
+<<<<<<< HEAD
   render () {
     return (
 
@@ -122,6 +161,11 @@ _renderModalContent = () => (
       
 
         <View alignItems='center' justifyContent='top'>
+=======
+          <Text style={styles.NameStyle}>{this.props.username}</Text>
+          <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
+          <Text style={styles.NameStyle}>{this.props.city}</Text>
+>>>>>>> Development/9-Initial-Database
           <Text></Text>
           <Text style={styles.NameStyle}>User Name</Text>
         </View>
@@ -140,6 +184,7 @@ _renderModalContent = () => (
             title='Dream List'
             color='black'
             backgroundColor = '#f8f8f8'
+<<<<<<< HEAD
             // style = {{padding: 5}} 
             onPress={this.onDreamListPress.bind(this)}
           />
@@ -150,8 +195,25 @@ _renderModalContent = () => (
         </View>          
      
         <View flexDirection='row'> 
+=======
+            style = {{padding: 5}}
+            onPress={this.onDreamListPress.bind(this) } />
 
-          <View style={styles.buttonContainer}> 
+
+
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
+          <Text></Text>
+        </View>
+
+
+
+>>>>>>> Development/9-Initial-Database
+
+        <View style={styles.container2}>
+
+          <View style={styles.buttonContainer}>
             <Button
               small
               title='Trips'
@@ -160,7 +222,7 @@ _renderModalContent = () => (
               color='#83b4ff'
               backgroundColor='#f4f4ff'/>
            </View>
-        <View style={styles.buttonContainer}> 
+        <View style={styles.buttonContainer}>
             <Button
               small
               title='Outings'
@@ -173,6 +235,7 @@ _renderModalContent = () => (
 
         
 
+<<<<<<< HEAD
       </View>
 
       </ImageBackground> 
@@ -181,9 +244,36 @@ _renderModalContent = () => (
 
       
     </SafeAreaView>
+=======
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+        <Text> </Text>
+
+        <Button
+            small
+            rounded
+            title='Create Trip'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}}
+            onPress={this.onCreateTripPress.bind(this) } />
+
+          <Button
+            small
+            rounded
+            title='Create Outing'
+            color='black'
+            backgroundColor = '#f8f8f8'
+            style = {{padding: 5}}
+            onPress={this.onCreateOutingPress.bind(this) } />
+
+      </View>
+
+>>>>>>> Development/9-Initial-Database
 
     )
-    
+
   }
 }
 
@@ -269,4 +359,11 @@ const styles = {
     },
   });
 
-export default ProfileScreen;
+//Connect the current props to redux props
+const mapStateToProps = ({ info }) => {
+  const { fname, lname, city, username } = info;
+
+  return { fname, lname, city, username };
+};
+
+export default connect(mapStateToProps, { profileFetch })(ProfileScreen);

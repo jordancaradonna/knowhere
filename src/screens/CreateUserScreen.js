@@ -32,10 +32,9 @@ class CreateUserScreen extends React.Component {
 
   onConfirmPress(){
     const { email, password, confirmPassword } = this.props
-    console.log(this.props);
-      this.props.createUser({ email, password, confirmPassword }, () => {
-        this.props.navigation.navigate('main');
-      });
+    this.props.createUser({ email, password, confirmPassword }, () => {
+        this.props.navigation.navigate('accountinfo');
+    });
   }
 
   renderError () {
@@ -54,8 +53,8 @@ class CreateUserScreen extends React.Component {
       <ImageBackground source={require('../images/background1.jpg')}
                        style={styles.container}>
 
-        <Image 
-            style={{width: 300, height: 120}} 
+        <Image
+            style={{width: 300, height: 120}}
             source={require('../images/kwLogo.png')} />
 
         <Text >   </Text>
@@ -63,21 +62,6 @@ class CreateUserScreen extends React.Component {
 
         {this.renderError()}
 
-        <TextInput
-
-          style={{height: 45, width: 250, backgroundColor: 'white',
-                  borderColor: 'black', borderWidth: 0.5}}
-          placeholder=' First Name:'
-        />
-             <Text >   </Text>
-        <TextInput
-
-          style={{height: 45, width: 250,
-                  backgroundColor: 'white',
-                  borderColor: 'black', borderWidth: 0.5}}
-          placeholder=' Last Name:'
-        />
-             <Text >   </Text>
          <TextInput
           style={{height: 45, width: 250, backgroundColor: 'white',
                   borderColor: 'black', borderWidth: 0.5}}

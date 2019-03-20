@@ -29,7 +29,7 @@ class LoginScreen extends React.Component {
     const { email, password } = this.props
 
     this.props.loginUser({ email, password}, () => {
-      this.props.navigation.navigate('main')
+      this.props.navigation.navigate('accountinfo')
     });
   }
   onForgotPasswordPress() {
@@ -46,7 +46,7 @@ class LoginScreen extends React.Component {
       );
     }
   }
- 
+
 
 
   render () {
@@ -58,14 +58,19 @@ class LoginScreen extends React.Component {
 
        <View style = {{justifyContent: 'space-between',  alignItems: 'center'}}>
 
+<<<<<<< HEAD
        <Image 
             style={{width: 300, height: 140}} 
+=======
+      <Image
+            style={{width: 300, height: 140}}
+>>>>>>> Development/9-Initial-Database
             source={require('../images/kwLogo.png')} />
 
-      
+
       <Text> </Text>
       <Text> </Text>
-      <Text> </Text> 
+      <Text> </Text>
 
         {this.renderError()}
 
