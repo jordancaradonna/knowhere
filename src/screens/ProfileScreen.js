@@ -90,6 +90,7 @@ _renderModalContent = () => (
 );
 
 
+
   render () {
     return (
 
@@ -107,15 +108,16 @@ _renderModalContent = () => (
                 source={require('../images/jprofile.png')}
                 containerStyle={styles.AvatarStyle}
                 onPress={() => console.log("Works!")}
-                activeOpacity={1}
-              ></Avatar>
-            <View>
-              <Button
-                icon={{name: 'settings', color: 'black'}}
-                backgroundColor = 'clear'
-                style = {{padding: 3}}
-                onPress={this.onSettingsPress.bind(this)}>
-              </Button>
+                activeOpacity={1}>
+              </Avatar>
+              <View>
+                  <Button
+                      icon={{name: 'settings', color: 'black'}}
+                      backgroundColor = 'clear'
+                      style = {{padding: 3}}
+                      onPress={this.onSettingsPress.bind(this)}>
+                  </Button>
+              </View>
             </View>
           </View>
         </View>
