@@ -92,6 +92,7 @@ _renderModalContent = () => (
       <SafeAreaView style={{flex:1}}>
       <ImageBackground  source={require('../images/ireland1.png')}
                         style={styles.coverPhoto}>
+
       <View justifyContent='space-between'>
 
         
@@ -117,7 +118,9 @@ _renderModalContent = () => (
           </View>
           
         </View> 
-                  
+        
+      
+
         <View alignItems='center' justifyContent='top'>
           <Text></Text>
           <Text style={styles.NameStyle}>User Name</Text>
@@ -173,6 +176,10 @@ _renderModalContent = () => (
       </View>
 
       </ImageBackground> 
+
+
+
+      
     </SafeAreaView>
 
     )
