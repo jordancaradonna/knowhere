@@ -22,7 +22,9 @@ class AccountInfoScreen extends React.Component {
   onSignInPress() {
     const {fname, lname, city, username, photo } = this.props
 
-    this.props.createProfile({ fname, lname, username, city, photo })
+    this.props.createProfile({ fname, lname, username, city, photo }, () => {
+      this.props.navigation.navigate('profile')
+    });
   }
 
   onFnameChange(text) {

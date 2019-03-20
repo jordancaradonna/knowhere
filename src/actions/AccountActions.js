@@ -5,6 +5,8 @@ import {
   USERNAME_CHANGED,
   CITY_CHANGED,
   CREATE_PROFILE,
+  CREATE_PROFILE_SUCCESS,
+  CREATE_PROFILE_FAIL,
   PROFILE_FETCH_SUCCESS,
   PHOTO_CHANGED
 } from './types.js';
@@ -47,12 +49,27 @@ export const createProfile = ({fname, lname, username, city}, callbackFunction )
     dispatch({ type: CREATE_PROFILE });
     firebase.database().ref(`users/${currentUser}/account`)
       .set({ fname, lname, username, city })
-      .then(user => createProfileSuccess(dispatch, user, callbackFunction))
+      .then(user => createProfileSuccess(dispatch, callbackFunction))
       .catch((error) => {
         console.log(error);
         createProfileFail(dispatch, error.message)
       });
     };
+};
+
+const createProfileFail = (dispatch, errorText) => {
+  dispatch({
+    type: CREATE_PROFILE_FAIL, 
+    payload: errorText
+  });
+};
+
+const createProfileSuccess = (dispatch, callbackFunction) => {
+  dispatch({
+    type: CREATE_PROFILE_SUCCESS,
+    payload: null
+  });
+  callbackFunction();
 };
 
 export const profileFetch = () => {

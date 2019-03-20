@@ -41,7 +41,7 @@ export default (state = INITIAL_STATE, action) => {
       console.log('creating');
       return { ...state, loading: true, error: '' };
     case CREATE_PROFILE_SUCCESS:
-      return { ...state, ...INITIAL_STATE, user: action.payload };
+      return { ...state, ...INITIAL_STATE };
     case CREATE_PROFILE_FAIL:
       return { ...state, error: action.payload, loading: false };
     case PROFILE_FETCH_SUCCESS:
