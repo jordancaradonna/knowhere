@@ -178,7 +178,6 @@ _renderModalContent = () => (
           <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
           <Text style={styles.NameStyle}>{this.props.username}</Text>
           <Text style={styles.NameStyle}>{this.props.city}</Text>
-        </View>
       </View>
 
       </ImageBackground>
