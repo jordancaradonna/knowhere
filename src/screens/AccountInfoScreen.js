@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View,
-        Text, TextInput, Image, cameraRoll } from 'react-native';
+        Text, TextInput, Image, cameraRoll, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Avatar } from 'react-native-elements';
 import CameraRollPicker from "react-native-camera-roll-picker";
@@ -79,6 +79,7 @@ class AccountInfoScreen extends React.Component {
   render () {
     if(!this.state.selecting) {
       return (
+        <ScrollView style={{flex:1}}>
         <ImageBackground source={require('../images/finalBackground2.jpg')}
                          style={styles.container}>
 
@@ -160,6 +161,7 @@ class AccountInfoScreen extends React.Component {
           />
 
         </ImageBackground>
+        </ScrollView>
       )
     }
     else {

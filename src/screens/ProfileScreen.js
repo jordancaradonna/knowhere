@@ -122,13 +122,26 @@ _renderModalContent = () => (
           </View>
         </View>
 
+        <Text></Text>
 
+        <View flexDirection='row' justifyContent='space-between'>
 
-        <View alignItems='center' justifyContent='top'>
-          <Text></Text>
-          <Text style={styles.NameStyle}>User Name</Text>
+          <View flexDirection='column' >
+            <Text>{this.props.city}</Text>
+            <Text>Country</Text>
+          </View>
+
+          <View alignItems='flex-end'>
+            <Text style={styles.NameStyle}>{this.props.username}</Text>
+            {/* <Text>Username</Text> */}
+          </View>
+          
+          <View flexDirection='column'>
+            <Text>Posts: #</Text>
+            <Text>Followers: #</Text>
+          </View>
+
         </View>
-
 
         <View justifyContent='space-around' alignItems='center' flexDirection='row'>
 
@@ -142,7 +155,7 @@ _renderModalContent = () => (
             rounded
             title='Dream List'
             color='black'
-            backgroundColor = '#f8f8f8'
+            backgroundColor = '#f4f4ff'
             // style = {{padding: 5}}
             onPress={this.onDreamListPress.bind(this)}
           />
@@ -163,6 +176,7 @@ _renderModalContent = () => (
                 color='#83b4ff'
                 backgroundColor='#f4f4ff'/>
             </View>
+
             <View style={styles.buttonContainer}>
               <Button
                 small
@@ -172,19 +186,17 @@ _renderModalContent = () => (
                 color='#83b4ff'
                 backgroundColor='#f4f4ff'/>
             </View>
+            
           </View>
         </View>
-        <View>
+
+        {/* <View>
           <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
           <Text style={styles.NameStyle}>{this.props.username}</Text>
           <Text style={styles.NameStyle}>{this.props.city}</Text>
-      </View>
+        </View> */}
 
       </ImageBackground>
-
-
-
-
     </SafeAreaView>
 
     )
@@ -254,7 +266,7 @@ const styles = {
       width: 115,
       height: 44,
       elevation: 5,
-      backgroundColor: 'lightblue',
+      backgroundColor: '#f4f4ff',
       padding: 12,
       margin: 16,
       justifyContent: 'center',

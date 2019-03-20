@@ -62,9 +62,9 @@ class DashboardScreen extends React.Component {
     const buttonBg = toggle ? "dodgerblue" : "white";
     const textColor = toggle ? "white" : 'black';
     return (
-      <SafeAreaView style={{flex:1}}>
+      
         <ScrollView style = {{flex: 1}}>
-
+          <SafeAreaView style={{flex:1}}>
             <View // contains the CardSection  
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
@@ -238,9 +238,9 @@ class DashboardScreen extends React.Component {
 
 
 
-
+        </SafeAreaView> 
        </ScrollView>
-      </SafeAreaView> 
+      
     );
   };
 
