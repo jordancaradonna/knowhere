@@ -58,13 +58,8 @@ class LoginScreen extends React.Component {
 
        <View style = {{justifyContent: 'space-between',  alignItems: 'center'}}>
 
-<<<<<<< HEAD
-       <Image 
-            style={{width: 300, height: 140}} 
-=======
-      <Image
+       <Image
             style={{width: 300, height: 140}}
->>>>>>> Development/9-Initial-Database
             source={require('../images/kwLogo.png')} />
 
 
@@ -129,13 +124,13 @@ class LoginScreen extends React.Component {
               backgroundColor='#b0d0ff'
               //style={{padding: 15}}
               onPress={this.onSignInPress.bind(this)}  />
-              <Button 
+              <Button
               title = 'cheat code'
               onPress={() => this.props.navigation.navigate('dash')}/>
           </View>
         </View>
 
-          
+
       </View>
       </ImageBackground>
     )

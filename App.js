@@ -55,14 +55,10 @@ export default class App extends React.Component {
    
     const MainNavigator = createStackNavigator(
     {
-<<<<<<< HEAD
         //explore: ExploreScreen,
         login: LoginScreen,
         viewprofile: ViewProfileScreen,
         createuser: CreateUserScreen,
-=======
-        login: LoginScreen,
->>>>>>> Development/9-Initial-Database
         accountinfo: AccountInfoScreen,
         createuser: CreateUserScreen,
         dashOutings: DashboardOutingScreen,
@@ -76,11 +72,7 @@ export default class App extends React.Component {
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
-<<<<<<< HEAD
         trip: TripsScreen,
-=======
-
->>>>>>> Development/9-Initial-Database
 
         main: createBottomTabNavigator({
             dash: {
@@ -143,24 +135,11 @@ export default class App extends React.Component {
               //}
         })
    // navigationOptions = { header: null }
-<<<<<<< HEAD
-    }) //End of Main Navigator
-
-    const Navigator = createAppContainer(MainNavigator);
-    
-   
-=======
-
-
-
-
-
     }) //End of Main Navigator
 
     const Navigator = createAppContainer(MainNavigator);
 
 
->>>>>>> Development/9-Initial-Database
 
     return  (
       <Provider store={store} >
