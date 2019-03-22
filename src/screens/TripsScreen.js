@@ -12,16 +12,16 @@ import reducers from '../reducers';
 
 
 const Users = [
-  { id: "first", uri: require('../images/background1.jpg') },
-  { id: "second", uri: require('../images/jprofile.png')},
-  { id: "third", uri: require('../images/finalBackground.jpg')},
-  { id: "fourth", uri: require('../images/pig.jpg')}
+  { id: "first", uri: require('../images/jIreland.jpg') },
+  { id: "second", uri: require('../images/ireland1.png')},
+  { id: "third", uri: require('../images/jprofile.png')},
+  { id: "fourth", uri: require('../images/ireland2.png')}
 ]
 const test = [
-  { id: "first", uri: require('../images/jprofile.png')},
-  { id: "second", uri: require('../images/background1.jpg') },
-  { id: "third", uri: require('../images/finalBackground.jpg')},
-  { id: "fourth", uri: require('../images/pig.jpg')}
+  { id: "first", uri: require('../images/yosemite.png')},
+  { id: "second", uri: require('../images/grandCanyon1.png') },
+  { id: "third", uri: require('../images/yosemite1.png')},
+  { id: "fourth", uri: require('../images/grandCanyon2.png')}
 ]
 const SCREEN_WIDTH = Dimensions.get('window').width;
 class TripsScreen extends React.Component {
@@ -47,6 +47,7 @@ class TripsScreen extends React.Component {
                               paddingBottom: 15, paddingRight: 5, 
                               justifyContent: 'space-between'}} //location pin
                 > 
+                 <Text> 1st stop: </Text>
                        <View //location icon and location name 
                        style = {{flexDirection: 'row'}}
                        >
@@ -55,7 +56,7 @@ class TripsScreen extends React.Component {
                              style = {{height: 20, width: 20}}
                           />
                           <Text style = {{paddingTop: 3, fontSize: 12}}> 
-                               Los Angeles 
+                               Ireland 
                           </Text>
                       </View>
                       <Icon name="bookmark" 
@@ -130,6 +131,7 @@ class TripsScreen extends React.Component {
                               paddingBottom: 15, paddingRight: 5, 
                               justifyContent: 'space-between'}} //location pin
                 > 
+                      <Text> 2nd stop: </Text>
                        <View //location icon and location name 
                        style = {{flexDirection: 'row'}}
                        >
@@ -138,7 +140,7 @@ class TripsScreen extends React.Component {
                              style = {{height: 20, width: 20}}
                           />
                           <Text style = {{paddingTop: 3, fontSize: 12}}> 
-                               Ireland 
+                               Yosemite / Grand Canyon
                           </Text>
                       </View>
                       <Icon name="bookmark" size={24} />

@@ -124,9 +124,9 @@ class LoginScreen extends React.Component {
               backgroundColor='#b0d0ff'
               //style={{padding: 15}}
               onPress={this.onSignInPress.bind(this)}  />
-              <Button
+              {/* <Button
               title = 'cheat code'
-              onPress={() => this.props.navigation.navigate('dash')}/>
+              onPress={() => this.props.navigation.navigate('dash')}/> */}
           </View>
         </View>
 

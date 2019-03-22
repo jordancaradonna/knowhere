@@ -151,9 +151,10 @@ _renderModalContent = () => (
 
           <Button
             buttonStyle={styles.buttonStyle}
+            titleStyle={styles.buttonTitle}
             small
             rounded
-            title='Dream List'
+            title='D-List'
             color='black'
             backgroundColor = '#f4f4ff'
             // style = {{padding: 5}}
@@ -241,7 +242,7 @@ const styles = {
     marginRight: 25,
   },
   buttonTitle:{
-    fontSize: 16,
+    fontSize: 13,
     letterSpacing: 2,
   },
   buttonStyle:{
