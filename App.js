@@ -26,6 +26,9 @@ import OutingScreen from './src/screens/OutingScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import TripScreen from './src/screens/TripScreen';
+import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
+import ChangeUsernameScreen from './src/screens/ChangeUsernameScreen';
+import PrivacyScreen from './src/screens/PrivacyScreen';
 
 
 
@@ -62,6 +65,9 @@ export default class App extends React.Component {
         explore: ExploreScreen,
         createtrip: CreateTripScreen,
         createouting: CreateOutingScreen,
+        changehomelocation: ChangeHomeLocationScreen,
+        changeusername: ChangeUsernameScreen,
+        privacy: PrivacyScreen,
         
 
         main: createBottomTabNavigator({

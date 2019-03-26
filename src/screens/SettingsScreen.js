@@ -8,6 +8,15 @@ class SettingsScreen extends React.Component {
   onNotificationsPress() {
     this.props.navigation.navigate('');
   } 
+  onChangeHomeLocationPress() {
+    this.props.navigation.navigate('changehomelocation');
+  }
+  onChangeUsernamePress() {
+    this.props.navigation.navigate('changeusername');
+  }
+  onPrivacyPress() {
+    this.props.navigation.navigate('privacy');
+  }
 
   render () {
     return ( 
@@ -25,7 +34,7 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color= "black"
           backgroundColor="#white"
-          onPress={this.onNotificationsPress.bind(this)}   />
+          onPress={this.onChangeUsernamePress.bind(this)}   />
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'camera', 
@@ -45,7 +54,7 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
-          onPress={this.onNotificationsPress.bind(this)}   />
+          onPress={this.onChangeHomeLocationPress.bind(this)}   />
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'announcement', 
@@ -65,7 +74,7 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
-          onPress={this.onNotificationsPress.bind(this)}   />
+          onPress={this.onPrivacyPress.bind(this)}   />
         <Button
           style= {[styles1.buttonStyle,]}
           title='Log Out'

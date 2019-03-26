@@ -106,7 +106,7 @@ class LoginScreen extends React.Component {
 
           <View style={styles.buttonContainer}>
             <Button
-             title='Sing Up'
+             title='Sign Up'
              titleStyle={styles.buttonTitle}
              buttonStyle={styles.buttonStyle}
              //color="white"

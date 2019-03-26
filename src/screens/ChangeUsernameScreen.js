@@ -1,13 +1,28 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TextInput } from 'react-native';
 
 class ChangeUsernameScreen extends Component {
     render() {
         return(
             <View>
-                <Text>
-                    Change Username Screen
-                </Text>
+                <TextInput
+                    style={{height: 45, width: 250,
+                        backgroundColor: 'white',
+                        borderColor: 'black', borderWidth: 0.5}}
+                    placeholder=' Change Username: '
+                />
+                <Button
+                    title='Submit'
+                    color='black'
+                    backgroundColor = '#f8f8f8'
+                    style = {{padding: 5}}
+                />
+                <Button
+                    title='Cancel'
+                    color='black'
+                    backgroundColor = '#f8f8f8'
+                    style = {{padding: 5}}
+                />
             </View>
         );
     }
