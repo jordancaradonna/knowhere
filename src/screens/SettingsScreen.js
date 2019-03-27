@@ -18,6 +18,10 @@ class SettingsScreen extends React.Component {
     this.props.navigation.navigate('privacy');
   }
 
+  onLogoutPress() {
+    this.props.navigation.navigate('login');
+  }
+
   render () {
     return ( 
       <View style={[styles1.container,]}>
@@ -80,7 +84,7 @@ class SettingsScreen extends React.Component {
           title='Log Out'
           color='black'
           backgroundColor='#white'
-          onPress={this.onNotificationsPress.bind(this)}   />
+          onPress={this.onLogoutPress.bind(this)}   />
   
        
       </View>
