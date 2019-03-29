@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, Button } from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
 class ChangeHomeLocationScreen extends Component {    
     
@@ -21,6 +21,7 @@ class ChangeHomeLocationScreen extends Component {
                     placeholder=' Change Home Location: '
                 />
                 <Button
+                    rounded
                     style= {[styles1.buttonStyle,]}
                     title='Submit'
                     color='black'
@@ -28,6 +29,7 @@ class ChangeHomeLocationScreen extends Component {
                     style = {{padding: 5}}
                 />
                 <Button
+                    rounded
                     style= {[styles1.buttonStyle,]}
                     title='Cancel'
                     color='black'

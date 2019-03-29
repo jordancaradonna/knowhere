@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput } from 'react-native';
+import {View, Text, TextInput, StyleSheet, Button } from 'react-native';
 
 class ChangeUsernameScreen extends Component {
     
@@ -21,6 +21,7 @@ class ChangeUsernameScreen extends Component {
                     placeholder=' Change Username: '
                 />
                 <Button
+                    rounded
                     style= {[styles1.buttonStyle,]}
                     title='Submit'
                     color='black'
@@ -28,6 +29,7 @@ class ChangeUsernameScreen extends Component {
                     style = {{padding: 5}}
                 />
                 <Button
+                    rounded
                     style= {[styles1.buttonStyle,]}
                     title='Cancel'
                     color='black'
