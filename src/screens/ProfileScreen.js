@@ -1,13 +1,33 @@
 import React, {Component} from 'react';
 import { View, Text, Dimensions, ImageBackground,
-        TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
-import { Button, Tile, Avatar} from 'react-native-elements';
+        TouchableOpacity, StyleSheet, SafeAreaView, Image, ScrollView, Animated} from 'react-native';
+import { Button, Avatar, Header} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome'
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux'
 import { profileFetch } from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
+const Users3 = [ //Aidan
+  { id: "first", uri: require('../images/caboSanLucas1.png') },
+  { id: "second", uri: require('../images/caboSanLucas2.png')}, 
+  { id: "third", uri: require('../images/caboSanLucas3.png')},
+  //{ id: "fourth", uri: require('../images/hawaii4.png')}
+]
+
 class ProfileScreen extends React.Component {
+  state = {
+    visibleModal: null,
+    toggle: false,
+    iconName: ''
+  };
+ 
+  changeIcon() {
+    const newState = !this.state.toggle;
+    this.setState({toggle: newState})
+    this.props.onStateChange && this.props.onStateChange(newState)
+  }
+
   componentWillMount() {
     this.props.profileFetch();
   }
@@ -31,18 +51,37 @@ onDreamListPress(){
   this.props.navigation.navigate('dreamlist');
 }
 
-state = {
-  visibleModal: null,
-};
-
+renderImages3 = () =>{
+  //item, i is the index
+    return Users3.map((item, currentIndex) =>{
+      return (
+        <Animated.View 
+          key = {item.id}
+          style = { styles.container}
+        >
+            <Image 
+              style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
+              source = {item.uri}
+            />
+        </Animated.View>
+      );
+    })
+  }
 // button rendering for modal
-_renderButton = (text, onPress) => (
-  <TouchableOpacity onPress={onPress}>
-    <View style={styles2.button}>
-      <Text>{text}</Text>
+_renderButton = (onPress) => (
+    <View style= {{paddingLeft: 10}}>
+      <Icon
+      onPress={onPress}
+        name= 'plus' 
+        size = {30} >
+          
+        </Icon>
     </View>
-  </TouchableOpacity>
+ 
 );
+onViewAllPress() {
+  this.props.navigation.navigate('trip');
+}
 
 // modal content for when creating a new post
 _renderModalContent = () => (
@@ -84,22 +123,39 @@ _renderModalContent = () => (
 
     {/* renders cancel button to close modal */}
     <View alignItems='center'>
-    {this._renderButton('Cancel', () => this.setState({ visibleModal: null }))}
+    <Button
+        onPress = {() => this.setState({ visibleModal: null })}
+        title = 'Cancel'
+        titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+                color='#83b4ff'
+                backgroundColor='#f4f4ff'
+    >
+      
+    </Button>
+    {/* {this._renderButton(() => this.setState({ visibleModal: null }))} */}
     </View>
   </View>
 );
 
-
-
   render () {
+    const {toggle} = this.state;
+    const iconName = toggle ? "bookmark" : "bookmark-o";
     return (
-
       <SafeAreaView style={{flex:1}}>
-      <ImageBackground  source={require('../images/ireland1.png')}
+        <Header 
+          centerComponent={{ text: 'Profile' }}
+          rightComponent={{ Icon: 'cog' }}
+          backgroundColor= 'white'
+          />
+        <View
+        //entire page view
+        >
+        <View //view of everything on top 
+        >
+          <ImageBackground  source={require('../images/ireland1.png')}
                         style={{maxHeight: 120}}>
-
-      <View justifyContent='space-between'>
-
+        <View justifyContent='space-between'>
           <View>
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
@@ -111,21 +167,21 @@ _renderModalContent = () => (
                 activeOpacity={1}>
               </Avatar>
               <View>
-                  <Button
-                      icon={{name: 'settings', color: 'black'}}
+                  <Icon
+                      name= 'cog'
                       backgroundColor = 'clear'
-                      style = {{padding: 3}}
+                      style = {{paddingRight: 5}}
+                      size = {20}
                       onPress={this.onSettingsPress.bind(this)}>
-                  </Button>
+                  </Icon>
               </View>
             </View>
           </View>
         </View>
+        </ImageBackground>
 
-        <Text></Text>
-
-        <View flexDirection='row' justifyContent='space-between'>
-
+        <View flexDirection='row' justifyContent='space-between' //contains country, username, post, and followers
+        >
           <View flexDirection='column' >
             <Text>{this.props.city}</Text>
             <Text>Country</Text>
@@ -137,71 +193,121 @@ _renderModalContent = () => (
           </View>
           
           <View flexDirection='column'>
-            <Text>Posts: #</Text>
-            <Text>Followers: #</Text>
-          </View>
-
-        </View>
-
-        <View justifyContent='space-around' alignItems='center' flexDirection='row'>
-
-          <View>
-            {this._renderButton('New Post', () => this.setState({ visibleModal: 1 }))}
-          </View>
-
-          <Button
-            buttonStyle={styles.buttonStyle}
-            titleStyle={styles.buttonTitle}
-            small
-            rounded
-            title='D-List'
-            color='black'
-            backgroundColor = '#f4f4ff'
-            // style = {{padding: 5}}
-            onPress={this.onDreamListPress.bind(this)}
-          />
-
-        <Modal isVisible={this.state.visibleModal === 1}>
-          {this._renderModalContent()}
-        </Modal>
-        </View>
-
-        <View flexDirection='row'>
-          <View style={styles.container2}>
-            <View style={styles.buttonContainer}>
-              <Button
-                small
-                title='Trips'
-                titleStyle={styles.buttonTitle}
-                buttonStyle={styles.buttonStyle}
-                color='#83b4ff'
-                backgroundColor='#f4f4ff'/>
-            </View>
-
-            <View style={styles.buttonContainer}>
-              <Button
-                small
-                title='Outings'
-                titleStyle={styles.buttonTitle}
-                buttonStyle={styles.buttonStyle}
-                color='#83b4ff'
-                backgroundColor='#f4f4ff'/>
-            </View>
-            
+              <Text
+                 style = {{paddingLeft:24}}
+                 >Posts: #</Text>
+                 <Text>Followers: #</Text>
           </View>
         </View>
 
-        {/* <View>
-          <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
-          <Text style={styles.NameStyle}>{this.props.username}</Text>
-          <Text style={styles.NameStyle}>{this.props.city}</Text>
-        </View> */}
-
-      </ImageBackground>
+        <View alignItems='center' flexDirection='row' justifyContent = 'space-between'
+         style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
+        //add new, dream list, trips, outings
+        >
+          <View //icons view
+          flexDirection = 'row' justifyContent= 'space-between' flex= {1}
+          >
+               <View>
+                  <Icon
+                      name= 'map-pin'color= 'black'
+                      backgroundColor = 'clear'
+                      style = {{paddingLeft: 5}}
+                      size = {30}
+                      onPress={() => this.props.navigation.navigate('map')}>
+                  </Icon>
+              </View>
+                <View>
+                   <Icon
+                     buttonStyle={styles.buttonStyle}
+                     titleStyle={styles.buttonTitle}
+                     name='wpexplorer'
+                    size = {30}
+                    backgroundColor = '#f4f4ff'
+                    onPress={this.onDreamListPress.bind(this)}
+                   />
+                </View>
+                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button 
+                    }
+                      <Modal isVisible={this.state.visibleModal === 1}>
+                        {this._renderModalContent()}
+                      </Modal>
+           </View>
+                <View //trips button view
+                  style = {{justifyContent: "flex-end", flexDirection: 'row'}} >
+                    <Button
+                      small
+                      title='Trips'
+                      titleStyle={styles.buttonTitle}
+                      //buttonStyle={styles.buttonStyle}
+                      color='#83b4ff'
+                      backgroundColor='#f4f4ff'/>
+                </View>
+                <View>
+                    <Button
+                      small
+                      title='Outings'
+                      titleStyle={styles.buttonTitle}
+                      //buttonStyle={styles.buttonStyle}
+                      color='#83b4ff'
+                      backgroundColor='#f4f4ff'/>
+                </View>
+          </View>
+        </View>
+      <View>
+        <ScrollView>
+            <View // contains Aidan's CardSection 
+                style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
+            >
+              <Text
+                onPress = {this.onViewAllPress.bind(this)}
+                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 2, paddingTop: 5, paddingBottom: 4}} >
+                View Post
+              </Text>
+                 <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
+                    >
+                    <View //contains info on the left
+                      alignItems = 'center'
+                      >
+                      <Avatar
+                        large
+                        source={require('../images/aprofile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                      />
+                        <Text style={{  fontSize: 14, paddingLeft: 6}} 
+                          onPress={() => this.props.navigation.navigate('profile')}>
+                          Aidan Alcos
+                        </Text>
+                          <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
+                            borderColor: '#ddd',}} //location pin
+                          >
+                            <Image 
+                              source = {require('../images/home.png')}
+                              style = {{height: 15, width: 15}}
+                              />
+                            <Text style={{fontSize: 12}} > 
+                              Kailua Kona
+                           </Text>
+                          </View>
+                          <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
+                              >
+                               <Icon 
+                                  onPress = {()=> this.changeIcon()}
+                                  name= {iconName} size={35}/>
+                             </View>
+                      </View>
+                      <ScrollView horizontal //view of stuff on right
+                      >
+                        {this.renderImages3()} 
+                      </ScrollView>
+                  </View>
+              </View>
+           </ScrollView>
+         </View>
+      </View>
     </SafeAreaView>
-
     )
-
   }
 }
 
@@ -249,7 +355,7 @@ const styles = {
     width: 115,
     height: 44,
     //padding: 20,
-    borderRadius: 100, //makes it oval not squared
+    //borderRadius: 100, //makes it oval not squared
     elevation: 5,
   },
   coverPhoto:{
@@ -286,6 +392,12 @@ const styles = {
       margin: 0,
     },
   });
+
+   {/* <View>
+          <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
+          <Text style={styles.NameStyle}>{this.props.username}</Text>
+          <Text style={styles.NameStyle}>{this.props.city}</Text>
+        </View> */}
 
 //Connect the current props to redux props
 const mapStateToProps = ({ info }) => {

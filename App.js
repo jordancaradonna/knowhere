@@ -28,6 +28,7 @@ import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import TripsScreen from './src/screens/TripsScreen';
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
+import MapScreen from './src/screens/MapScreen';
 
 
 export default class App extends React.Component {
@@ -73,6 +74,7 @@ export default class App extends React.Component {
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
         trip: TripsScreen,
+        map: MapScreen,
 
         main: createBottomTabNavigator({
             dash: {

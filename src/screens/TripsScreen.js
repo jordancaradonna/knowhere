@@ -62,12 +62,7 @@ class TripsScreen extends React.Component {
                       <Icon name="bookmark" 
                         onPress = {()=> this.changeIcon()}
                         name={iconName}
-                      size={24} />
-                      {/* <Text
-                        onPress = {this.onViewAllPress.bind(this)}
-                        style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
-                          All Photos
-                      </Text> */}
+                        size={24} />
                 </View>
                 <View style = {{flex: 1, flexDirection: 'row' }}>
                     <ScrollView horizontal // sliding pictures
@@ -204,7 +199,9 @@ class TripsScreen extends React.Component {
                         Vlogs
                       </Text>
                       </View>
-                      <View style = {{alignItems: 'center', paddingLeft: 10, paddingTop: 10}}>
+                      <View style = {{alignItems: 'center', paddingLeft: 10, paddingTop: 10}}
+                      //add new icon view
+                      >
                       <Icon 
                       size = {60}
                       name = {addStoryIcon}
