@@ -225,7 +225,7 @@ const styles = {
     flexDirection: 'row',
   },
   NameStyle: {
-    fontFamily: 'Al Nile',
+    //fontFamily: 'Al Nile',
     fontSize: 18,
     color: 'black',
     justifyContent: 'center'

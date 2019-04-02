@@ -8,6 +8,22 @@ class SettingsScreen extends React.Component {
   onNotificationsPress() {
     this.props.navigation.navigate('');
   } 
+<<<<<<< HEAD
+=======
+  onChangeHomeLocationPress() {
+    this.props.navigation.navigate('changehomelocation');
+  }
+  onChangeUsernamePress() {
+    this.props.navigation.navigate('changeusername');
+  }
+  onPrivacyPress() {
+    this.props.navigation.navigate('privacy');
+  }
+
+  onLogoutPress() {
+    this.props.navigation.navigate('login');
+  }
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
 
   render () {
     return ( 
@@ -25,7 +41,11 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color= "black"
           backgroundColor="#white"
+<<<<<<< HEAD
           onPress={this.onNotificationsPress.bind(this)}   />
+=======
+          onPress={this.onChangeUsernamePress.bind(this)}   />
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'camera', 
@@ -45,7 +65,11 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
+<<<<<<< HEAD
           onPress={this.onNotificationsPress.bind(this)}   />
+=======
+          onPress={this.onChangeHomeLocationPress.bind(this)}   />
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'announcement', 
@@ -65,13 +89,21 @@ class SettingsScreen extends React.Component {
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
+<<<<<<< HEAD
           onPress={this.onNotificationsPress.bind(this)}   />
+=======
+          onPress={this.onPrivacyPress.bind(this)}   />
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
         <Button
           style= {[styles1.buttonStyle,]}
           title='Log Out'
           color='black'
           backgroundColor='#white'
+<<<<<<< HEAD
           onPress={this.onNotificationsPress.bind(this)}   />
+=======
+          onPress={this.onLogoutPress.bind(this)}   />
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
   
        
       </View>

@@ -26,8 +26,16 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+<<<<<<< HEAD
 import TripsScreen from './src/screens/TripsScreen';
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
+=======
+import TripScreen from './src/screens/TripScreen';
+import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
+import ChangeUsernameScreen from './src/screens/ChangeUsernameScreen';
+import PrivacyScreen from './src/screens/PrivacyScreen';
+
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
 
 
 export default class App extends React.Component {
@@ -71,8 +79,15 @@ export default class App extends React.Component {
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
+<<<<<<< HEAD
         dreamlist: DreamListScreen,
         trip: TripsScreen,
+=======
+        changehomelocation: ChangeHomeLocationScreen,
+        changeusername: ChangeUsernameScreen,
+        privacy: PrivacyScreen,
+        
+>>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
 
         main: createBottomTabNavigator({
             dash: {
