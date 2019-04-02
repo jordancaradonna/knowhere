@@ -130,7 +130,9 @@ class LoginScreen extends React.Component {
           </View>
         </View>
 
-
+            <Text
+            onPress = {() => this.props.navigation.navigate('dash')}
+            > dash</Text>
       </View>
       </ImageBackground>
     )
