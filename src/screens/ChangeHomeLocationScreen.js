@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { submitHL } from '../actions'
 
 class ChangeHomeLocationScreen extends Component {    
     
@@ -9,7 +10,8 @@ class ChangeHomeLocationScreen extends Component {
 
     // onSubmitPress() {
     //     const { submit } = this.props
-
+    //     this.props.submitHL({ submit }, () => {
+    //     });
     // }
     
     render() {
