@@ -26,7 +26,9 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-import TripsScreen from './src/screens/TripsScreen';
+import ViewCabo from './src/screens/ViewCabo';
+import ViewHawaii from './src/screens/ViewHawaii';
+import ViewIreland from './src/screens/ViewIreland';
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
 
 
@@ -67,12 +69,15 @@ export default class App extends React.Component {
         settings: SettingsScreen,
         messages: MessagesScreen,
         //explore: ExploreScreen,
-        trips: TripsScreen,
+        //trips: TripsScreen,
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
         dreamlist: DreamListScreen,
-        trip: TripsScreen,
+        ViewCabo: ViewCabo,
+        ViewHawaii: ViewHawaii,
+        ViewIreland: ViewIreland,
+   
 
         main: createBottomTabNavigator({
             dash: {

@@ -7,12 +7,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const Users = [ //Jordan
   { id: "first", uri: require('../images/namibiaDrinks.png') },
-  //{ id: "second", uri: require('../images/ireland1.png')},
-  //{ id: "third", uri: require('../images/jprofile.png')},
-  //{ id: "fourth", uri: require('../images/ireland2.png')}
 ]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
 
 class DashboardOutingScreen extends React.Component {
   
@@ -56,7 +54,7 @@ class DashboardOutingScreen extends React.Component {
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Namibia
+                              Karibib, NM
                     </Text>
 
 
@@ -132,17 +130,16 @@ class DashboardOutingScreen extends React.Component {
                 >
                     <Avatar
                         small
-                        source={require('../images/fprofile.png')}
+                        source={require('../images/chadProfile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                          Frida Martinez    
+                          Chad Ditter    
                     </Text>
 
-                    
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>

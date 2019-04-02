@@ -12,12 +12,14 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Swiper from 'react-native-swiper';
 import { Button, Avatar } from 'react-native-elements';
 
+
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
 const Users = [
-  { id: "first", uri: require('../images/background1.jpg') },
-  { id: "second", uri: require('../images/jprofile.png')},
-  { id: "third", uri: require('../images/finalBackground.jpg')},
-  { id: "fourth", uri: require('../images/pig.jpg')}
+  { id: "first", uri: require('../images/jIreland.jpg') },
+  { id: "second", uri: require('../images/ireland1.png')},
+  { id: "third", uri: require('../images/jprofile.png')},
+  { id: "fourth", uri: require('../images/ireland2.png')}
 ]
 
 export default class Slide extends Component {

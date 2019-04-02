@@ -12,8 +12,10 @@ import {
   createProfile,
   photoChanged,
  } from '../actions'
+ 
 
 class AccountInfoScreen extends React.Component {
+
   constructor(props) {
     super(props)
     this.state={selecting: false}
@@ -26,7 +28,6 @@ class AccountInfoScreen extends React.Component {
       this.props.navigation.navigate('profile')
     });
   }
-
   onFnameChange(text) {
     this.props.fnameChanged(text);
   }
@@ -80,77 +81,77 @@ class AccountInfoScreen extends React.Component {
     if(!this.state.selecting) {
       return (
         <ScrollView style={{flex:1}}>
-        <ImageBackground source={require('../images/finalBackground2.jpg')}
+          <ImageBackground source={require('../images/finalBackground2.jpg')}
                          style={styles.container}>
 
 
-          <Image
+            <Image
               style={{width: 300, height: 120}}
               source={require('../images/kwLogo.png')} />
 
-          <Text> </Text>
+            <Text> </Text>
 
-          <Text style={[styles.otherText,]}> Welcome! </Text>
-          <Text style={[styles.otherText,]}> Just a couple more things </Text>
-          <Text style={[styles.otherText,]}> to set up your account. </Text>
+            <Text style={[styles.otherText,]}> Welcome! </Text>
+            <Text style={[styles.otherText,]}> Just a couple more things </Text>
+            <Text style={[styles.otherText,]}> to set up your account. </Text>
 
-          <Text> </Text>
-          <Text> </Text>
+            <Text> </Text>
+            <Text> </Text>
 
-          {this.renderError()}
+            {this.renderError()}
 
-          <TextInput
-            style={{height: 45, width: 250, backgroundColor: 'white',
-                    borderColor: 'black', borderWidth: 0.5}}
-            placeholder=' First Name:'
-            value={this.props.fname}
-            onChangeText={this.onFnameChange.bind(this)}
-          />
+            <TextInput
+              style={{height: 45, width: 250, backgroundColor: 'white',
+                     borderColor: 'black', borderWidth: 0.5}}
+              placeholder=' First Name:'
+              value={this.props.fname}
+              onChangeText={this.onFnameChange.bind(this)}
+            />
                <Text >   </Text>
 
-          <TextInput
-            style={{height: 45, width: 250,
-                    backgroundColor: 'white',
-                    borderColor: 'black', borderWidth: 0.5}}
-            placeholder=' Last Name:'
-            value={this.props.lname}
-            onChangeText={this.onLnameChange.bind(this)}
-          />
-            <Text >   </Text>
+            <TextInput
+              style={{height: 45, width: 250,
+                      backgroundColor: 'white',
+                      borderColor: 'black', borderWidth: 0.5}}
+              placeholder=' Last Name:'
+              value={this.props.lname}
+              onChangeText={this.onLnameChange.bind(this)}
+            />
+              <Text >   </Text>
 
-          <TextInput
-            style={{height: 45, width: 250,
-                    backgroundColor: 'white',
-                    borderColor: 'black', borderWidth: 0.5}}
-            placeholder='Username'
-            value={this.props.username}
-            onChangeText={this.onUsernameChange.bind(this)}
-          />
+            <TextInput
+              style={{height: 45, width: 250,
+                      backgroundColor: 'white',
+                      borderColor: 'black', borderWidth: 0.5}}
+              placeholder='Username'
+              value={this.props.username}
+              onChangeText={this.onUsernameChange.bind(this)}
+            />
                <Text >   </Text>
+            <TextInput style={{height:5}}/>
 
-             <TextInput style={{height:5}}/>
-          <TextInput
-            style={{height: 45, width: 250,
-                    backgroundColor: 'white',
-                    borderColor: 'black', borderWidth: 0.5}}
-            placeholder='Choose City'
-            value={this.props.city}
-            onChangeText={this.onCityChange.bind(this)}
-          />
+            <TextInput
+              style={{height: 45, width: 250,
+                      backgroundColor: 'white',
+                      borderColor: 'black', borderWidth: 0.5}}
+              placeholder='Choose City'
+              value={this.props.city}
+              onChangeText={this.onCityChange.bind(this)}
+            />
+              <Text> </Text>
 
-          <Text> </Text>
-
-          <Button
+            <Button
               title='Select Photo'
               color="black"
               backgroundColor='#white'
               style={{padding:8}}
               onPress={this.onSelectPhotoPress.bind(this)}
-          />
-          {this.renderPhoto()}
-          <Text> </Text>
+            />
+            
+            {this.renderPhoto()}
+              <Text> </Text>
 
-          <Button
+            <Button
               title='Create Profile'
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.bigButtonStyle}
@@ -158,12 +159,13 @@ class AccountInfoScreen extends React.Component {
               //backgroundColor='#83b4ff'
               style={{padding:8}}
               onPress={this.onSignInPress.bind(this)}
-          />
+            />
 
-        </ImageBackground>
+          </ImageBackground>
         </ScrollView>
       )
     }
+
     else {
       return (
         <View style={styles.container}>
@@ -180,6 +182,7 @@ class AccountInfoScreen extends React.Component {
         </View>
       )
     }
+
   }
 }
 
@@ -224,11 +227,14 @@ const mapStateToProps = ({ info }) => {
   return { fname, lname, city, username, photo };
 };
 
-export default connect(mapStateToProps, {
-  fnameChanged,
-  lnameChanged,
-  usernameChanged,
-  cityChanged,
-  createProfile,
-  photoChanged
-})(AccountInfoScreen);
+export default connect (
+  mapStateToProps,{
+    fnameChanged,
+    lnameChanged,
+    usernameChanged,
+    cityChanged,
+    createProfile,
+    photoChanged
+  } 
+) 
+(AccountInfoScreen);

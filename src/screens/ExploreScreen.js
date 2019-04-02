@@ -4,6 +4,8 @@ import { View, Text, TextInput, Image, StyleSheet,
           TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
 //import SearchBar from 'react-native-search-bar';
+import { connect } from 'react-redux'
+import { profileFetch } from '../actions'
 
 
 const Users = [ //Jordan
@@ -19,7 +21,7 @@ const Users1 = [ //Frida
   { id: "fourth", uri: require('../images/grandCanyon2.png')}
 ]
 const Users2 = [ //May
-  { id: "first", uri: require('../images/hawaii1.png') },
+  //{ id: "first", uri: require('../images/hawaii1.png') },
   { id: "second", uri: require('../images/hawaii2.png')}, 
   { id: "third", uri: require('../images/hawaii3.png')},
   { id: "fourth", uri: require('../images/hawaii4.png')}
@@ -34,7 +36,9 @@ const Users3 = [ //Aidan
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class ExploreScreen extends React.Component {
-
+  componentWillMount() {
+    this.props.profileFetch();
+  }
  
   onTripsPress() {
     this.props.navigation.navigate('dash');
@@ -256,14 +260,14 @@ class ExploreScreen extends React.Component {
                 >
                     <Avatar
                         small
-                        source={require('../images/fprofile.png')}
+                        source={require('../images/chadProfile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                          Frida Martinez    
+                          Chad Ditter   
                     </Text>
 
                     
@@ -277,7 +281,7 @@ class ExploreScreen extends React.Component {
 
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 20, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
                     />
                 </View>   
             </View>
@@ -476,5 +480,12 @@ const styles = {
     }
 }
 
+//Connect the current props to redux props
+const mapStateToProps = ({ info }) => {
+  const { fname, lname, city, username } = info;
 
-export default ExploreScreen;
+  return { fname, lname, city, username };
+};
+
+
+export default connect(mapStateToProps, {profileFetch}) (ExploreScreen);

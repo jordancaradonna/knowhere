@@ -13,36 +13,34 @@ class ProfileScreen extends React.Component {
   }
 
 // Buttons to navigate to each branch
-onSettingsPress() {
-  this.props.navigation.navigate('settings');
-}
+  onSettingsPress() {
+    this.props.navigation.navigate('settings');
+  }
+  onCreateTripPress() {
+    this.props.navigation.navigate('createtrip')
+      this.setState({ visibleModal: null });
+  }
+  onCreateOutingPress() {
+    this.props.navigation.navigate('createouting');
+    this.setState({ visibleModal: null });
+  }
+  onDreamListPress(){
+    this.props.navigation.navigate('dreamlist');
+  }
 
-onCreateTripPress() {
-  this.props.navigation.navigate('createtrip')
-  this.setState({ visibleModal: null });
-}
 
-onCreateOutingPress() {
-  this.props.navigation.navigate('createouting');
-  this.setState({ visibleModal: null });
-}
-
-onDreamListPress(){
-  this.props.navigation.navigate('dreamlist');
-}
-
-state = {
-  visibleModal: null,
-};
+  state = {
+    visibleModal: null,
+  };
 
 // button rendering for modal
-_renderButton = (text, onPress) => (
-  <TouchableOpacity onPress={onPress}>
-    <View style={styles2.button}>
-      <Text>{text}</Text>
-    </View>
-  </TouchableOpacity>
-);
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles2.button}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
 
 // modal content for when creating a new post
 _renderModalContent = () => (
