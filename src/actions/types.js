@@ -6,3 +6,4 @@ export const LOGIN_USER = 'login_user';
 export const CREATE_USER = 'create_user';
 export const CONFIRM_PASSWORD_CHANGED = 'confirm_password_changed';
 export const CREATE_FAIL = 'create_fail';
+export const SUBMIT_HL = 'submit_hl';

@@ -8,7 +8,9 @@ import {
   LOGIN_USER,
   CREATE_USER,
   CONFIRM_PASSWORD_CHANGED,
-  CREATE_FAIL
+  CREATE_FAIL,
+  SUBMIT_HL,
+  SUBMIT_UN
 } from './types.js';
 
 export const emailChanged = (text) => {
@@ -59,6 +61,20 @@ export const createUser = ({ email, password, confirmPassword }, callbackFunctio
     }
     else
       createFail(dispatch, 'Passwords do not match');
+  };
+};
+
+export const submitHL = (text) => {
+  return {
+    type: SUBMIT_HL,
+    payload: text
+  };
+};
+
+export const submitUN = (text) => {
+  return {
+    type: SUBMIT_UN,
+    payload: text
   };
 };
 

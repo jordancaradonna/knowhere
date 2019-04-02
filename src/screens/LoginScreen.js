@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     padding: 40,
     marginBottom: 50,
     fontStyle: 'italic',
-    fontFamily: 'Chalkboard SE',
+    // fontFamily: 'Chalkboard SE',
     color: 'black',
   },
   container2:{

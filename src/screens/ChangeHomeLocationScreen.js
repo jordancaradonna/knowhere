@@ -6,6 +6,11 @@ class ChangeHomeLocationScreen extends Component {
     onCancelPress() {
         this.props.navigation.navigate('settings');
     } 
+
+    // onSubmitPress() {
+    //     const { submit } = this.props
+
+    // }
     
     render() {
         return(
@@ -64,7 +69,7 @@ const styles1 = StyleSheet.create({
     //   //color: "white",
     // },
     buttonStyle:{
-      //width: 350,
+      width: 350,
       marginLeft: 0.0,
       marginRight:0.0,
       borderColor: "grey",

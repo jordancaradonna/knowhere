@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: 28,
-    fontFamily: 'Chalkboard SE',
+    // fontFamily: 'Chalkboard SE',
     padding: 10,
     color: 'black',
   },
