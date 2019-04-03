@@ -52,7 +52,7 @@ class LoginScreen extends React.Component {
   render () {
     return (
 
-      <ImageBackground source={require('../images/loginBackground.png')}
+      <ImageBackground source={require('../images/finalBackground2.jpg')}
                        style={styles.container}>
 
 
