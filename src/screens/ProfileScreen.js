@@ -15,6 +15,12 @@ const Users = [
   { id: "third", uri: require('../images/jprofile.png')},
   { id: "fourth", uri: require('../images/ireland2.png')}
 ]
+const Users1 = [
+  { id: "first", uri: require('../images/paris2.png') },
+  { id: "second", uri: require('../images/paris3.png')},
+  { id: "third", uri: require('../images/paris1.png')},
+  //{ id: "fourth", uri: require('../images/ireland2.png')}
+]
 
 
 class ProfileScreen extends React.Component {
@@ -67,6 +73,24 @@ renderImages = () =>{
       );
     })
   }
+
+  renderImages1 = () =>{
+    //item, i is the index
+      return Users1.map((item, currentIndex) =>{
+        return (
+          <Animated.View
+            key = {item.id}
+            style = { styles.container}
+          >
+              <Image
+                style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
+                source = {item.uri}
+              />
+          </Animated.View>
+        );
+      })
+    }
+
 // button rendering for modal
 _renderButton = (onPress) => (
     <View style= {{paddingLeft: 10}}>
@@ -328,6 +352,70 @@ _renderModalContent = () => (
                  
               </View>
             </View> 
+
+
+
+
+            <View // contains the CardSection  
+               style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
+               >
+                    <Text 
+                        onPress = {this.onViewAllPress.bind(this)}
+                        style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
+                       View Post
+                    </Text>
+                    
+              <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
+                >
+                <View //contains bio info on the left
+                  style = {{alignItems: 'center'}}
+                  >
+                    <Avatar
+
+                        large
+                        source={require('../images/jprofile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Text style={{  fontSize: 10, }} 
+                          onPress={() => this.props.navigation.navigate('profile')}>
+                        Jordan Caradonna
+                    </Text>
+                 
+                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
+                              borderColor: '#ddd',}} //location pin 
+                      >
+                        <Image 
+                            source = {require('../images/home.png')}
+                            style = {{height: 14, width: 14}}
+                        />
+                        <Text style={{fontSize: 12}}>
+                          
+                            {this.props.city
+                            }
+                        </Text>
+
+                  </View>
+                    <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
+                    </View>
+                </View>
+                  
+                  
+                        <ScrollView horizontal style = {{}}
+                          //content on the right, all of the pictures
+                  >
+
+                             {this.renderImages1()} 
+                        </ScrollView>
+                 
+              </View>
+            </View> 
+
 
 
            </ScrollView>
