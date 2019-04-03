@@ -17,11 +17,9 @@ class CreateUserScreen extends React.Component {
   onEmailChange(text) {
     this.props.emailChanged(text);
   }
-
   onPasswordChange(text) {
     this.props.passwordChanged(text);
   }
-
   onConfirmPasswordChange(text) {
     this.props.confirmPasswordChanged(text);
   }
@@ -29,13 +27,11 @@ class CreateUserScreen extends React.Component {
   onCancelPress() {
     this.props.navigation.navigate('login');
   }
-
   onConfirmPress(){
     const { email, password, confirmPassword } = this.props
-    console.log(this.props);
-      this.props.createUser({ email, password, confirmPassword }, () => {
-        this.props.navigation.navigate('main');
-      });
+    this.props.createUser({ email, password, confirmPassword }, () => {
+        this.props.navigation.navigate('accountinfo');
+    });
   }
 
   renderError () {
@@ -54,8 +50,8 @@ class CreateUserScreen extends React.Component {
       <ImageBackground source={require('../images/background1.jpg')}
                        style={styles.container}>
 
-        <Image 
-            style={{width: 300, height: 120}} 
+        <Image
+            style={{width: 300, height: 120}}
             source={require('../images/kwLogo.png')} />
 
         <Text >   </Text>
@@ -64,21 +60,6 @@ class CreateUserScreen extends React.Component {
         {this.renderError()}
 
         <TextInput
-
-          style={{height: 45, width: 250, backgroundColor: 'white',
-                  borderColor: 'black', borderWidth: 0.5}}
-          placeholder=' First Name:'
-        />
-             <Text >   </Text>
-        <TextInput
-
-          style={{height: 45, width: 250,
-                  backgroundColor: 'white',
-                  borderColor: 'black', borderWidth: 0.5}}
-          placeholder=' Last Name:'
-        />
-             <Text >   </Text>
-         <TextInput
           style={{height: 45, width: 250, backgroundColor: 'white',
                   borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Email:'
@@ -106,32 +87,29 @@ class CreateUserScreen extends React.Component {
              <Text >   </Text>
 
 
+        <View style={styles.container2} //Side-by-side Button layout
+        >
+          <View style={styles.buttonContainer}>
+            <Button
+              title='Cancel'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+              //backgroundColor='#83b4ff'
+              onPress={this.onCancelPress.bind(this)}   />
+          </View>
 
-      <View style={styles.container2}>
-
-        <View style={styles.buttonContainer}>
-          <Button
-            title='Cancel'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            onPress={this.onCancelPress.bind(this)}   />
+          <View style={styles.buttonContainer}>
+            <Button
+              title='Confirm'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              //color="white"
+              //backgroundColor='#83b4ff'
+              style={{padding:8}}
+              onPress={this.onConfirmPress.bind(this)}  />
+          </View>
         </View>
-
-        <View style={styles.buttonContainer}>
-          <Button
-            title='Confirm'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            //color="white"
-            //backgroundColor='#83b4ff'
-            style={{padding:8}}
-            onPress={this.onConfirmPress.bind(this)}  />
-        </View>
-      </View>
-
-
       </ImageBackground>
     )
   }
@@ -189,9 +167,11 @@ const mapStateToProps = ({ auth }) => {
   return { email, password, error, loading, confirmPassword };
 };
 
-export default connect(mapStateToProps, {
-  emailChanged,
-  passwordChanged,
-  createUser,
-  confirmPasswordChanged,
-})(CreateUserScreen);
+export default connect(
+  mapStateToProps, {
+    emailChanged,
+    passwordChanged,
+    createUser,
+    confirmPasswordChanged,
+  }
+) (CreateUserScreen);

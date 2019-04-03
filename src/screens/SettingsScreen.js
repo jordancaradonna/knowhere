@@ -22,6 +22,7 @@ class SettingsScreen extends React.Component {
     this.props.navigation.navigate('login');
   }
 
+
   render () {
     return ( 
       <View style={[styles1.container,]}>
@@ -39,6 +40,7 @@ class SettingsScreen extends React.Component {
           color= "black"
           backgroundColor="#white"
           onPress={this.onChangeUsernamePress.bind(this)}   />
+
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'camera', 
@@ -59,6 +61,7 @@ class SettingsScreen extends React.Component {
           color='black'
           backgroundColor='#white'
           onPress={this.onChangeHomeLocationPress.bind(this)}   />
+
         <Button
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'announcement', 
@@ -79,12 +82,14 @@ class SettingsScreen extends React.Component {
           color='black'
           backgroundColor='#white'
           onPress={this.onPrivacyPress.bind(this)}   />
+
         <Button
           style= {[styles1.buttonStyle,]}
           title='Log Out'
           color='black'
           backgroundColor='#white'
           onPress={this.onLogoutPress.bind(this)}   />
+
   
        
       </View>

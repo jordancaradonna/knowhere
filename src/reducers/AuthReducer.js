@@ -16,13 +16,9 @@ const INITIAL_STATE = {
   user: null,
   error: '',
   loading: false,
-  fName: '',
-  lName: '',
-
  };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case EMAIL_CHANGED:
       console.log(action.payload)

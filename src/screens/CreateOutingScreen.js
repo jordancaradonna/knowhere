@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 
 class CreateOutingScreen extends React.Component {
 
-  onPostPress () {
+  onPostPress () { 
     this.props.navigation.navigate('dash')
   }
 
@@ -18,6 +18,7 @@ class CreateOutingScreen extends React.Component {
   render () {
     return (
       <View style={{justifyContent: "space-evenly"}}>
+
         <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
           Create Outing
         </Text>
@@ -25,10 +26,10 @@ class CreateOutingScreen extends React.Component {
                             backgroundColor: 'white', 
                             borderColor: '#ffffff', 
                             borderWidth: 0.5, }}
-          placeholder='Outing Description'
-          editable = {true}
-          multiline = {true}
-          onChangeText={(text) => this.setState({text})}
+                   placeholder='Outing Description'
+                   editable = {true}
+                   multiline = {true}
+                   onChangeText={(text) => this.setState({text})}
         />
         <TextInput style={{ height: 40, width: 200,
                             backgroundColor: 'white', 

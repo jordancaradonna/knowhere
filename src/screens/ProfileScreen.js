@@ -1,124 +1,215 @@
-import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import React, {Component} from 'react';
+import { View, Text, Dimensions, ImageBackground,
+        TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { Button, Tile, Avatar} from 'react-native-elements';
-
-
+import Modal from 'react-native-modal';
+import { connect } from 'react-redux'
+import { profileFetch } from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-
-
 class ProfileScreen extends React.Component {
+  componentWillMount() {
+    this.props.profileFetch();
+  }
 
-
+// Buttons to navigate to each branch
   onSettingsPress() {
     this.props.navigation.navigate('settings');
   }
+  onCreateTripPress() {
+    this.props.navigation.navigate('createtrip')
+      this.setState({ visibleModal: null });
+  }
+  onCreateOutingPress() {
+    this.props.navigation.navigate('createouting');
+    this.setState({ visibleModal: null });
+  }
+  onDreamListPress(){
+    this.props.navigation.navigate('dreamlist');
+  }
 
-onCreateTripPress() {
-  this.props.navigation.navigate('createtrip');
-}
 
-onCreateOutingPress() {
-  this.props.navigation.navigate('createouting');
-}
+  state = {
+    visibleModal: null,
+  };
+
+// button rendering for modal
+  _renderButton = (text, onPress) => (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles2.button}>
+        <Text>{text}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+// modal content for when creating a new post
+_renderModalContent = () => (
+
+  <View style={styles2.modalContent}>
+
+  <View alignItems='center' fontSize='300'>
+    <Text>New Post</Text>
+    <Text></Text>
+  </View>
+
+    <View style={{flexGrow: 1}} flexDirection='row' justifyContent='center'>
+
+      {/* navigate to a createTripScreen */}
+      <View>
+        <Button
+                title='Trip'
+                onPress={this.onCreateTripPress.bind(this)}
+                small
+                titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+                color='#83b4ff'
+                backgroundColor='#f4f4ff'>
+        </Button>
+      </View>
+
+      {/* navigate to createOutingScreen */}
+      <View>
+        <Button title='Outing'
+                onPress={this.onCreateOutingPress.bind(this)}
+                small
+                titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+                color='#83b4ff'
+                backgroundColor='#f4f4ff'>
+        </Button>
+      </View>
+    </View>
+
+    {/* renders cancel button to close modal */}
+    <View alignItems='center'>
+    {this._renderButton('Cancel', () => this.setState({ visibleModal: null }))}
+    </View>
+  </View>
+);
+
 
 
   render () {
     return (
-      <View>
-        <Avatar
-          medium
-          rounded
-          //source={require('../static/temp_profile.jpg')}
-          containerStyle={styles.AvatarStyle}
-          onPress={() => console.log("Works!")}
-          activeOpacity={0.7}
-          justifyContent='center'
-          alignItems='center'
-        />
 
+      <SafeAreaView style={{flex:1}}>
+      <ImageBackground  source={require('../images/ireland1.png')}
+                        style={{maxHeight: 120}}>
 
-        <View // imageSrc={require()}
-            style={styles.TopProfileStyle} >
+      <View justifyContent='space-between'>
 
-          <Text style={styles.NameStyle}>User Name</Text>
-          <Text></Text>
-
-          <Button
-            small
-            rounded
-            title='settings'
-            color='black'
-            backgroundColor = '#f8f8f8'
-            style = {{padding: 5}}
-            onPress={this.onSettingsPress.bind(this)}
-          />
-          <Button
-            small
-            rounded
-            title='myMap'
-            color='black'
-            backgroundColor = '#f8f8f8'
-            style = {{padding: 5}}
-          />
-          <Button
-            small
-            rounded
-            title='add'
-            color='black'
-            backgroundColor = '#f8f8f8'
-            style = {{padding: 5}}
-          />
-         
-          <Text></Text>
-          <Text></Text>
-          <Text></Text>
+          <View>
+            <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
+              <Avatar
+                large
+                rounded
+                source={require('../images/jprofile.png')}
+                containerStyle={styles.AvatarStyle}
+                onPress={() => console.log("Works!")}
+                activeOpacity={1}>
+              </Avatar>
+              <View>
+                  <Button
+                      icon={{name: 'settings', color: 'black'}}
+                      backgroundColor = 'clear'
+                      style = {{padding: 3}}
+                      onPress={this.onSettingsPress.bind(this)}>
+                  </Button>
+              </View>
+            </View>
+          </View>
         </View>
 
+        <Text></Text>
 
+        <View flexDirection='row' justifyContent='space-between'>
 
-     
-        <View style={styles.container2}> 
+          <View flexDirection='column' >
+            <Text>{this.props.city}</Text>
+            <Text>Country</Text>
+          </View>
 
-          <View style={styles.buttonContainer}> 
-            <Button
-              small
-              title='Trips'
-              titleStyle={styles.buttonTitle}
-              buttonStyle={styles.buttonStyle}
-              color='#83b4ff'
-              backgroundColor='#f4f4ff'/>
-           </View>
-        <View style={styles.buttonContainer}> 
-            <Button
-              small
-              title='Outings'
-              titleStyle={styles.buttonTitle}
-              buttonStyle={styles.buttonStyle}
-              color='white'
-              backgroundColor='#b0d0ff'/>
-           </View>
+          <View alignItems='flex-end'>
+            <Text style={styles.NameStyle}>{this.props.username}</Text>
+            {/* <Text>Username</Text> */}
+          </View>
+          
+          <View flexDirection='column'>
+            <Text>Posts: #</Text>
+            <Text>Followers: #</Text>
+          </View>
+
         </View>
 
+        <View justifyContent='space-around' alignItems='center' flexDirection='row'>
 
+          <View>
+            {this._renderButton('New Post', () => this.setState({ visibleModal: 1 }))}
+          </View>
 
+          <Button
+            buttonStyle={styles.buttonStyle}
+            titleStyle={styles.buttonTitle}
+            small
+            rounded
+            title='D-List'
+            color='black'
+            backgroundColor = '#f4f4ff'
+            // style = {{padding: 5}}
+            onPress={this.onDreamListPress.bind(this)}
+          />
 
+        <Modal isVisible={this.state.visibleModal === 1}>
+          {this._renderModalContent()}
+        </Modal>
+        </View>
 
-      </View>
+        <View flexDirection='row'>
+          <View style={styles.container2}>
+            <View style={styles.buttonContainer}>
+              <Button
+                small
+                title='Trips'
+                titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+                color='#83b4ff'
+                backgroundColor='#f4f4ff'/>
+            </View>
 
-      
+            <View style={styles.buttonContainer}>
+              <Button
+                small
+                title='Outings'
+                titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+                color='#83b4ff'
+                backgroundColor='#f4f4ff'/>
+            </View>
+            
+          </View>
+        </View>
+
+        {/* <View>
+          <Text style={styles.NameStyle}>{this.props.fname} {this.props.lname}</Text>
+          <Text style={styles.NameStyle}>{this.props.username}</Text>
+          <Text style={styles.NameStyle}>{this.props.city}</Text>
+        </View> */}
+
+      </ImageBackground>
+    </SafeAreaView>
+
     )
-    
+
   }
 }
-
-
 
 const styles = {
   AvatarStyle: {
     marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 40,
+    marginBottom: 22,
+  },
+  leftStyle: {
+    marginLeft: "auto"
   },
   DividerStyle: {
     marginTop: 10,
@@ -126,29 +217,30 @@ const styles = {
   },
   TopProfileStyle: {
     width: SCREEN_WIDTH,
-    height: 150,
+    // height: 150,
     alignItems: 'center',
-    justifyContent: 'center'
+    // flex: 2,
+    flexDirection: 'row',
   },
   NameStyle: {
     //fontFamily: 'Al Nile',
     fontSize: 18,
-    color: 'black'
+    color: 'black',
+    justifyContent: 'center'
   },
   container2:{
     flex: 1,
     flexDirection: 'row',
-    //alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'bottom',
   },
   buttonContainer:{
     flex: 1,
-    marginLeft: 25,
+    marginLeft: 8,
     marginRight: 25,
-
   },
   buttonTitle:{
-    fontSize: 16,
+    fontSize: 13,
     letterSpacing: 2,
   },
   buttonStyle:{
@@ -157,7 +249,47 @@ const styles = {
     //padding: 20,
     borderRadius: 100, //makes it oval not squared
     elevation: 5,
-  }
+  },
+  coverPhoto:{
+    width: '100%',
+    height: '50%'
+  }};
+
+  const styles2 = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    button: {
+      width: 115,
+      height: 44,
+      elevation: 5,
+      backgroundColor: '#f4f4ff',
+      padding: 12,
+      margin: 16,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 100,
+      borderColor: 'rgba(0, 0, 0, 0.1)',
+    },
+    modalContent: {
+      backgroundColor: 'white',
+      padding: 22,
+      borderRadius: 22,
+      borderColor: 'rgba(0, 0, 0, 0.1)',
+    },
+    bottomModal: {
+      justifyContent: 'flex-end',
+      margin: 0,
+    },
+  });
+
+//Connect the current props to redux props
+const mapStateToProps = ({ info }) => {
+  const { fname, lname, city, username } = info;
+
+  return { fname, lname, city, username };
 };
 
-export default ProfileScreen;
+export default connect(mapStateToProps, { profileFetch })(ProfileScreen);

@@ -46,26 +46,26 @@ class LoginScreen extends React.Component {
       );
     }
   }
- 
+
 
 
   render () {
     return (
 
-      <ImageBackground source={require('../images/finalBackground.jpg')}
+      <ImageBackground source={require('../images/loginBackground.png')}
                        style={styles.container}>
 
 
-       <View style = {{justifyContent: 'space-between',alignItems: 'center'}}>
+       <View style = {{justifyContent: 'space-between',  alignItems: 'center'}}>
 
-      <Image 
-            style={{width: 300, height: 140}} 
+       <Image
+            style={{width: 300, height: 140}}
             source={require('../images/kwLogo.png')} />
 
-      
+
       <Text> </Text>
       <Text> </Text>
-      <Text> </Text> 
+      <Text> </Text>
 
         {this.renderError()}
 
@@ -121,10 +121,12 @@ class LoginScreen extends React.Component {
               titleStyle={styles.buttonTitle}
               buttonStyle={styles.buttonStyle}
               //color="white"
-
               backgroundColor='#b0d0ff'
               //style={{padding: 15}}
               onPress={this.onSignInPress.bind(this)}  />
+              {/* <Button
+              title = 'cheat code'
+              onPress={() => this.props.navigation.navigate('dash')}/> */}
           </View>
         </View>
 
