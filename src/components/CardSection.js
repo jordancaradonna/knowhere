@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Dimensions} from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
 const CardSection =(props) => {
     return (
         <View style = {styles.containerStyle}>
@@ -17,7 +18,6 @@ const styles = {
         padding: 25,
         background: '#fff',
         justifyContent: 'flex-start',
-        
         position: 'relative',
         height: 300, 
         width: SCREEN_WIDTH, 

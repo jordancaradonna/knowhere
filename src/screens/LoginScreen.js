@@ -52,7 +52,7 @@ class LoginScreen extends React.Component {
   render () {
     return (
 
-      <ImageBackground source={require('../images/finalBackground.jpg')}
+      <ImageBackground source={require('../images/loginBackground.png')}
                        style={styles.container}>
 
 
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     padding: 40,
     marginBottom: 50,
     fontStyle: 'italic',
-    fontFamily: 'Chalkboard SE',
+    // fontFamily: 'Chalkboard SE',
     color: 'black',
   },
   container2:{

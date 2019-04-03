@@ -24,6 +24,7 @@ class CreateTripScreen extends React.Component {
     this.props.navigation.navigate('dash')
   }
 
+  
   render () {
     const { photo } = this.state
     return (

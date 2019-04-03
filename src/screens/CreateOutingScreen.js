@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 
 class CreateOutingScreen extends React.Component {
 
-  onPostPress () {
+  onPostPress () { 
     this.props.navigation.navigate('dash')
   }
 

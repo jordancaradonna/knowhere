@@ -8,6 +8,9 @@ export const CREATE_USER = 'create_user';
 export const CONFIRM_PASSWORD_CHANGED = 'confirm_password_changed';
 export const CREATE_FAIL = 'create_fail';
 
+export const SUBMIT_HL = 'submit_hl';
+
+
 //Info
 export const FNAME_CHANGED = 'fname_changed';
 export const LNAME_CHANGED = 'lname_changed';
@@ -18,3 +21,4 @@ export const CREATE_PROFILE_SUCCESS = 'create_profile_success';
 export const CREATE_PROFILE_FAIL = 'create_profile_fail';
 export const PROFILE_FETCH_SUCCESS = 'profile_fetch_success';
 export const PHOTO_CHANGED = 'photo_changed';
+

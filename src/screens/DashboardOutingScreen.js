@@ -7,12 +7,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const Users = [ //Jordan
   { id: "first", uri: require('../images/namibiaDrinks.png') },
-  //{ id: "second", uri: require('../images/ireland1.png')},
-  //{ id: "third", uri: require('../images/jprofile.png')},
-  //{ id: "fourth", uri: require('../images/ireland2.png')}
 ]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
 
 class DashboardOutingScreen extends React.Component {
   
@@ -27,13 +25,13 @@ class DashboardOutingScreen extends React.Component {
     return (
       <ScrollView style={{flex:1}}>
 
-
+      <View style ={{flex: 1, flexDirection: 'row'}} //
+      >
         <View //contains the CardSection  ---------NAMIBIA----------
         >      
             <View style = {{flex: 1, flexDirection: 'column' }}>  
-            
               <Image 
-                style={{width: 420, height: 260, marginTop: 10, marginBottom: 5}} 
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}} 
                 source={require('../images/namibiaDrinks.png')} />
                 
                 <View //contains info on the BOTTOM
@@ -46,37 +44,25 @@ class DashboardOutingScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
-                          onPress={() => this.props.navigation.navigate('profile')}>
-                          Jordan Caradonna     
-                    </Text>
-
-                    
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Namibia
+                              Karibib, NM
                     </Text>
-
-
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
                     />
                 </View>   
             </View>
-
         </View>
-
-
-
         <View //contains the CardSection  ---------CUP & BAR----------
         >      
             <View style = {{flex: 1, flexDirection: 'column' }}>  
             
               <Image 
-                style={{width: 420, height: 260, marginTop: 10, marginBottom: 5}} 
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
                 source={require('../images/cupBar.png')} />
                 
                 <View //contains info on the BOTTOM
@@ -89,32 +75,92 @@ class DashboardOutingScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
-                          onPress={() => this.props.navigation.navigate('profile')}>
-                          Tiffany Lemke     
-                    </Text>
-
-                    
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Portland, OR
+                              Portland
                     </Text>
-
-
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
                     />
                 </View>   
             </View>
-
         </View>
-        
+      </View>
 
 
-        <View //contains the CardSection  ---------Sanctuary----------
+
+
+        <View style ={{flex: 1, flexDirection: 'row'}} //
+      >
+        <View //contains the CardSection  --------- pasadena bar ----------
+        >      
+            <View style = {{flex: 1, flexDirection: 'column' }}>  
+              <Image 
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}} 
+                source={require('../images/lastBookstore.png')} />
+                
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/koryProfile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Image 
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12}} > 
+                              Los Angeles
+                    </Text>
+                    <Image 
+                        source = {require('../images/bookmarkOuting.png')}
+                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
+                    />
+                </View>   
+            </View>
+        </View>
+        <View //contains the CardSection  --------  last bookstore----------
+        >      
+            <View style = {{flex: 1, flexDirection: 'column' }}>  
+            
+              <Image 
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
+                source={require('../images/pasadenaWine.png')} />
+                
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/maddieProfile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Image 
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12}} > 
+                              Pasadena
+                    </Text>
+                    <Image 
+                        source = {require('../images/bookmarkOuting.png')}
+                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
+                    />
+                </View>   
+            </View>
+        </View>
+      </View>
+
+
+
+      <View //contains the CardSection  ---------Sanctuary----------
         >      
             <View style = {{flex: 1, flexDirection: 'column' }}>  
               <View style = {{aligntItems: 'center', flexDirection: 'row'}} >
@@ -125,39 +171,32 @@ class DashboardOutingScreen extends React.Component {
                   style={{width: 210, height: 190, marginTop: 10, marginBottom: 5}} 
                   source={require('../images/sanctuary2.png')} />
               </View>
-
-
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
                     <Avatar
                         small
-                        source={require('../images/fprofile.png')}
+                        source={require('../images/chadProfile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                          Frida Martinez    
+                          Chad Ditter    
                     </Text>
-
-                    
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
                     <Text style= {{marginTop: 12}} > 
-                              Claremont, CA
+                              Claremont
                     </Text>
-
-
                     <Image 
                         source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 20, marginTop: 10}}
+                        style = {{height: 25, width: 25, marginLeft: 40, marginTop: 10}}
                     />
                 </View>   
             </View>
-
         </View>
 
 
@@ -266,8 +305,8 @@ const styles = {
   AvatarStyle: {
     marginTop: 5,
     marginBottom: 20,
-    marginLeft: 20,
-    paddingLeft: 10
+    marginLeft: 5,
+    paddingLeft: 5
     }
 }
 

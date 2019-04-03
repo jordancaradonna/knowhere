@@ -26,12 +26,18 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
-import TripsScreen from './src/screens/TripsScreen';
+//import TripsScreen from './src/screens/TripsScreen';
 import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
 import ChangeUsernameScreen from './src/screens/ChangeUsernameScreen';
 import PrivacyScreen from './src/screens/PrivacyScreen';
 import MapScreen from './src/screens/MapScreen';
+
+import ViewCabo from './src/screens/ViewCabo';
+import ViewHawaii from './src/screens/ViewHawaii';
+import ViewIreland from './src/screens/ViewIreland';
+
 
 
 
@@ -60,7 +66,7 @@ export default class App extends React.Component {
    
     const MainNavigator = createStackNavigator(
     {
-        //explore: ExploreScreen,
+        //profile: ExploreScreen,
         login: LoginScreen,
         viewprofile: ViewProfileScreen,
         createuser: CreateUserScreen,
@@ -71,21 +77,21 @@ export default class App extends React.Component {
         dashOutings: DashboardOutingScreen,
         settings: SettingsScreen,
         messages: MessagesScreen,
-        //explore: ExploreScreen,
-        trips: TripsScreen,
+        explore: ExploreScreen,
+        //trips: TripsScreen,
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
-
-        dreamlist: DreamListScreen,
-
-        trip: TripsScreen,
         changehomelocation: ChangeHomeLocationScreen,
         changeusername: ChangeUsernameScreen,
         privacy: PrivacyScreen,
-
         map: MapScreen,
+        dreamlist: DreamListScreen,
+        ViewCabo: ViewCabo,
+        ViewHawaii: ViewHawaii,
+        ViewIreland: ViewIreland,
 
+        
 
         main: createBottomTabNavigator({
             dash: {

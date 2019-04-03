@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { submitHL } from '../actions'
 
 class ChangeHomeLocationScreen extends Component {    
     
     onCancelPress() {
         this.props.navigation.navigate('settings');
     } 
+
+    // onSubmitPress() {
+    //     const { submit } = this.props
+    //     this.props.submitHL({ submit }, () => {
+    //     });
+    // }
     
     render() {
         return(
@@ -64,7 +71,7 @@ const styles1 = StyleSheet.create({
     //   //color: "white",
     // },
     buttonStyle:{
-      //width: 350,
+      width: 350,
       marginLeft: 0.0,
       marginRight:0.0,
       borderColor: "grey",
