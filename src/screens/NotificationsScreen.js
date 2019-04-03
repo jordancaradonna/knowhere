@@ -35,22 +35,9 @@ class NotificationsScreen extends React.Component {
   }
   render() {
     return (
-      <MapView 
-        style={styles.container}
-        initialRegion={{
-            latitude: 45.5209087,
-            longitude: -122.6705107,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }} 
-          onPress={this.handlePress}
-      >
-      {this.state.markers.map((marker) => {
-        return (
-          <Marker {...marker} />
-        )
-      })}
-      </MapView>
+      <View> 
+        
+      </View>
     );
   }
 }

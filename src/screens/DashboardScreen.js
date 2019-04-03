@@ -107,7 +107,7 @@ class DashboardScreen extends React.Component {
                         />
                         <Text style={{fontSize: 12}}>
                             Orange County
-                            {//not yet:   this.props.city
+                            {// nope   this.props.city
                             }
                         </Text>
                   </View>

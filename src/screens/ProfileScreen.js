@@ -8,12 +8,14 @@ import { connect } from 'react-redux'
 import { profileFetch } from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-const Users3 = [ //Aidan
-  { id: "first", uri: require('../images/caboSanLucas1.png') },
-  { id: "second", uri: require('../images/caboSanLucas2.png')}, 
-  { id: "third", uri: require('../images/caboSanLucas3.png')},
-  //{ id: "fourth", uri: require('../images/hawaii4.png')}
+
+const Users = [
+  { id: "first", uri: require('../images/jIreland.jpg') },
+  { id: "second", uri: require('../images/ireland1.png')},
+  { id: "third", uri: require('../images/jprofile.png')},
+  { id: "fourth", uri: require('../images/ireland2.png')}
 ]
+
 
 class ProfileScreen extends React.Component {
   state = {
@@ -49,9 +51,9 @@ class ProfileScreen extends React.Component {
   }
 
 
-renderImages3 = () =>{
+renderImages = () =>{
   //item, i is the index
-    return Users3.map((item, currentIndex) =>{
+    return Users.map((item, currentIndex) =>{
       return (
         <Animated.View 
           key = {item.id}
@@ -265,54 +267,68 @@ _renderModalContent = () => (
         </View>
       <View>
         <ScrollView>
-            <View // contains Aidan's CardSection 
-                style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
-            >
-              <Text
-                onPress = {this.onViewAllPress.bind(this)}
-                style = {{textAlign: 'right',  fontSize: 10, paddingRight: 2, paddingTop: 5, paddingBottom: 4}} >
-                View Post
-              </Text>
-                 <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
-                    >
-                    <View //contains info on the left
-                      alignItems = 'center'
-                      >
-                      <Avatar
+           
+           
+             <View // contains the CardSection  
+               style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
+               >
+                    <Text 
+                        onPress = {this.onViewAllPress.bind(this)}
+                        style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
+                       View Post
+                    </Text>
+                    
+              <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
+                >
+                <View //contains bio info on the left
+                  style = {{alignItems: 'center'}}
+                  >
+                    <Avatar
                         large
-                        source={require('../images/aprofile.png')}
+                        source={require('../images/jprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
-                      />
-                        <Text style={{  fontSize: 14, paddingLeft: 6}} 
+
+                    />
+                    <Text style={{  fontSize: 10, }} 
                           onPress={() => this.props.navigation.navigate('profile')}>
-                          Aidan Alcos
-                        </Text>
-                          <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
-                            borderColor: '#ddd',}} //location pin
-                          >
-                            <Image 
-                              source = {require('../images/home.png')}
-                              style = {{height: 15, width: 15}}
-                              />
-                            <Text style={{fontSize: 12}} > 
-                              Kailua Kona
-                           </Text>
-                          </View>
-                          <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
-                              >
-                               <Icon 
-                                  onPress = {()=> this.changeIcon()}
-                                  name= {iconName} size={35}/>
-                             </View>
-                      </View>
-                      <ScrollView horizontal //view of stuff on right
+                        Jordan Caradonna
+                    </Text>
+                 
+                  <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
+                              borderColor: '#ddd',}} //location pin 
                       >
-                        {this.renderImages3()} 
-                      </ScrollView>
+                        <Image 
+                            source = {require('../images/home.png')}
+                            style = {{height: 14, width: 14}}
+                        />
+                        <Text style={{fontSize: 12}}>
+                          
+                            {this.props.city
+                            }
+                        </Text>
                   </View>
+                    <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
+                      >
+                          <Icon 
+                          onPress = {()=> this.changeIcon()}
+                          name={iconName} size={35}/>
+                    </View>
+                </View>
+                  
+                  
+                        <ScrollView horizontal style = {{}}
+                          //content on the right, all of the pictures
+                  >
+
+                             {this.renderImages()} 
+                        </ScrollView>
+                 
               </View>
+            </View> 
+
+
            </ScrollView>
          </View>
       </View>
