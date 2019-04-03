@@ -10,7 +10,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const Users3 = [ //Aidan
   { id: "first", uri: require('../images/caboSanLucas1.png') },
-  { id: "second", uri: require('../images/caboSanLucas2.png')}, 
+  { id: "second", uri: require('../images/caboSanLucas2.png')},
   { id: "third", uri: require('../images/caboSanLucas3.png')},
   //{ id: "fourth", uri: require('../images/hawaii4.png')}
 ]
@@ -21,15 +21,15 @@ class ProfileScreen extends React.Component {
     toggle: false,
     iconName: ''
   };
- 
+
+  componentWillMount() {
+    this.props.profileFetch();
+  }
+
   changeIcon() {
     const newState = !this.state.toggle;
     this.setState({toggle: newState})
     this.props.onStateChange && this.props.onStateChange(newState)
-  }
-
-  componentWillMount() {
-    this.props.profileFetch();
   }
 
 // Buttons to navigate to each branch
@@ -53,11 +53,11 @@ renderImages3 = () =>{
   //item, i is the index
     return Users3.map((item, currentIndex) =>{
       return (
-        <Animated.View 
+        <Animated.View
           key = {item.id}
           style = { styles.container}
         >
-            <Image 
+            <Image
               style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
               source = {item.uri}
             />
@@ -70,9 +70,9 @@ _renderButton = (onPress) => (
     <View style= {{paddingLeft: 10}}>
       <Icon
       onPress={onPress}
-        name= 'plus' 
+        name= 'plus'
         size = {30} >
-          
+
         </Icon>
     </View>
 );
@@ -141,7 +141,7 @@ _renderModalContent = () => (
                 color='#83b4ff'
                 backgroundColor='#f4f4ff'
     >
-      
+
     </Button>
     {/* {this._renderButton(() => this.setState({ visibleModal: null }))} */}
     </View>
@@ -153,7 +153,7 @@ _renderModalContent = () => (
     const iconName = toggle ? "bookmark" : "bookmark-o";
     return (
       <SafeAreaView style={{flex:1}}>
-        <Header 
+        <Header
           centerComponent={{ text: 'Profile' }}
           rightComponent={{ Icon: 'cog' }}
           backgroundColor= 'white'
@@ -161,7 +161,7 @@ _renderModalContent = () => (
         <View
         //entire page view
         >
-        <View //view of everything on top 
+        <View //view of everything on top
         >
           <ImageBackground  source={require('../images/ireland1.png')}
                         style={{maxHeight: 120}}>
@@ -201,7 +201,7 @@ _renderModalContent = () => (
             <Text style={styles.NameStyle}>{this.props.username}</Text>
             {/* <Text>Username</Text> */}
           </View>
-          
+
           <View flexDirection='column'>
               <Text
                  style = {{paddingLeft:24}}
@@ -236,7 +236,7 @@ _renderModalContent = () => (
                     onPress={this.onDreamListPress.bind(this)}
                    />
                 </View>
-                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button 
+                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button
                     }
                       <Modal isVisible={this.state.visibleModal === 1}>
                         {this._renderModalContent()}
@@ -265,15 +265,15 @@ _renderModalContent = () => (
         </View>
       <View>
         <ScrollView>
-            <View // contains Aidan's CardSection 
-                style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
+            <View // contains Aidan's CardSection
+                style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
               <Text
                 onPress = {this.onViewAllPress.bind(this)}
                 style = {{textAlign: 'right',  fontSize: 10, paddingRight: 2, paddingTop: 5, paddingBottom: 4}} >
                 View Post
               </Text>
-                 <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
+                 <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section
                     >
                     <View //contains info on the left
                       alignItems = 'center'
@@ -285,31 +285,31 @@ _renderModalContent = () => (
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                       />
-                        <Text style={{  fontSize: 14, paddingLeft: 6}} 
+                        <Text style={{  fontSize: 14, paddingLeft: 6}}
                           onPress={() => this.props.navigation.navigate('profile')}>
                           Aidan Alcos
                         </Text>
                           <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
                             borderColor: '#ddd',}} //location pin
                           >
-                            <Image 
+                            <Image
                               source = {require('../images/home.png')}
                               style = {{height: 15, width: 15}}
                               />
-                            <Text style={{fontSize: 12}} > 
+                            <Text style={{fontSize: 12}} >
                               Kailua Kona
                            </Text>
                           </View>
                           <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                               >
-                               <Icon 
+                               <Icon
                                   onPress = {()=> this.changeIcon()}
                                   name= {iconName} size={35}/>
                              </View>
                       </View>
                       <ScrollView horizontal //view of stuff on right
                       >
-                        {this.renderImages3()} 
+                        {this.renderImages3()}
                       </ScrollView>
                   </View>
               </View>

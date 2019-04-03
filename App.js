@@ -63,10 +63,9 @@ export default class App extends React.Component {
       Outings: DashboardOutingScreen,
     },
     );
-   
+
     const MainNavigator = createStackNavigator(
     {
-        //profile: ExploreScreen,
         login: LoginScreen,
         viewprofile: ViewProfileScreen,
         createuser: CreateUserScreen,
@@ -75,7 +74,6 @@ export default class App extends React.Component {
         dashOutings: DashboardOutingScreen,
         forgotpassword: ForgotPasswordScreen,
         dashOutings: DashboardOutingScreen,
-        settings: SettingsScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
         //trips: TripsScreen,
@@ -90,8 +88,9 @@ export default class App extends React.Component {
         ViewCabo: ViewCabo,
         ViewHawaii: ViewHawaii,
         ViewIreland: ViewIreland,
+        settings: SettingsScreen,
 
-        
+
 
         main: createBottomTabNavigator({
             dash: {
