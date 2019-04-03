@@ -7,7 +7,7 @@ class SettingsScreen extends React.Component {
 
   onNotificationsPress() {
     this.props.navigation.navigate('');
-  } 
+  }
   onChangeHomeLocationPress() {
     this.props.navigation.navigate('changehomelocation');
   }
@@ -25,7 +25,7 @@ class SettingsScreen extends React.Component {
 
 
   render () {
-    return ( 
+    return (
       <View style={[styles1.container,]}>
         <Text style={[styles1.title,]}>
           Settings
@@ -33,10 +33,10 @@ class SettingsScreen extends React.Component {
 
         <Button
           style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'account-box', 
+          leftIcon={{ name: 'account-box',
                         color: "#83b4ff"}}
           title='Change Username                                  '
-          rightIcon={{ name: 'forward', 
+          rightIcon={{ name: 'forward',
                         color: "grey"}}
           color= "black"
           backgroundColor="#white"
@@ -44,20 +44,20 @@ class SettingsScreen extends React.Component {
 
         <Button
           style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'camera', 
+          leftIcon={{ name: 'camera',
                         color: "#83b4ff"}}
           title='Change Profile Picture                           '
-          rightIcon={{ name: 'forward', 
+          rightIcon={{ name: 'forward',
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
           onPress={this.onNotificationsPress.bind(this)}   />
         <Button
           style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'home', 
+          leftIcon={{ name: 'home',
                         color: "#83b4ff"}}
           title='Change Home Location                         '
-          rightIcon={{ name: 'forward', 
+          rightIcon={{ name: 'forward',
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
@@ -65,20 +65,20 @@ class SettingsScreen extends React.Component {
 
         <Button
           style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'announcement', 
+          leftIcon={{ name: 'announcement',
                         color: "#83b4ff"}}
           title='Notifications                                            '
-          rightIcon={{ name: 'forward', 
+          rightIcon={{ name: 'forward',
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
           onPress={this.onNotificationsPress.bind(this)}   />
         <Button
           style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'visibility', 
+          leftIcon={{ name: 'visibility',
                         color: "#83b4ff"}}
           title='Privacy                                                    '
-          rightIcon={{ name: 'forward', 
+          rightIcon={{ name: 'forward',
                         color: "grey"}}
           color='black'
           backgroundColor='#white'
@@ -91,8 +91,8 @@ class SettingsScreen extends React.Component {
           backgroundColor='#white'
           onPress={this.onLogoutPress.bind(this)}   />
 
-  
-       
+
+
       </View>
     )
   }
@@ -128,5 +128,11 @@ const styles1 = StyleSheet.create({
     //elevation: 5,
   }
 });
+
+const mapStateToProps = ({ info }) => {
+  const { fname, lname, city, username, photo } = info;
+
+  return { fname, lname, city, username, photo };
+};
 
 export default SettingsScreen;

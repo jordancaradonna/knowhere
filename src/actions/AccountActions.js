@@ -8,7 +8,11 @@ import {
   CREATE_PROFILE_SUCCESS,
   CREATE_PROFILE_FAIL,
   PROFILE_FETCH_SUCCESS,
-  PHOTO_CHANGED
+  PHOTO_CHANGED,
+  SUBMIT_USERNAME,
+  SUBMIT_CITY,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAIL
 } from './types.js';
 
 export const fnameChanged = (text) => {
@@ -59,7 +63,7 @@ export const createProfile = ({fname, lname, username, city}, callbackFunction )
 
 const createProfileFail = (dispatch, errorText) => {
   dispatch({
-    type: CREATE_PROFILE_FAIL, 
+    type: CREATE_PROFILE_FAIL,
     payload: errorText
   });
 };
@@ -82,4 +86,48 @@ export const profileFetch = () => {
         dispatch({ type: PROFILE_FETCH_SUCCESS, payload: snapshot.val() });
       });
   }
+};
+
+export const submitUsername = ({username}) => {
+  const currentUser = firebase.auth().O
+
+  return (dispatch) => {
+    dispatch({ type: SUBMIT_USERNAME });
+    firebase.database().ref(`users/${currentUser}/account`)
+      .update({ username })
+      .then(user => editProfileSuccess(dispatch))
+      .catch((error) => {
+        console.log(error);
+        editProfileFail(dispatch, error.message)
+      });
+    };
+};
+
+export const submitCity = ({city}) => {
+  const currentUser = firebase.auth().O
+
+  return (dispatch) => {
+    dispatch({ type: SUBMIT_CITY });
+    firebase.database().ref(`users/${currentUser}/account`)
+      .update({ city })
+      .then(user => editProfileSuccess(dispatch))
+      .catch((error) => {
+        console.log(error);
+        editProfileFail(dispatch, error.message)
+      });
+    };
+};
+
+const editProfileFail = (dispatch, errorText) => {
+  dispatch({
+    type: EDIT_PROFILE_FAIL,
+    payload: errorText
+  });
+};
+
+const editProfileSuccess = (dispatch, callbackFunction) => {
+  dispatch({
+    type: EDIT_PROFILE_SUCCESS,
+    payload: null
+  });
 };

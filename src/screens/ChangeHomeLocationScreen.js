@@ -1,31 +1,35 @@
 import React, {Component} from 'react';
 import {View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { submitHL } from '../actions'
+import { connect } from 'react-redux';
+import { submitCity, cityChanged } from '../actions'
 
-class ChangeHomeLocationScreen extends Component {    
-    
+class ChangeHomeLocationScreen extends Component {
+    onCityChange(text) {
+      this.props.cityChanged(text);
+    }
     onCancelPress() {
         this.props.navigation.navigate('settings');
-    } 
+    }
 
-    // onSubmitPress() {
-    //     const { submit } = this.props
-    //     this.props.submitHL({ submit }, () => {
-    //     });
-    // }
-    
+    onSubmitPress() {
+      const { city } = this.props;
+      this.props.submitCity({city})
+    }
+
     render() {
         return(
             <View style={[styles1.container,]}>
                 <Text style={[styles1.title,]}>
-                    Change Home Location 
+                    Change Home Location
                 </Text>
-                
+
                 <TextInput
                     style={{height: 45, width: 250,
                         backgroundColor: 'white',
                         borderColor: 'black', borderWidth: 0.5}}
                     placeholder=' Change Home Location: '
+                    value={this.props.city}
+                    onChangeText={this.onCityChange.bind(this)}
                 />
                 <Button
                     rounded
@@ -34,6 +38,7 @@ class ChangeHomeLocationScreen extends Component {
                     color='black'
                     backgroundColor = '#f8f8f8'
                     style = {{padding: 5}}
+                    onPress={this.onSubmitPress.bind(this)}
                 />
                 <Button
                     rounded
@@ -80,4 +85,15 @@ const styles1 = StyleSheet.create({
     }
   });
 
-export default ChangeHomeLocationScreen;
+  const mapStateToProps = ({ info }) => {
+    const { fname, lname, city, username, photo } = info;
+
+    return { fname, lname, city, username, photo };
+  };
+
+  export default connect (
+    mapStateToProps,{
+      cityChanged,
+      submitCity
+    }
+  )(ChangeHomeLocationScreen);

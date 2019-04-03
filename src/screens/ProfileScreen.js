@@ -23,15 +23,15 @@ class ProfileScreen extends React.Component {
     toggle: false,
     iconName: ''
   };
- 
+
+  componentWillMount() {
+    this.props.profileFetch();
+  }
+
   changeIcon() {
     const newState = !this.state.toggle;
     this.setState({toggle: newState})
     this.props.onStateChange && this.props.onStateChange(newState)
-  }
-
-  componentWillMount() {
-    this.props.profileFetch();
   }
 
 // Buttons to navigate to each branch
@@ -55,11 +55,11 @@ renderImages = () =>{
   //item, i is the index
     return Users.map((item, currentIndex) =>{
       return (
-        <Animated.View 
+        <Animated.View
           key = {item.id}
           style = { styles.container}
         >
-            <Image 
+            <Image
               style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
               source = {item.uri}
             />
@@ -72,9 +72,9 @@ _renderButton = (onPress) => (
     <View style= {{paddingLeft: 10}}>
       <Icon
       onPress={onPress}
-        name= 'plus' 
+        name= 'plus'
         size = {30} >
-          
+
         </Icon>
     </View>
 );
@@ -143,7 +143,7 @@ _renderModalContent = () => (
                 color='#83b4ff'
                 backgroundColor='#f4f4ff'
     >
-      
+
     </Button>
     {/* {this._renderButton(() => this.setState({ visibleModal: null }))} */}
     </View>
@@ -155,7 +155,7 @@ _renderModalContent = () => (
     const iconName = toggle ? "bookmark" : "bookmark-o";
     return (
       <SafeAreaView style={{flex:1}}>
-        <Header 
+        <Header
           centerComponent={{ text: 'Profile' }}
           rightComponent={{ Icon: 'cog' }}
           backgroundColor= 'white'
@@ -163,7 +163,7 @@ _renderModalContent = () => (
         <View
         //entire page view
         >
-        <View //view of everything on top 
+        <View //view of everything on top
         >
           <ImageBackground  source={require('../images/ireland1.png')}
                         style={{maxHeight: 120}}>
@@ -203,7 +203,7 @@ _renderModalContent = () => (
             <Text style={styles.NameStyle}>{this.props.username}</Text>
             {/* <Text>Username</Text> */}
           </View>
-          
+
           <View flexDirection='column'>
               <Text
                  style = {{paddingLeft:24}}
@@ -238,7 +238,7 @@ _renderModalContent = () => (
                     onPress={this.onDreamListPress.bind(this)}
                    />
                 </View>
-                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button 
+                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button
                     }
                       <Modal isVisible={this.state.visibleModal === 1}>
                         {this._renderModalContent()}
@@ -284,12 +284,12 @@ _renderModalContent = () => (
                   style = {{alignItems: 'center'}}
                   >
                     <Avatar
+
                         large
                         source={require('../images/jprofile.png')}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
-
                     />
                     <Text style={{  fontSize: 10, }} 
                           onPress={() => this.props.navigation.navigate('profile')}>
@@ -308,6 +308,7 @@ _renderModalContent = () => (
                             {this.props.city
                             }
                         </Text>
+
                   </View>
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >

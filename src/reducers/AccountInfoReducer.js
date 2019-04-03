@@ -7,7 +7,12 @@ import {
   CREATE_PROFILE_SUCCESS,
   CREATE_PROFILE_FAIL,
   PROFILE_FETCH_SUCCESS,
-  PHOTO_CHANGED
+  PHOTO_CHANGED,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAIL,
+  SUBMIT_USERNAME,
+  SUBMIT_CITY,
+  SUBMIT_PHOTO
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -51,6 +56,14 @@ export default (state = INITIAL_STATE, action) => {
         username: action.payload.username,
         fname: action.payload.fname,
         lname: action.payload.lname };
+    case EDIT_PROFILE_SUCCESS:
+      return { ...state, loading: false }
+    case EDIT_PROFILE_FAIL:
+      return { ...state, error: action.payload, loading: false };
+    case SUBMIT_USERNAME:
+      return { ...state, loading: true, error: '' };
+    case SUBMIT_CITY:
+      return { ...state, loading: true, error: '' };
     default:
       return state;
   }
