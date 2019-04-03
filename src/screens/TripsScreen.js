@@ -24,6 +24,8 @@ const test = [
   { id: "fourth", uri: require('../images/grandCanyon2.png')}
 ]
 const SCREEN_WIDTH = Dimensions.get('window').width;
+
+
 class TripsScreen extends React.Component {
   state = {
     toggle: false //for bookmark icon switch

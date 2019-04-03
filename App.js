@@ -26,20 +26,13 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
-<<<<<<< HEAD
-import TripsScreen from './src/screens/TripsScreen';
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
-<<<<<<< HEAD
-=======
-import TripScreen from './src/screens/TripScreen';
+import TripsScreen from './src/screens/TripsScreen';
 import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
 import ChangeUsernameScreen from './src/screens/ChangeUsernameScreen';
 import PrivacyScreen from './src/screens/PrivacyScreen';
-
->>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
-=======
 import MapScreen from './src/screens/MapScreen';
->>>>>>> bd70be2a326d66bb8fddccc92891bb6ab753b9b3
+
 
 
 export default class App extends React.Component {
@@ -83,19 +76,16 @@ export default class App extends React.Component {
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
-<<<<<<< HEAD
+
         dreamlist: DreamListScreen,
+
         trip: TripsScreen,
-<<<<<<< HEAD
-=======
         changehomelocation: ChangeHomeLocationScreen,
         changeusername: ChangeUsernameScreen,
         privacy: PrivacyScreen,
-        
->>>>>>> 084720fec82c1e95d351ca0ca3454d4850071db4
-=======
+
         map: MapScreen,
->>>>>>> bd70be2a326d66bb8fddccc92891bb6ab753b9b3
+
 
         main: createBottomTabNavigator({
             dash: {
