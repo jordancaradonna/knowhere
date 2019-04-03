@@ -16,6 +16,7 @@
     "react-native-elements": "^0.19.1",
     "react-native-fetch-blob": "^0.10.8",
     "react-native-image-picker": "^0.28.0",
+    "react-native-keyboard-aware-scroll-view": "^0.8.0",
     "react-native-modal": "^9.0.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-search-bar": "^3.4.2",
