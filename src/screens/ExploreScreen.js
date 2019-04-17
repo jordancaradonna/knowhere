@@ -3,9 +3,9 @@ import { View, Text, TextInput, Image, StyleSheet,
           Dimensions, Animated, ScrollView, 
           TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
+import { connect } from 'react-redux';
 //import SearchBar from 'react-native-search-bar';
-import { connect } from 'react-redux'
-import { profileFetch } from '../actions'
+import { profileFetch, searchUser } from '../actions'
 
 
 const Users = [ //Jordan
@@ -46,7 +46,9 @@ class ExploreScreen extends React.Component {
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
   }
-
+  onSearchUser(text) {
+    this.props.searchUser(text);
+  }
 
   render () {
     return (
@@ -63,9 +65,8 @@ class ExploreScreen extends React.Component {
           ref='searchBar'
           placeholder='Search'
           placeholderTextColor='white'
+          onChangeText = {this.onSearchUser.bind(this)}
         />
-
-
 
         <View //contains the 1st CardSection ---------JORDAN----------  
         >      
@@ -480,12 +481,17 @@ const styles = {
     }
 }
 
-//Connect the current props to redux props
-const mapStateToProps = ({ info }) => {
-  const { fname, lname, city, username } = info;
 
-  return { fname, lname, city, username };
+//Connect the current props to redux props
+const mapStateToProps = ({ info, explore }) => {
+  const { fname, lname, city, username } = info;
+  const { search } = explore;
+
+  
+
+  return { fname, lname, city, username, search };
 };
 
 
-export default connect(mapStateToProps, {profileFetch}) (ExploreScreen);
+export default connect(mapStateToProps, {profileFetch, searchUser}) (ExploreScreen);
+
