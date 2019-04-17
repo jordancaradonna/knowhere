@@ -55,6 +55,7 @@ export const createProfile = ({fname, lname, username, city}, callbackFunction )
       .set({ fname, lname, username, city })
       .then(user => createProfileSuccess(dispatch, callbackFunction))
       .catch((error) => {
+        alert.alert('Welcome to Knowhere');
         console.log(error);
         createProfileFail(dispatch, error.message)
       });
@@ -97,6 +98,7 @@ export const submitUsername = ({username}) => {
       .update({ username })
       .then(user => editProfileSuccess(dispatch))
       .catch((error) => {
+        alert.alert('Profile Username updated');
         console.log(error);
         editProfileFail(dispatch, error.message)
       });
@@ -112,6 +114,7 @@ export const submitCity = ({city}) => {
       .update({ city })
       .then(user => editProfileSuccess(dispatch))
       .catch((error) => {
+        alert.alert('Profile City updated');
         console.log(error);
         editProfileFail(dispatch, error.message)
       });

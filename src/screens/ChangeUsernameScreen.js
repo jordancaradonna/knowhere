@@ -1,19 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, StyleSheet, Button, Modal } from 'react-native';
+import {View, Text, TextInput, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { usernameChanged, submitUsername } from '../actions';
 
 class ChangeUsernameScreen extends Component {
-
-  state = 
-  {
-    modalVisible: false,
-  };
-
-  setModalVisible(visible) 
-  {
-    this.setState({modalVisible: visible});
-  }
 
   onUsernameChange(text) {
     this.props.usernameChanged(text);
@@ -49,14 +39,7 @@ class ChangeUsernameScreen extends Component {
                     backgroundColor = '#f8f8f8'
                     style = {{padding: 5}}
                     onPress={this.onSubmitPress.bind(this)}
-                    onPress={() => {this.setModalVisible(!this.state.modalVisible);}}
                 />
-                <Modal
-                    //visible="true"
-                    animationType="fade"
-                >
-                    <Text>Your Username has been updated!</Text>
-                </Modal>
                 <Button
                     rounded
                     style= {[styles1.buttonStyle,]}
