@@ -3,6 +3,8 @@ import { View, Text, TextInput, Image, StyleSheet,
           Dimensions, Animated, ScrollView, 
           TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Avatar, Button, SearchBar } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { searchUser } from '../actions';
 //import SearchBar from 'react-native-search-bar';
 
 
@@ -42,7 +44,9 @@ class ExploreScreen extends React.Component {
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
   }
-
+  onSearchUser(text) {
+    this.props.searchUser(text);
+  }
 
   render () {
     return (
@@ -59,9 +63,8 @@ class ExploreScreen extends React.Component {
           ref='searchBar'
           placeholder='Search'
           placeholderTextColor='white'
+          onChangeText = {this.onSearchUser.bind(this)}
         />
-
-
 
         <View //contains the 1st CardSection ---------JORDAN----------  
         >      
@@ -476,5 +479,11 @@ const styles = {
     }
 }
 
+const mapStateToProps = ({ explore }) => {
+  const { search } = explore;
 
-export default ExploreScreen;
+  return { search };
+};
+
+
+export default connect(mapStateToProps, { searchUser })(ExploreScreen);
