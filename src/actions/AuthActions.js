@@ -50,7 +50,6 @@ export const loginUser = ({ email, password }, callbackFunction) => {
 export const createUser = ({ email, password, confirmPassword }, callbackFunction) => {
   return (dispatch) => {
     dispatch({ type: CREATE_USER });
-    console.log(password, confirmPassword);
     if(password === confirmPassword) {
       firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(user => loginUserSuccess(dispatch, user, callbackFunction))

@@ -123,14 +123,6 @@ onViewAllPress() {
     visibleModal: null,
   };
 
-
-
-
-
-
-
-
-
 // --MODEL-- content for when creating a new post
 _renderModalContent = () => (
 
@@ -189,6 +181,7 @@ _renderModalContent = () => (
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
+    console.log('final check', this.props)
     return (
       <SafeAreaView style={{flex:1}}>
         <Header
@@ -208,8 +201,10 @@ _renderModalContent = () => (
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
                 large
-                
                 source={require('../images/jprofile.png')}
+                rounded
+                source={{ uri: this.props.photo }}
+
                 containerStyle={styles.AvatarStyle}
                 onPress={() => console.log("Works!")}
                 activeOpacity={1}>
@@ -318,17 +313,17 @@ _renderModalContent = () => (
 
       <View>
         <ScrollView>
-           
 
-             <View // contains the CardSection  
+             <View // contains the CardSection
+
                style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
                >
-                    <Text 
+                    <Text
                         onPress = {this.onViewAllPress.bind(this)}
                         style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                        View Post
                     </Text>
-                    
+
               <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
                 >
                 <View //contains bio info on the left
@@ -342,15 +337,15 @@ _renderModalContent = () => (
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 10, }} 
+                    <Text style={{  fontSize: 10, }}
                           onPress={() => this.props.navigation.navigate('profile')}>
                         Jordan Caradonna
                     </Text>
-                 
+
                   <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
-                              borderColor: '#ddd',}} //location pin 
+                              borderColor: '#ddd',}} //location pin
                       >
-                        <Image 
+                        <Image
                             source = {require('../images/home.png')}
                             style = {{height: 14, width: 14}}
                         />
@@ -362,35 +357,35 @@ _renderModalContent = () => (
                   </View>
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
-                          <Icon 
+                          <Icon
                           onPress = {()=> this.changeIcon()}
                           name={iconName} size={35}/>
                     </View>
                 </View>
-                  
-                  
+
+
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
                   >
 
-                             {this.renderImages()} 
+                             {this.renderImages()}
                         </ScrollView>
-                 
+
               </View>
-            </View> 
+            </View>
 
 
 
 
-            <View // contains the CardSection  
+            <View // contains the CardSection
                style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
                >
-                    <Text 
+                    <Text
                         onPress = {this.onViewAllPress.bind(this)}
                         style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                        View Post
                     </Text>
-                    
+
               <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
                 >
                 <View //contains bio info on the left
@@ -404,20 +399,20 @@ _renderModalContent = () => (
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 10, }} 
+                    <Text style={{  fontSize: 10, }}
                           onPress={() => this.props.navigation.navigate('profile')}>
                         Jordan Caradonna
                     </Text>
-                 
+
                   <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
-                              borderColor: '#ddd',}} //location pin 
+                              borderColor: '#ddd',}} //location pin
                       >
-                        <Image 
+                        <Image
                             source = {require('../images/home.png')}
                             style = {{height: 14, width: 14}}
                         />
                         <Text style={{fontSize: 12}}>
-                          
+
                             {this.props.city
                             }
                         </Text>
@@ -425,21 +420,22 @@ _renderModalContent = () => (
                   </View>
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
-                          <Icon 
+                          <Icon
                           onPress = {()=> this.changeIcon()}
                           name={iconName} size={35}/>
                     </View>
                 </View>
-                  
-                  
+
+
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
                   >
+
                              {this.renderImages1()} 
                         </ScrollView>
-                 
+
               </View>
-            </View> 
+            </View>
 
 
     <View style ={{flex: 1, flexDirection: 'row',
@@ -483,8 +479,6 @@ _renderModalContent = () => (
         </View>
 
       </View>
-
-
 
            </ScrollView>
          </View>
@@ -593,9 +587,9 @@ const styles = {
 
 //Connect the current props to redux props
 const mapStateToProps = ({ info }) => {
-  const { fname, lname, city, username } = info;
+  const { fname, lname, city, username, photo } = info;
 
-  return { fname, lname, city, username };
+  return { fname, lname, city, username, photo };
 };
 
 export default connect(mapStateToProps, { profileFetch })(ProfileScreen);

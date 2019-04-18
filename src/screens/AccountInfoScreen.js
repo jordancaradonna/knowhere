@@ -12,7 +12,7 @@ import {
   createProfile,
   photoChanged,
  } from '../actions'
- 
+
 
 class AccountInfoScreen extends React.Component {
 
@@ -65,7 +65,6 @@ class AccountInfoScreen extends React.Component {
   }
 
   renderPhoto() {
-    console.log(this.props);
     if(this.props.photo != null){
       return (
         <Avatar
@@ -147,7 +146,7 @@ class AccountInfoScreen extends React.Component {
               style={{padding:8}}
               onPress={this.onSelectPhotoPress.bind(this)}
             />
-            
+
             {this.renderPhoto()}
               <Text> </Text>
 
@@ -235,6 +234,6 @@ export default connect (
     cityChanged,
     createProfile,
     photoChanged
-  } 
-) 
+  }
+)
 (AccountInfoScreen);

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import * as firebase from 'firebase';
 import {
   FNAME_CHANGED,
   LNAME_CHANGED,
@@ -12,7 +12,8 @@ import {
   SUBMIT_USERNAME,
   SUBMIT_CITY,
   EDIT_PROFILE_SUCCESS,
-  EDIT_PROFILE_FAIL
+  EDIT_PROFILE_FAIL,
+  USERNAME_CHECK
 } from './types.js';
 
 export const fnameChanged = (text) => {
@@ -46,19 +47,21 @@ export const photoChanged = (image) => {
   };
 };
 
-export const createProfile = ({fname, lname, username, city}, callbackFunction ) => {
+export const createProfile = ({fname, lname, username, city, photo}, callbackFunction ) => {
   const currentUser = firebase.auth().O;
 
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: CREATE_PROFILE });
+    const photoUrl = await uploadImageAsync(photo.uri)
+    console.log('Hey Chad check this out', photoUrl);
     firebase.database().ref(`users/${currentUser}/account`)
-      .set({ fname, lname, username, city })
+      .set({ fname, lname, username, city, photoUrl })
       .then(user => createProfileSuccess(dispatch, callbackFunction))
       .catch((error) => {
         console.log(error);
         createProfileFail(dispatch, error.message)
-      });
-    };
+    });
+  };
 };
 
 const createProfileFail = (dispatch, errorText) => {
@@ -76,13 +79,52 @@ const createProfileSuccess = (dispatch, callbackFunction) => {
   callbackFunction();
 };
 
+async function uploadImageAsync(uri) {
+  console.log('uploading Image', uri);
+  const currentUser = firebase.auth().O;
+  // Why are we using XMLHttpRequest? See:
+  // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+  const blob = await new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      resolve(xhr.response);
+    };
+    xhr.onerror = function(e) {
+      console.log(e);
+      reject(new TypeError('Network request failed'));
+    };
+    xhr.responseType = 'blob';
+    xhr.open('GET', uri, true);
+    xhr.send(null);
+  });
+
+  console.log('IS IT STILL WORKING?', blob);
+
+  const ref = firebase
+    .storage()
+    .ref()
+    .child(`${currentUser}-profilePic`);
+  const snapshot = await ref.put(blob);
+
+  console.log('PLease help', ref);
+
+  // We're done with the blob, close and release it
+  blob.close();
+  const urlObj = await snapshot.ref.getDownloadURL();
+  console.log(urlObj);
+  return urlObj;
+  //const url = urlObj.i;
+  //console.log('HERE, HERE, HERE!!!!!!!!', url);
+  //return await snapshot.ref.getDownloadURL();
+}
+
 export const profileFetch = () => {
   const currentUser = firebase.auth().O;
 
   return (dispatch) => {
     firebase.database().ref(`users/${currentUser}/account`)
       .on('value', snapshot => {
-        console.log(snapshot.val())
+        console.log(snapshot.val());
         dispatch({ type: PROFILE_FETCH_SUCCESS, payload: snapshot.val() });
       });
   }
@@ -93,6 +135,10 @@ export const submitUsername = ({username}) => {
 
   return (dispatch) => {
     dispatch({ type: SUBMIT_USERNAME });
+    firebase.database().ref('users')
+    .on('value', snapshot => {
+      console.log(snapshot.val());
+    });
     firebase.database().ref(`users/${currentUser}/account`)
       .update({ username })
       .then(user => editProfileSuccess(dispatch))
@@ -105,7 +151,6 @@ export const submitUsername = ({username}) => {
 
 export const submitCity = ({city}) => {
   const currentUser = firebase.auth().O
-
   return (dispatch) => {
     dispatch({ type: SUBMIT_CITY });
     firebase.database().ref(`users/${currentUser}/account`)
@@ -131,3 +176,12 @@ const editProfileSuccess = (dispatch, callbackFunction) => {
     payload: null
   });
 };
+
+const usernameCheck = (username) => {
+  return (dispatch) => {
+    firebase.database().ref(`users`)
+      .on('value', snapshot => {
+        console.log(snapshot.val())
+      });
+  }
+}

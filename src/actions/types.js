@@ -28,3 +28,6 @@ export const SUBMIT_PHOTO = 'submit_photo';
 //Explore
 export const SEARCH_USER = 'search_user';
 
+
+export const USERNAME_CHECK = 'username_check';
+
