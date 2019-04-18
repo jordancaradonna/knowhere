@@ -2,12 +2,17 @@ import React from 'react';
 import { View, Text, Image, Animated, 
           StyleSheet, Dimensions, ScrollView} from 'react-native';
 import { Button, Avatar } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
+//import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
-const Users = [ //Jordan
+
+
+const Users = [ // jordan
   { id: "first", uri: require('../images/namibiaDrinks.png') },
+  { id: "second", uri: require('../images/joshNamibia.png')},
 ]
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -20,20 +25,34 @@ class DashboardOutingScreen extends React.Component {
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
   }
+
+  state = {
+    toggle: false //for bookmark icon switch
+  }
+  changeIcon() {
+    const newState = !this.state.toggle;
+    this.setState({toggle: newState})
+    this.props.onStateChange && this.props.onStateChange(newState)
+  }
   
   render = () => {
+    const {toggle}= this.state;
+    const iconName = toggle ? "bookmar" : "bookmark-o";
     return (
       <ScrollView style={{flex:1}}>
 
-      <View style ={{flex: 1, flexDirection: 'row'}} //
+      <View style ={{flex: 1, flexDirection: 'row',
+                    borderColor: '#C5C7CA', borderWidth: 1.5 }} //
       >
-        <View //contains the CardSection  ---------NAMIBIA----------
+        <View //contains the CardSection  ---------NAMIBIA-----------------------
         >      
-            <View style = {{flex: 1, flexDirection: 'column' }}>  
-              <Image 
-                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}} 
+            <View style = {{flex: 1, flexDirection: 'column',
+                            borderColor: '#C5C7CA', borderWidth: 2 }}
+                    >  
+              <Image  //style = {styles1.viewStyle}
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
                 source={require('../images/namibiaDrinks.png')} />
-                
+              
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
@@ -47,19 +66,25 @@ class DashboardOutingScreen extends React.Component {
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
-                    <Text style= {{marginTop: 12}} > 
-                              Karibib, NM
+                    <Text style= {{marginTop: 12, marginRight: 10}} > 
+                              Karibib, NM        
                     </Text>
-                    <Image 
-                        source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
-                    />
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                    
                 </View>   
             </View>
         </View>
-        <View //contains the CardSection  ---------CUP & BAR----------
+
+        <View //contains the CardSection  ---------CUP & BAR----------------------
         >      
-            <View style = {{flex: 1, flexDirection: 'column' }}>  
+            <View style = {{flex: 1, flexDirection: 'column',
+                    borderColor: '#C5C7CA', borderWidth: 2}}>  
             
               <Image 
                 style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
@@ -78,13 +103,17 @@ class DashboardOutingScreen extends React.Component {
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
-                    <Text style= {{marginTop: 12}} > 
+                    <Text style= {{marginTop: 12, marginRight: 15}} > 
                               Portland
                     </Text>
-                    <Image 
-                        source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
-                    />
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                   
                 </View>   
             </View>
         </View>
@@ -92,16 +121,19 @@ class DashboardOutingScreen extends React.Component {
 
 
 
-
-        <View style ={{flex: 1, flexDirection: 'row'}} //
+      
+      <View style ={{flex: 1, flexDirection: 'row',
+                  borderColor: '#C5C7CA', borderWidth:1.5}} //
       >
-        <View //contains the CardSection  --------- pasadena bar ----------
+        <View //contains the CardSection  ---------Bookstore-------------------------
         >      
-            <View style = {{flex: 1, flexDirection: 'column' }}>  
-              <Image 
-                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}} 
+            <View style = {{flex: 1, flexDirection: 'column',
+                          borderColor: '#C5C7CA', borderWidth: 2 }}
+                    >  
+              <Image  style = {styles1.viewStyle}
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
                 source={require('../images/lastBookstore.png')} />
-                
+              
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
@@ -109,25 +141,31 @@ class DashboardOutingScreen extends React.Component {
                         small
                         source={require('../images/koryProfile.png')}
                         containerStyle={styles.AvatarStyle}
-                        onPress={() => this.props.navigation.navigate('profile')}
+                        //onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
-                    <Text style= {{marginTop: 12}} > 
-                              Los Angeles
+                    <Text style= {{marginTop: 12, marginRight: 10}} > 
+                              Los Angeles        
                     </Text>
-                    <Image 
-                        source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
-                    />
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                    
                 </View>   
             </View>
         </View>
-        <View //contains the CardSection  --------  last bookstore----------
+
+        <View //contains the CardSection  ---------wine bar----------------------------
         >      
-            <View style = {{flex: 1, flexDirection: 'column' }}>  
+            <View style = {{flex: 1, flexDirection: 'column',
+                            borderColor: '#C5C7CA', borderWidth: 2}}>  
             
               <Image 
                 style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
@@ -146,13 +184,17 @@ class DashboardOutingScreen extends React.Component {
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
-                    <Text style= {{marginTop: 12}} > 
+                    <Text style= {{marginTop: 12, marginRight: 15}} > 
                               Pasadena
                     </Text>
-                    <Image 
-                        source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
-                    />
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                    
                 </View>   
             </View>
         </View>
@@ -160,17 +202,20 @@ class DashboardOutingScreen extends React.Component {
 
 
 
-      <View //contains the CardSection  ---------Sanctuary----------
+
+
+      <View style ={{flex: 1, flexDirection: 'row',
+                      borderColor: '#C5C7CA', borderWidth: 1.5}} //
+      >
+        <View //contains the CardSection  ---------sanctuary--------------------------
         >      
-            <View style = {{flex: 1, flexDirection: 'column' }}>  
-              <View style = {{aligntItems: 'center', flexDirection: 'row'}} >
-                <Image 
-                  style={{width: 210, height: 190, marginTop: 10, marginBottom: 5}} 
-                  source={require('../images/sanctuary1.png')} />
-                <Image 
-                  style={{width: 210, height: 190, marginTop: 10, marginBottom: 5}} 
-                  source={require('../images/sanctuary2.png')} />
-              </View>
+            <View style = {{flex: 1, flexDirection: 'column',
+                            borderColor: '#C5C7CA', borderWidth: 2 }}
+                    >  
+              <Image  style = {styles1.viewStyle}
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
+                source={require('../images/sanctuary1.png')} />
+              
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
@@ -178,28 +223,63 @@ class DashboardOutingScreen extends React.Component {
                         small
                         source={require('../images/chadProfile.png')}
                         containerStyle={styles.AvatarStyle}
-                        onPress={() => this.props.navigation.navigate('profile')}
+                        //onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 14, paddingLeft: 5, marginTop: 12, marginLeft: 5}} 
-                          onPress={() => this.props.navigation.navigate('profile')}>
-                          Chad Ditter    
-                    </Text>
                     <Image 
                               source = {require('../images/pin.png')}
-                              style = {{height: 20, width: 20, marginLeft: 30, marginTop: 11}}/>
-                    <Text style= {{marginTop: 12}} > 
-                              Claremont
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12, marginRight: 15}} > 
+                              Claremont        
                     </Text>
-                    <Image 
-                        source = {require('../images/bookmarkOuting.png')}
-                        style = {{height: 25, width: 25, marginLeft: 40, marginTop: 10}}
-                    />
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                    
                 </View>   
             </View>
         </View>
 
-
+        <View //contains the CardSection  ---------wine-----------------------
+        >      
+            <View style = {{flex: 1, flexDirection: 'column',
+                        borderColor: '#C5C7CA', borderWidth: 2}}>  
+            
+              <Image 
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
+                source={require('../images/pasadenaWine.png')} />
+                
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/maddieProfile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Image 
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12, marginRight: 15}} > 
+                              Pasadena
+                    </Text>
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon 
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+                </View>   
+            </View>
+        </View>
+      </View>
 
       </ScrollView>
     )
@@ -213,7 +293,7 @@ class DashboardOutingScreen extends React.Component {
             style = { styles.container}
           >
               <Image 
-                style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
+                style = {{flex: 1, height: 175, width: 200, resizeMode: 'cover', borderRadius: 20}}
                 source = {item.uri}
               />
           </Animated.View>
@@ -254,6 +334,11 @@ const styles1 = StyleSheet.create({
     //backgroundColor: "#83b4ff",
     //borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  viewStyle:{
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 4},
+    shadowOpacity:0.5
   }
 });
 

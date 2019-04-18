@@ -48,6 +48,8 @@ class DashboardScreen extends React.Component {
   state = {
     toggle: false //for bookmark icon switch
   }
+
+
   changeIcon() {
     const newState = !this.state.toggle;
     this.setState({toggle: newState})
@@ -114,15 +116,15 @@ class DashboardScreen extends React.Component {
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
                           <Icon 
-                          onPress = {()=> this.changeIcon()}
-                          name={iconName} size={35}/>
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={35}/>
                     </View>
                 </View>
                   
                   
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
-                  >
+                        >
 
                              {this.renderImages()} 
                         </ScrollView>
