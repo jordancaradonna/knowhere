@@ -91,7 +91,7 @@ const styles1 = StyleSheet.create({
     //   justifyContent: 'center',
     // },
     title:{
-      fontSize: 20,
+      fontSize: 25,
       //fontFamily: 'Chalkboard SE',
       padding: 5,
       color: 'black'
