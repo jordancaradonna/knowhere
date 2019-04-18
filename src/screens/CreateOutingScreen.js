@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
 
+
 class CreateOutingScreen extends React.Component {
 
   onPostPress () {

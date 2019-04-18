@@ -30,7 +30,7 @@ import SettingsScreen from './src/screens/SettingsScreen';
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
 //import TripsScreen from './src/screens/TripsScreen';
 import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
-import ChangeUsernameScreen from './src/screens/ChangeUsernameScreen';
+import EditProfile from './src/screens/EditProfile';
 import PrivacyScreen from './src/screens/PrivacyScreen';
 import MapScreen from './src/screens/MapScreen';
 
@@ -80,8 +80,8 @@ export default class App extends React.Component {
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
-        changehomelocation: ChangeHomeLocationScreen,
-        changeusername: ChangeUsernameScreen,
+        //changehomelocation: ChangeHomeLocationScreen,
+        editProfile: EditProfile,
         privacy: PrivacyScreen,
         map: MapScreen,
         dreamlist: DreamListScreen,
@@ -113,7 +113,8 @@ export default class App extends React.Component {
                   <Icon name="ios-notifications"
                         color={ tintColor }
                         size={24} />
-                )
+                ),
+                header: 'title'
               }
             },
             explore: {

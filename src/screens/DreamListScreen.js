@@ -17,14 +17,7 @@ class DreamListScreen extends React.Component {
             style={styles.container}>
 
 
-          <Button
-            small
-            rounded
-            title='Profile'
-            color='black'
-            backgroundColor = '#f8f8f8'
-            style = {{padding: 5}} 
-            onPress={this.onProfilePress.bind(this)} />
+         
 
 
 

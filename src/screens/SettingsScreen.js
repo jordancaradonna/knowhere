@@ -8,11 +8,9 @@ class SettingsScreen extends React.Component {
   onNotificationsPress() {
     this.props.navigation.navigate('');
   }
-  onChangeHomeLocationPress() {
-    this.props.navigation.navigate('changehomelocation');
-  }
-  onChangeUsernamePress() {
-    this.props.navigation.navigate('changeusername');
+  
+  onEditProfilePress() {
+    this.props.navigation.navigate('editProfile');
   }
   onPrivacyPress() {
     this.props.navigation.navigate('privacy');
@@ -35,12 +33,12 @@ class SettingsScreen extends React.Component {
           style= {[styles1.buttonStyle,]}
           leftIcon={{ name: 'account-box',
                         color: "#83b4ff"}}
-          title='Change Username                                  '
+          title='Edit Profile                                                '
           rightIcon={{ name: 'forward',
                         color: "grey"}}
           color= "black"
           backgroundColor="#white"
-          onPress={this.onChangeUsernamePress.bind(this)}   />
+          onPress={this.onEditProfilePress.bind(this)}   />
 
         <Button
           style= {[styles1.buttonStyle,]}
@@ -52,16 +50,7 @@ class SettingsScreen extends React.Component {
           color='black'
           backgroundColor='#white'
           onPress={this.onNotificationsPress.bind(this)}   />
-        <Button
-          style= {[styles1.buttonStyle,]}
-          leftIcon={{ name: 'home',
-                        color: "#83b4ff"}}
-          title='Change Home Location                         '
-          rightIcon={{ name: 'forward',
-                        color: "grey"}}
-          color='black'
-          backgroundColor='#white'
-          onPress={this.onChangeHomeLocationPress.bind(this)}   />
+        
 
         <Button
           style= {[styles1.buttonStyle,]}

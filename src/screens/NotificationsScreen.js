@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import {AppRegistry, StyleSheet, Text, View, SectionList} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, SectionList, SafeAreaView} from 'react-native';
+import {Header} from 'react-native-elements';
 
 class NotificationsScreen extends React.Component {
   render() {
     return (
-        <View  style={styles.container}>
-        <Text style={[styles.title,]}> Notifications </Text>
+        <SafeAreaView  style={styles.container}>
+        <Header
+          centerComponent={{ text: 'Notification' }}
+          //rightComponent={{ Icon: 'cog' }}
+          backgroundColor= 'white'
+          />
+       
           <SectionList
             
             sections={[
@@ -16,14 +22,14 @@ class NotificationsScreen extends React.Component {
             renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
             keyExtractor={(item, index) => index}
           />
-        </View>
+        </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-   flex: 1,
+   flex: 1, 
    paddingTop: 22,
    alignItems: 'center'
   },
@@ -33,7 +39,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     title:{
-      fontSize: 28,
+      //fontSize: 28,
       //fontFamily: 'Chalkboard SE',
       padding: 5,
       color: 'black',
@@ -43,13 +49,13 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 2,
-    fontSize: 14,
+    //fontSize: 14,
     fontWeight: 'bold',
     backgroundColor: 'lightblue',
   },
   item: {
     padding: 10,
-    fontSize: 18,
+    //fontSize: 18,
     height: 44,
   },
 });
