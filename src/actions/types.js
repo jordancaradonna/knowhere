@@ -18,14 +18,13 @@ export const CREATE_PROFILE_SUCCESS = 'create_profile_success';
 export const CREATE_PROFILE_FAIL = 'create_profile_fail';
 export const PROFILE_FETCH_SUCCESS = 'profile_fetch_success';
 export const PHOTO_CHANGED = 'photo_changed';
-<<<<<<< HEAD
 export const EDIT_PROFILE_SUCCESS = 'edit_profile_success';
 export const EDIT_PROFILE_FAIL = 'edit_profile_fail';
 export const SUBMIT_USERNAME = 'submit_username';
 export const SUBMIT_CITY = 'submit_city';
 export const SUBMIT_PHOTO = 'submit_photo';
-=======
+
 
 //Explore
 export const SEARCH_USER = 'search_user';
->>>>>>> Development/map-feature
+
