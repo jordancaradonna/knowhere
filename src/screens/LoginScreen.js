@@ -99,7 +99,7 @@ class LoginScreen extends React.Component {
             backgroundColor='#white'
             marginBottom= '15'
             onPress={this.onForgotPasswordPress.bind(this)}
-        />
+        /> 
 
 
         <View style={styles.container2}>

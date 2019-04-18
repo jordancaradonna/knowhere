@@ -1,34 +1,61 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import {View, Text, TextInput, StyleSheet, Button, ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
-import { usernameChanged, submitUsername } from '../actions';
+import { usernameChanged, submitUsername,
+             cityChanged, submitCity } from '../actions';
 
-class ChangeUsernameScreen extends Component {
+class EditProfile extends Component {
 
   onUsernameChange(text) {
     this.props.usernameChanged(text);
   }
+  onCityChange(text) {
+    this.props.cityChanged(text);
+  }
   onCancelPress() {
       this.props.navigation.navigate('settings');
   }
-  onSubmitPress() {
+  onSubmitPress() { 
     const { username } = this.props;
+    const { city } = this.props;
     this.props.submitUsername({username})
-  }
+    this.props.submitCity({city})
+    this.props.navigation.navigate('profile');
+}
+  
     render() {
         return(
-            <View style={[styles1.container,]}>
-                <Text style={[styles1.title,]}>
-                    Change Username
+            <ImageBackground source={require('../images/kwFeels.png')}
+                    style={[styles1.container,]}>
+                <Text> </Text>
+                
+                <Text style={[styles1.title,]} 
+                        >
+                    Edit Profile
                 </Text>
+                <Text> </Text>
+                <Text> </Text>
+                <Text> </Text>
+                <Text> </Text>
 
                 <TextInput
                     style={{height: 45, width: 250,
                         backgroundColor: 'white',
-                        borderColor: 'black', borderWidth: 0.5}}
+                        borderColor: 'black', borderWidth: 0.5,
+                        marginBottom: 20}}
                     placeholder=' Change Username: '
                     value={this.props.username}
                     onChangeText={this.onUsernameChange.bind(this)}
+                />
+
+                <TextInput
+                    style={{height: 45, width: 250,
+                        backgroundColor: 'white',
+                        borderColor: 'black', borderWidth: 0.5,
+                        marginBottom: 20}}
+                    placeholder=' Change Home Location: '
+                    value={this.props.city}
+                    onChangeText={this.onCityChange.bind(this)}
                 />
                 <Button
                     rounded
@@ -48,7 +75,7 @@ class ChangeUsernameScreen extends Component {
                     style = {{padding: 5}}
                     onPress={this.onCancelPress.bind(this)}
                 />
-            </View>
+            </ImageBackground>
         );
     }
 }
@@ -64,10 +91,11 @@ const styles1 = StyleSheet.create({
     //   justifyContent: 'center',
     // },
     title:{
-      fontSize: 28,
+      fontSize: 25,
       //fontFamily: 'Chalkboard SE',
       padding: 5,
-      color: 'black',
+      color: 'black'
+      
     },
     // buttonTitle:{
     //   fontSize: 28,
@@ -93,6 +121,8 @@ const styles1 = StyleSheet.create({
   export default connect (
     mapStateToProps,{
       usernameChanged,
-      submitUsername
+      submitUsername,
+      cityChanged,
+      submitCity
     }
-  )(ChangeUsernameScreen);
+  )(EditProfile);
