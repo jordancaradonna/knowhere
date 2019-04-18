@@ -23,3 +23,4 @@ export const EDIT_PROFILE_FAIL = 'edit_profile_fail';
 export const SUBMIT_USERNAME = 'submit_username';
 export const SUBMIT_CITY = 'submit_city';
 export const SUBMIT_PHOTO = 'submit_photo';
+export const USERNAME_CHECK = 'username_check';

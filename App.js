@@ -43,15 +43,25 @@ import ViewIreland from './src/screens/ViewIreland';
 
 export default class App extends React.Component {
   componentWillMount() {   // Initialize Firebase
+    // const config = {
+    // apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
+    // authDomain: 'knowhere.firebaseapp.com',
+    // databaseURL: 'https://knowhere.firebaseio.com',
+    // projectId: 'knowhere',
+    // storageBucket: '',
+    // messagingSenderId: '289231611796'
+    // };
+    // firebase.initializeApp(config);
+    // Initialize Firebase
     const config = {
-    apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
-    authDomain: 'knowhere.firebaseapp.com',
-    databaseURL: 'https://knowhere.firebaseio.com',
-    projectId: 'knowhere',
-    storageBucket: '',
-    messagingSenderId: '289231611796'
-    };
-    firebase.initializeApp(config);
+    apiKey: "AIzaSyAbk5QwOhbOSskdMsyxbtLfm5Dqdl0B6ow",
+    authDomain: "knowhere-d8802.firebaseapp.com",
+    databaseURL: "https://knowhere-d8802.firebaseio.com",
+    projectId: "knowhere-d8802",
+    storageBucket: "knowhere-d8802.appspot.com",
+    messagingSenderId: "284533030488"
+  };
+  firebase.initializeApp(config);
   }
 
 
