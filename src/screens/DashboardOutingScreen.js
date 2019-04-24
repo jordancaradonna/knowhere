@@ -45,6 +45,7 @@ class DashboardOutingScreen extends React.Component {
                     borderColor: '#C5C7CA', borderWidth: 1.5 }} //
       >
         <View //contains the CardSection  ---------NAMIBIA-----------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                             borderColor: '#C5C7CA', borderWidth: 2 }}
@@ -82,6 +83,7 @@ class DashboardOutingScreen extends React.Component {
         </View>
 
         <View //contains the CardSection  ---------CUP & BAR----------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                     borderColor: '#C5C7CA', borderWidth: 2}}>  
@@ -126,6 +128,7 @@ class DashboardOutingScreen extends React.Component {
                   borderColor: '#C5C7CA', borderWidth:1.5}} //
       >
         <View //contains the CardSection  ---------Bookstore-------------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                           borderColor: '#C5C7CA', borderWidth: 2 }}
@@ -163,6 +166,7 @@ class DashboardOutingScreen extends React.Component {
         </View>
 
         <View //contains the CardSection  ---------wine bar----------------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                             borderColor: '#C5C7CA', borderWidth: 2}}>  
@@ -208,6 +212,7 @@ class DashboardOutingScreen extends React.Component {
                       borderColor: '#C5C7CA', borderWidth: 1.5}} //
       >
         <View //contains the CardSection  ---------sanctuary--------------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                             borderColor: '#C5C7CA', borderWidth: 2 }}
@@ -245,6 +250,7 @@ class DashboardOutingScreen extends React.Component {
         </View>
 
         <View //contains the CardSection  ---------wine-----------------------
+          style = {styles2.viewStyle}
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                         borderColor: '#C5C7CA', borderWidth: 2}}>  
@@ -342,7 +348,16 @@ const styles1 = StyleSheet.create({
   }
 });
 
-
+const styles2 = StyleSheet.create({
+  viewStyle:{
+    //borderRadius: 0,
+    borderWidth: .5,
+    borderColor: '#000',
+    //shadowColor: '#000',
+    //shadowOffset: {width: 0, height: 4},
+    //shadowOpacity:0.5
+  }
+});
 
 const styles = {
   container: {
