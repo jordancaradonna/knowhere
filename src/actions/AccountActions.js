@@ -12,7 +12,8 @@ import {
   SUBMIT_USERNAME,
   SUBMIT_CITY,
   EDIT_PROFILE_SUCCESS,
-  EDIT_PROFILE_FAIL
+  EDIT_PROFILE_FAIL,
+  FRIEND_REQUEST
 } from './types.js';
 
 export const fnameChanged = (text) => {
@@ -131,3 +132,11 @@ const editProfileSuccess = (dispatch, callbackFunction) => {
     payload: null
   });
 };
+
+// const friendRequest = () => {
+//   const showAlert = () =>{
+//      Alert.alert(
+//         'Friend request sent'
+//      )
+//   }
+// }

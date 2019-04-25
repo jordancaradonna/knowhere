@@ -148,6 +148,13 @@ class ExploreScreen extends React.Component {
                         source = {require('../images/bookmarkOuting.png')}
                         style = {{height: 25, width: 25, marginLeft: 30, marginTop: 10}}
                     />
+
+                    <Button
+                        title='FR' //friend request
+                        type='outline'
+                        style={{height: 20, width: 20, marginLeft: 30, marginTop: 11}}
+                        
+                    />
                 </View>   
             </View>
 

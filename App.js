@@ -26,6 +26,7 @@ import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import FriendScreen from './src/screens/FriendScreen';
 
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
 //import TripsScreen from './src/screens/TripsScreen';
@@ -101,7 +102,7 @@ export default class App extends React.Component {
         ViewHawaii: ViewHawaii,
         ViewIreland: ViewIreland,
         settings: SettingsScreen,
-
+        friend: FriendScreen,
 
 
         main: createBottomTabNavigator({

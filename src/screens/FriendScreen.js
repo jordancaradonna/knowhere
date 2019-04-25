@@ -1,15 +1,29 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 class FriendScreen extends React.Component {
   render () {
-    return (
-      <View>
-        <Text>
-          FriendScreen
-        </Text>
-      </View>
-    )
+    <ScrollView >
+        <Header
+          centerComponent={{ text: 'Friends' }}
+          backgroundColor= 'white'
+        />
+        <SearchBar
+          lightTheme
+          round
+          ref='searchBar'
+          placeholder='Search'
+          placeholderTextColor='white'
+          onChangeText = {this.onSearchUser.bind(this)}
+        />
+    </ScrollView>
+    // return (
+    //   <View>
+    //     <Text>
+    //       FriendScreen
+    //     </Text>
+    //   </View>
+    // )
   }
 }
 

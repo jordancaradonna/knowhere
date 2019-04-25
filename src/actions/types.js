@@ -27,4 +27,5 @@ export const SUBMIT_PHOTO = 'submit_photo';
 
 //Explore
 export const SEARCH_USER = 'search_user';
+export const FRIEND_REQUEST = 'friend_request';
 
