@@ -42,6 +42,7 @@ import ViewIreland from './src/screens/ViewIreland';
 
 
 export default class App extends React.Component {
+
   componentWillMount() {   // Initialize Firebase
     // const config = {
     // apiKey: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
@@ -63,6 +64,7 @@ export default class App extends React.Component {
   };
   firebase.initializeApp(config);
   }
+
 
 
 
