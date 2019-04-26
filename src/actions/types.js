@@ -27,6 +27,7 @@ export const SUBMIT_PHOTO = 'submit_photo';
 
 //Explore
 export const SEARCH_USER = 'search_user';
+export const SEARCH_USER_SUCCESS = 'search_user_success';
 
 
 export const USERNAME_CHECK = 'username_check';

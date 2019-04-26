@@ -1,9 +1,12 @@
 import {
-    SEARCH_USER
+    SEARCH_USER,
+    SEARCH_USER_SUCCESS
   } from '../actions/types';
   
   const INITIAL_STATE = {
-    search: ''
+    search: '',
+    searchUser: '',
+
   }
 
   export default (state = INITIAL_STATE, action) => {
@@ -11,6 +14,9 @@ import {
         case SEARCH_USER:
             console.log(action.payload);
             return { ...state, search: action.payload };
+        case SEARCH_USER_SUCCESS: 
+          console.log(action.payload);
+          return { ...state, searchUser: action.payload}
         default:
             return state;
       }

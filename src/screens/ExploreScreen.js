@@ -5,7 +5,7 @@ import { View, Text, TextInput, Image, StyleSheet,
 import { Avatar, Button, SearchBar } from 'react-native-elements';
 import { connect } from 'react-redux';
 //import SearchBar from 'react-native-search-bar';
-import { profileFetch, searchUser } from '../actions'
+import { profileFetch, searchUser, searchByUser } from '../actions'
 
 
 const Users = [ //Jordan
@@ -49,6 +49,9 @@ class ExploreScreen extends React.Component {
   onSearchUser(text) {
     this.props.searchUser(text);
   }
+  printUsers(text) {
+    this.props.searchByUser(text);
+  }
 
   render () {
     return (
@@ -66,6 +69,10 @@ class ExploreScreen extends React.Component {
           placeholder='Search'
           placeholderTextColor='white'
           onChangeText = {this.onSearchUser.bind(this)}
+        />
+        <Button 
+          title= 'press'
+          onPress = {this.printUsers.bind(this)}
         />
 
         <View //contains the 1st CardSection ---------JORDAN----------  
@@ -493,5 +500,5 @@ const mapStateToProps = ({ info, explore }) => {
 };
 
 
-export default connect(mapStateToProps, {profileFetch, searchUser}) (ExploreScreen);
+export default connect(mapStateToProps, {profileFetch, searchUser, searchByUser}) (ExploreScreen);
 
