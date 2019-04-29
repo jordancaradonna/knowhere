@@ -7,40 +7,47 @@ import ImagePicker from 'react-native-image-picker';
 
 class CreateOutingScreen extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state={selecting: false}
+  }
+
   onPostPress () {
     this.props.navigation.navigate('dash')
   }
-
-  state = {
-    photo: null,
+  onDescriptionChange(text){
+    this.props.descriptionChanged(text);
   }
 
-  handleChoosePhoto = () => {
-    const options = {
-      noData: true,
+  onSelectPhotoPress() {
+    this.setState({ selecting: true });
+  }
+
+  getSelectedImage(images) {
+    const image = images[0];
+    this.props.photoChanged(image);
+  }
+
+  onSubmitPhotoPress() {
+    this.setState({ selecting: false });
+  }
+
+  renderPhoto() {
+    if(this.props.photo != ''){
+      return (
+        <Avatar
+          rounded
+          source={{ uri: this.props.photo.uri }}
+          large
+        />
+      )
     }
-    ImagePicker.launchImageLibrary(options, respone => {
-      if (Response.uri) {
-        this.setState({ photo: response })
-      }
-    })
   }
-
-  //------------------STATE PROPERTIES FOR SWITCH----------------//
-  //Initial state false for the switch. You can change it to true just to see.
-  state = { switchValue: false };
-
-  toggleSwitch = value => {
-    //onValueChange of the switch this function will be called
-    this.setState({ switchValue: value });
-    //state changes according to switch
-    //which will result in re-render the text
-  };
 
   render () {
     const { photo } = this.state;
     return (
-      
+
       <ScrollView>
       <View style={{justifyContent: "space-evenly"}}>
         <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
@@ -53,49 +60,51 @@ class CreateOutingScreen extends React.Component {
           />
         )}
         <Button
-          title="Choose Photo"
-          iconRight={{name:'photo', color:'black'}}
-          onPress={this.handleChoosePhoto}
-          titleStyle={styles.buttonTitle}
-          buttonStyle={styles.buttonStyle}
+          title='Select Photo'
+          color="black"
+          backgroundColor='#white'
+          style={{padding:8}}
+          onPress={this.onSelectPhotoPress.bind(this)}
         />
-
         {/* ============== SCROLLABLE VIEW WHEN KEYBOARD IS ACTIVE ============ */}
         <KeyboardAwareScrollView>
 
+          {this.renderPhoto()}
+
           {/* ======== TEXT INPUT FOR DESCRIPTION OF TRIP/OUTING ========= */}
           <TextInput style={{ height: 160, width: 260,
-                              backgroundColor: 'white', 
-                              borderColor: '#ffffff', 
+                              backgroundColor: 'white',
+                              borderColor: '#ffffff',
                               borderWidth: 5, }}
-            placeholder='Trip Description'
+            placeholder='Outing Description'
             editable = {true}
             blurOnSubmit
             multiline = {true}
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={this.onDescriptionChange.bind(this)}
+            value{this.props.description}
           />
 
           {/* =========TEXT INPUT FOR LOCATION======= */}
-          <TextInput 
+          <TextInput
             style={{ height: 40, width: 200,
-                    backgroundColor: 'white', 
-                    borderColor: '#ffffff', 
+                    backgroundColor: 'white',
+                    borderColor: '#ffffff',
                     borderWidth: 5, }}
             placeholder='Location'
             blurOnSubmit
           />
 
           {/*-----------INPUT FOR TAGGING OTHER USERS IN YOUR TRIP/OUTING------------*/}
-        
+
           <TextInput
             style={{ height: 40, width: 200,
-                    backgroundColor: 'white', 
-                    borderColor: '#ffffff', 
+                    backgroundColor: 'white',
+                    borderColor: '#ffffff',
                     borderWidth: 5, }}
             placeholder='Tag People'
             blurOnSubmit
           />
-        </KeyboardAwareScrollView>     
+        </KeyboardAwareScrollView>
 
         <View flexDirection='row' justifyContent='center' alignItems='center'>
 
@@ -109,7 +118,7 @@ class CreateOutingScreen extends React.Component {
           <Text></Text>
 
           {/*-----------PUBLISH POST BUTTON------------*/}
-        
+
           <Button
             title='Publish Post'
             titleStyle={styles.buttonTitle}
@@ -120,7 +129,7 @@ class CreateOutingScreen extends React.Component {
         </View>
       </View>
       </ScrollView>
-      
+
     )
   }
 }
@@ -169,4 +178,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateOutingScreen;
+const mapStateToProps = ({ out }) => {
+  const { description, photo } = info;
+
+  return { description, photo };
+};
+
+export default connect (
+  mapStateToProps,{
+    descriptionChanged,
+    photoChanged
+  }
+)
+(CreateOutingScreen);

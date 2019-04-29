@@ -123,6 +123,17 @@ onViewAllPress() {
     visibleModal: null,
   };
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+>>>>>>> Development/16-CreateOuting
 // --MODEL-- content for when creating a new post
 _renderModalContent = () => (
 
@@ -181,7 +192,7 @@ _renderModalContent = () => (
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
-    console.log('final check', this.props)
+    console.log('final check', this.props.photo)
     return (
       <SafeAreaView style={{flex:1}}>
         <Header
@@ -194,7 +205,11 @@ _renderModalContent = () => (
         >
         <View //view of everything on top
         >
+<<<<<<< HEAD
           <ImageBackground  source={require('../images/coverPic.png')}
+=======
+          <ImageBackground  source={require('../images/grandCanyon1.png')}
+>>>>>>> Development/16-CreateOuting
                         style={{maxHeight: 120}}>
         <View justifyContent='space-between'>
           <View>
@@ -244,7 +259,11 @@ _renderModalContent = () => (
           </View>
         </View>
 
+<<<<<<< HEAD
         <View alignItems='center' flexDirection='row' 
+=======
+        <View alignItems='center' flexDirection='row'
+>>>>>>> Development/16-CreateOuting
          style = {{borderBottomWidth: 1, borderColor: '#ddd'}}
         //add new, dream list, trips, outings
         >
@@ -291,7 +310,11 @@ _renderModalContent = () => (
                                  }}
                     color='black'
                     backgroundColor='#white'
+<<<<<<< HEAD
                     onPress={this.onTripsPress.bind(this)}  
+=======
+                    onPress={this.onTripsPress.bind(this)}
+>>>>>>> Development/16-CreateOuting
                      />
                 </View>
                 <View>
@@ -303,9 +326,15 @@ _renderModalContent = () => (
                                  }}
                     color='black'
                     backgroundColor='#white'
+<<<<<<< HEAD
                     onPress={this.onOutingsPress.bind(this)}  
                      />
                     
+=======
+                    onPress={this.onOutingsPress.bind(this)}
+                     />
+
+>>>>>>> Development/16-CreateOuting
                 </View>
           </View>
         </View>
@@ -442,6 +471,7 @@ _renderModalContent = () => (
                     borderColor: '#C5C7CA', borderWidth: 1 }} //
       >
         <View //contains the CardSection  ---------NAMIBIA-----------------------
+<<<<<<< HEAD
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                             borderColor: '#C5C7CA', borderWidth: 1.5 }}
@@ -450,6 +480,16 @@ _renderModalContent = () => (
                 style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}} 
                 source={require('../images/namibiaDrinks.png')} />
               
+=======
+        >
+            <View style = {{flex: 1, flexDirection: 'column',
+                            borderColor: '#C5C7CA', borderWidth: 1.5 }}
+                    >
+              <Image  //style = {styles1.viewStyle}
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}}
+                source={require('../images/namibiaDrinks.png')} />
+
+>>>>>>> Development/16-CreateOuting
                 <View //contains info on the BOTTOM
                     style ={{ flex: 1, flexDirection: 'row'}}
                 >
@@ -460,6 +500,7 @@ _renderModalContent = () => (
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
+<<<<<<< HEAD
                     <Image 
                               source = {require('../images/pin.png')}
                               style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
@@ -469,16 +510,37 @@ _renderModalContent = () => (
                     <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
                       >
                           <Icon 
+=======
+                    <Image
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12, marginRight: 10}} >
+                              Karibib, NM
+                    </Text>
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon
+>>>>>>> Development/16-CreateOuting
                               onPress = {()=> this.changeIcon()}
                               name={iconName} size={25}
                               />
                     </View>
+<<<<<<< HEAD
                     
                 </View>   
+=======
+
+                </View>
+>>>>>>> Development/16-CreateOuting
             </View>
         </View>
 
       </View>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Development/16-CreateOuting
 
            </ScrollView>
          </View>

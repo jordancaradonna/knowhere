@@ -27,8 +27,14 @@ export const SUBMIT_PHOTO = 'submit_photo';
 
 //Explore
 export const SEARCH_USER = 'search_user';
+<<<<<<< HEAD
 export const SEARCH_USER_SUCCESS = 'search_user_success';
 
 
 export const USERNAME_CHECK = 'username_check';
 
+=======
+
+//Trips and Outings
+export const DESCRIPTION_CHANGED = 'description_changed';
+>>>>>>> Development/16-CreateOuting

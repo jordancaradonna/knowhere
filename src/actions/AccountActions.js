@@ -53,7 +53,6 @@ export const createProfile = ({fname, lname, username, city, photo}, callbackFun
   return async (dispatch) => {
     dispatch({ type: CREATE_PROFILE });
     const photoUrl = await uploadImageAsync(photo.uri)
-    console.log('Hey Chad check this out', photoUrl);
     firebase.database().ref(`users/${currentUser}/account`)
       .set({ fname, lname, username, city, photoUrl })
       .then(user => createProfileSuccess(dispatch, callbackFunction))
@@ -80,7 +79,6 @@ const createProfileSuccess = (dispatch, callbackFunction) => {
 };
 
 async function uploadImageAsync(uri) {
-  console.log('uploading Image', uri);
   const currentUser = firebase.auth().O;
   // Why are we using XMLHttpRequest? See:
   // https://github.com/expo/expo/issues/2402#issuecomment-443726662
@@ -111,11 +109,7 @@ async function uploadImageAsync(uri) {
   // We're done with the blob, close and release it
   blob.close();
   const urlObj = await snapshot.ref.getDownloadURL();
-  console.log(urlObj);
   return urlObj;
-  //const url = urlObj.i;
-  //console.log('HERE, HERE, HERE!!!!!!!!', url);
-  //return await snapshot.ref.getDownloadURL();
 }
 
 export const profileFetch = () => {
