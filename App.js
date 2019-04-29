@@ -21,6 +21,7 @@ import DreamListScreen from './src/screens/DreamListScreen';
 import ExploreScreen from './src/screens/ExploreScreen';
 import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import OtherProfileScreen from './src/screens/OtherProfileScreen';
 import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
 import OutingsScreen from './src/screens/OutingsScreen';
@@ -101,6 +102,7 @@ export default class App extends React.Component {
         ViewHawaii: ViewHawaii,
         ViewIreland: ViewIreland,
         settings: SettingsScreen,
+        other: OtherProfileScreen,
 
 
 

@@ -29,7 +29,7 @@ class CreateTripScreen extends React.Component {
     this.props.navigation.navigate('dash')
   }
 
-  //------------------STATE PROPERTIES FOR SWITCH----------------//
+  //------------------STATE PROPERTIES FOR SWITCH-----------------------------//
   //Initial state false for the switch. You can change it to true just to see.
   state = { switchValue: false };
 
@@ -76,137 +76,138 @@ class CreateTripScreen extends React.Component {
     );
   }
 
+
   render () {
     const { photo } = this.state;
     return (
       
       <ScrollView>
+
         <View style={styles.container}>
-          <TouchableOpacity onPress={()=>{this.getData()}}>
-            <Text style={{fontSize:20}}>Get Address</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{this.getData()}}>
+                <Text style={{fontSize:20}}>Get Address</Text>
+            </TouchableOpacity>
         </View>
-      <View style={{justifyContent: "space-evenly"}}>
-        <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
-          Create Trip
-        </Text>
-        {photo && (
-          <Image
-            source={{ uri: photo.uri }}
-            style={{ width: 300, height: 300 }}
-          />
-        )}
-        <Button
-          title="Choose Photo"
-          iconRight={{name:'photo', color:'black'}}
-          onPress={this.handleChoosePhoto}
-          titleStyle={styles.buttonTitle}
-          buttonStyle={styles.buttonStyle}
-        />
 
-        {/* ============== SCROLLABLE VIEW WHEN KEYBOARD IS ACTIVE ============ */}
-        <KeyboardAwareScrollView>
+        <View style={{justifyContent: "space-evenly"}}>
+            <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
+                Create Trip</Text>
+            {photo && (
+                <Image
+                    source={{ uri: photo.uri }}
+                    style={{ width: 300, height: 300 }}
+                />
+            )}
+            <Button
+                title="Choose Photos"
+                iconRight={{name:'photo', color:'black'}}
+                onPress={this.handleChoosePhoto}
+                titleStyle={styles.buttonTitle}
+                buttonStyle={styles.buttonStyle}
+            />
+          {/* ============== SCROLLABLE VIEW WHEN KEYBOARD IS ACTIVE ============ */}
+          <KeyboardAwareScrollView>
 
-          {/* ======== TEXT INPUT FOR DESCRIPTION OF TRIP/OUTING ========= */}
-          <TextInput style={{ height: 160, width: 200,
+            {/* ======== TEXT INPUT FOR DESCRIPTION OF TRIP/OUTING ========= */}
+            <TextInput style={{ height: 160, width: 200,
                               backgroundColor: 'white', 
                               borderColor: '#ffffff', 
                               borderWidth: 5, }}
-            placeholder='Trip Description'
-            editable = {true}
-            blurOnSubmit
-            multiline = {true}
-            onChangeText={(text) => this.setState({text})}
-          />
+                      placeholder='Trip Description'
+                      editable = {true}
+                      blurOnSubmit
+                      multiline = {true}
+                      onChangeText={(text) => this.setState({text})}
+              />
 
-          {/* =========TEXT INPUT FOR LOCATION======= */}
-          <GooglePlacesAutocomplete
-            placeholder='Location'
-            minLength={2} // minimum length of text to search
-            autoFocus={false}
-            returnKeyType={'search'} // Can be left out for default return key https://facebook.github.io/react-native/docs/textinput.html#returnkeytype
-            listViewDisplayed='auto'    // true/false/undefined
-            fetchDetails={true}
-            renderDescription={row => row.description} // custom description render
-            onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
-            console.log(data, details);
-            }}
+            {/* =========TEXT INPUT FOR LOCATION======= */}
+            <GooglePlacesAutocomplete
+                  placeholder='Location'
+                  minLength={2} // minimum length of text to search
+                  autoFocus={false}
+                  returnKeyType={'search'} // Can be left out for default return key https://facebook.github.io/react-native/docs/textinput.html#returnkeytype
+                  listViewDisplayed='auto'    // true/false/undefined
+                  fetchDetails={true}
+                  renderDescription={row => row.description} // custom description render
+                  onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+                  console.log(data, details);
+                    }}
+                  
+                  getDefaultValue={() => ''}
       
-            getDefaultValue={() => ''}
+                  query={{
+                  // available options: https://developers.google.com/places/web-service/autocomplete
+                      key: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
+                      language: 'en', // language of the results
+                      types: '(cities)' // default: 'geocode'
+                    }}
       
-            query={{
-              // available options: https://developers.google.com/places/web-service/autocomplete
-              key: 'AIzaSyBm35rISqtCyd1r9l6gFPvd1-rs9fiUb_A',
-              language: 'en', // language of the results
-              types: '(cities)' // default: 'geocode'
-            }}
-      
-            styles={{
-              textInputContainer: {
-                width: '100%'
-              },
-              description: {
-                fontWeight: 'bold'
-              },
-              // predefinedPlacesDescription: {
-              // color: '#1faadb'
-              // }
-            }}
+                    styles={{
+                      textInputContainer: {
+                        width: '100%'
+                      },
+                      description: {
+                        fontWeight: 'bold'
+                      },
+                      // predefinedPlacesDescription: {
+                      // color: '#1faadb'
+                      // }
+                    }}
 
-            currentLocation={true}
-            currentLocationLabel="Current Location"
+                    currentLocation={true}
+                    currentLocationLabel="Current Location"
 
-            nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
-            GoogleReverseGeocodingQuery={{
-              // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
-            }}
-            GooglePlacesSearchQuery={{
-              // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
-              rankby: 'distance',
-              types: 'food'
-            }}
+                    nearbyPlacesAPI='GooglePlacesSearch' // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
+                    GoogleReverseGeocodingQuery={{
+                    // available options for GoogleReverseGeocoding API : https://developers.google.com/maps/documentation/geocoding/intro
+                    }}
+                    GooglePlacesSearchQuery={{
+                    // available options for GooglePlacesSearch API : https://developers.google.com/places/web-service/search
+                        rankby: 'distance',
+                        types: 'food'
+                      }}
  
-            filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
+                    filterReverseGeocodingByTypes={['locality', 'administrative_area_level_3']} // filter the reverse geocoding results by types - ['locality', 'administrative_area_level_3'] if you want to display only cities
  
-            debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
-          />
+                    debounce={200} // debounce the requests in ms. Set to 0 to remove debounce. By default 0ms.
+              />
 
-          {/*-----------INPUT FOR TAGGING OTHER USERS IN YOUR TRIP/OUTING------------*/}
+
+             {/*-----------INPUT FOR TAGGING OTHER USERS IN YOUR TRIP/OUTING------------*/}
         
-          <TextInput
-            style={{ height: 40, width: 200,
-                    backgroundColor: 'white', 
-                    borderColor: '#ffffff', 
-                    borderWidth: 5, }}
-            placeholder='Tag People'
-            blurOnSubmit
-          />
-        </KeyboardAwareScrollView>     
+            <TextInput
+                style={{ height: 40, width: 200,
+                        backgroundColor: 'white', 
+                        borderColor: '#ffffff', 
+                        borderWidth: 5, }}
+                placeholder='Tag People'
+                blurOnSubmit
+                />
+            </KeyboardAwareScrollView>     
 
-        <View flexDirection='row' justifyContent='center' alignItems='center'>
+            <View flexDirection='row' justifyContent='center' alignItems='center'>
+                {/*-----------SWITCH FOR TOGGLING BETWEEN PUBLIC AND PRIVATE POSTING--------*/}
+                <Text>{this.state.switchValue ? 'Private' : 'Public'}</Text>
+                <Switch
+                    style={{ marginTop: 10, marginBottom: 10 }}
+                    onValueChange={this.toggleSwitch}
+                    value={this.state.switchValue}
+                />
+                <Text></Text>
 
-          {/*-----------SWITCH FOR TOGGLING BETWEEN PUBLIC AND PRIVATE POSTING--------*/}
-          <Text>{this.state.switchValue ? 'Private' : 'Public'}</Text>
-          <Switch
-            style={{ marginTop: 10, marginBottom: 10 }}
-            onValueChange={this.toggleSwitch}
-            value={this.state.switchValue}
-          />
-          <Text></Text>
-
-          {/*-----------PUBLISH POST BUTTON------------*/}
+                {/*-----------PUBLISH POST BUTTON------------*/}
         
-          <Button
-            title='Publish Post'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            onPress={this.onPostPress.bind(this)}
-            justifyContent='center'
-          />
-        </View>
+                <Button
+                    title='Publish Post'
+                    titleStyle={styles.buttonTitle}
+                    buttonStyle={styles.buttonStyle}
+                    onPress={this.onPostPress.bind(this)}
+                    justifyContent='center'
+                />
+            </View>
          
       </View>
-      </ScrollView>
+    </ScrollView>
       
     )
   }

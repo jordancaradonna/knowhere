@@ -23,7 +23,7 @@ const Users1 = [
 ]
 
 
-class ProfileScreen extends React.Component {
+class OtherProfileScreen extends React.Component {
   state = {
     visibleModal: null,
     toggle: false,
@@ -598,4 +598,4 @@ const mapStateToProps = ({ info }) => {
   return { fname, lname, city, username };
 };
 
-export default connect(mapStateToProps, { profileFetch })(ProfileScreen);
+export default connect(mapStateToProps, { profileFetch })(OtherProfileScreen);
