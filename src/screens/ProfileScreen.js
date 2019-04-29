@@ -55,8 +55,20 @@ class ProfileScreen extends React.Component {
   onDreamListPress(){
     this.props.navigation.navigate('dreamlist');
   }
+  onMapPress() {
+    this.props.navigation.navigate('map');
+  }
+  onStarPress() {
+    this.props.navigation.navigate('dreamlist');
+  }
+  onTripsPress() {
+    this.props.navigation.navigate('');
+  }
+  onOutingsPress() {
+    this.props.navigation.navigate('');
+  }
 
-
+//SCROLL FOR CARDS
 renderImages = () =>{
   //item, i is the index
     return Users.map((item, currentIndex) =>{
@@ -73,7 +85,6 @@ renderImages = () =>{
       );
     })
   }
-
   renderImages1 = () =>{
     //item, i is the index
       return Users1.map((item, currentIndex) =>{
@@ -91,13 +102,14 @@ renderImages = () =>{
       })
     }
 
-// button rendering for modal
+
+//BUTTON rendering for MODAL
 _renderButton = (onPress) => (
     <View style= {{paddingLeft: 10}}>
       <Icon
-      onPress={onPress}
+        onPress={onPress}
         name= 'plus'
-        size = {30} >
+        size = {25} >
 
         </Icon>
     </View>
@@ -119,7 +131,7 @@ onViewAllPress() {
 
 
 
-// modal content for when creating a new post
+// --MODEL-- content for when creating a new post
 _renderModalContent = () => (
 
   <View style={styles2.modalContent}>
@@ -139,7 +151,7 @@ _renderModalContent = () => (
                 small
                 titleStyle={styles.buttonTitle}
                 buttonStyle={styles.buttonStyle}
-                color='#83b4ff'
+                color='black'
                 backgroundColor='#f4f4ff'>
         </Button>
       </View>
@@ -151,7 +163,7 @@ _renderModalContent = () => (
                 small
                 titleStyle={styles.buttonTitle}
                 buttonStyle={styles.buttonStyle}
-                color='#83b4ff'
+                color='black'
                 backgroundColor='#f4f4ff'>
         </Button>
       </View>
@@ -164,8 +176,8 @@ _renderModalContent = () => (
         title = 'Cancel'
         titleStyle={styles.buttonTitle}
                 buttonStyle={styles.buttonStyle}
-                color='#83b4ff'
-                backgroundColor='#f4f4ff'
+                color='black'
+                backgroundColor='#white'
     >
 
     </Button>
@@ -177,20 +189,20 @@ _renderModalContent = () => (
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
-    console.log('final check', this.props)
+    console.log('final check', this.props.photo)
     return (
       <SafeAreaView style={{flex:1}}>
         <Header
           centerComponent={{ text: 'Profile' }}
-          rightComponent={{ Icon: 'cog' }}
+          //rightComponent={{ Icon: 'cog' }}
           backgroundColor= 'white'
           />
-        <View
+        <ScrollView
         //entire page view
         >
         <View //view of everything on top
         >
-          <ImageBackground  source={require('../images/ireland1.png')}
+          <ImageBackground  source={require('../images/grandCanyon1.png')}
                         style={{maxHeight: 120}}>
         <View justifyContent='space-between'>
           <View>
@@ -220,7 +232,7 @@ _renderModalContent = () => (
         <View flexDirection='row' justifyContent='space-between' //contains country, username, post, and followers
         >
           <View flexDirection='column' >
-            <Text>{this.props.city}</Text>
+            <Text style= {{marginTop:5}}> {this.props.city}</Text>
             <Text>Country</Text>
           </View>
 
@@ -231,65 +243,80 @@ _renderModalContent = () => (
 
           <View flexDirection='column'>
               <Text
-                 style = {{paddingLeft:24}}
-                 >Posts: #</Text>
+                 style = {{paddingLeft:24, marginTop:5}}
+                 > Posts: #</Text>
                  <Text>Followers: #</Text>
+                 <Text> </Text>
           </View>
         </View>
 
-        <View alignItems='center' flexDirection='row' justifyContent = 'space-between'
-         style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
+        <View alignItems='center' flexDirection='row'
+         style = {{borderBottomWidth: 1, borderColor: '#ddd'}}
         //add new, dream list, trips, outings
         >
           <View //icons view
-          flexDirection = 'row' justifyContent= 'space-between' flex= {1}
+          flexDirection = 'row'  flex= {1}
           >
+
+
                <View>
-                  <Icon
-                      name= 'map-pin'color= 'black'
-                      backgroundColor = 'clear'
-                      style = {{paddingLeft: 5}}
-                      size = {30}
-                      onPress={() => this.props.navigation.navigate('map')}>
-                  </Icon>
+                  <Button
+                    medium
+                    style= {[styles.buttonStyle1,]}
+                    leftIcon={{ name: 'room',
+                                color: "black"
+                               }}
+                    color='black'
+                    backgroundColor='#white'
+                    onPress={this.onMapPress.bind(this)}   />
               </View>
                 <View>
-                   <Icon
-                     buttonStyle={styles.buttonStyle}
-                     titleStyle={styles.buttonTitle}
-                     name='wpexplorer'
-                    size = {30}
-                    backgroundColor = '#f4f4ff'
-                    onPress={this.onDreamListPress.bind(this)}
-                   />
+                  <Button
+                    medium
+                    style= {[styles.buttonStyle1,]}
+                    leftIcon={{ name: 'grade',
+                                color: "black"}} //83b4ff
+                    color='black'
+                    backgroundColor='#white'
+                    onPress={this.onStarPress.bind(this)}   />
+
                 </View>
                     {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button
                     }
                       <Modal isVisible={this.state.visibleModal === 1}>
                         {this._renderModalContent()}
                       </Modal>
-           </View>
+          </View>
                 <View //trips button view
-                  style = {{justifyContent: "flex-end", flexDirection: 'row'}} >
-                    <Button
-                      small
-                      title='Trips'
-                      titleStyle={styles.buttonTitle}
-                      //buttonStyle={styles.buttonStyle}
-                      color='#83b4ff'
-                      backgroundColor='#f4f4ff'/>
+                  style = {{ flexDirection: 'row'}} >
+                  <Button
+                    medium
+                    style= {[styles.buttonStyle1,]}
+                    leftIcon={{ name: 'flight-takeoff',
+                                color: "black"
+                                 }}
+                    color='black'
+                    backgroundColor='#white'
+                    onPress={this.onTripsPress.bind(this)}
+                     />
                 </View>
                 <View>
-                    <Button
-                      small
-                      title='Outings'
-                      titleStyle={styles.buttonTitle}
-                      //buttonStyle={styles.buttonStyle}
-                      color='#83b4ff'
-                      backgroundColor='#f4f4ff'/>
+                   <Button
+                    medium
+                    style= {[styles.buttonStyle1,]}
+                    leftIcon={{ name: 'landscape',
+                                color: "black"
+                                 }}
+                    color='black'
+                    backgroundColor='#white'
+                    onPress={this.onOutingsPress.bind(this)}
+                     />
+
                 </View>
           </View>
         </View>
+
+
       <View>
         <ScrollView>
 
@@ -418,10 +445,53 @@ _renderModalContent = () => (
             </View>
 
 
+    <View style ={{flex: 1, flexDirection: 'row',
+                    borderColor: '#C5C7CA', borderWidth: 1 }} //
+      >
+        <View //contains the CardSection  ---------NAMIBIA-----------------------
+        >
+            <View style = {{flex: 1, flexDirection: 'column',
+                            borderColor: '#C5C7CA', borderWidth: 1.5 }}
+                    >
+              <Image  //style = {styles1.viewStyle}
+                style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 5}}
+                source={require('../images/namibiaDrinks.png')} />
+
+                <View //contains info on the BOTTOM
+                    style ={{ flex: 1, flexDirection: 'row'}}
+                >
+                    <Avatar
+                        small
+                        source={require('../images/jprofile.png')}
+                        containerStyle={styles.AvatarStyle}
+                        onPress={() => this.props.navigation.navigate('profile')}
+                        activeOpacity={0.7}
+                    />
+                    <Image
+                              source = {require('../images/pin.png')}
+                              style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}/>
+                    <Text style= {{marginTop: 12, marginRight: 10}} >
+                              Karibib, NM
+                    </Text>
+                    <View style = {{alignItems: 'center', paddingTop: 10}}//bookmark view
+                      >
+                          <Icon
+                              onPress = {()=> this.changeIcon()}
+                              name={iconName} size={25}
+                              />
+                    </View>
+
+                </View>
+            </View>
+        </View>
+
+      </View>
+
+
 
            </ScrollView>
          </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
     )
   }
@@ -447,10 +517,11 @@ const styles = {
     flexDirection: 'row',
   },
   NameStyle: {
-    //fontFamily: 'Al Nile',
-    fontSize: 18,
-    color: 'black',
-    justifyContent: 'center'
+    fontFamily: 'Al Nile',
+    fontSize: 19,
+    color: '#6390D4',
+    justifyContent: 'center',
+    marginTop: 10
   },
   container2:{
     flex: 1,
@@ -464,15 +535,23 @@ const styles = {
     marginRight: 25,
   },
   buttonTitle:{
-    fontSize: 13,
+    fontSize: 10,
     letterSpacing: 2,
   },
   buttonStyle:{
-    width: 115,
+    width: 100,
     height: 44,
     //padding: 20,
-    //borderRadius: 100, //makes it oval not squared
+    borderRadius: 100, //makes it oval not squared
     elevation: 5,
+  },
+  buttonStyle1:{
+    //width: 350,
+    marginLeft: 0.0,
+    marginRight:0.0,
+    borderColor: "grey",
+    //borderRadius: 100, //makes it oval not squared
+    //elevation: 5,
   },
   coverPhoto:{
     width: '100%',

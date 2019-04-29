@@ -20,7 +20,7 @@ const INITIAL_STATE = {
   lname: '',
   city: '',
   username: '',
-  photo: null,
+  photo: '',
   loading: false,
   error: ''
 }
