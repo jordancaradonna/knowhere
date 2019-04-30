@@ -11,6 +11,7 @@ import {
   createFail
 } from '../actions'
 
+const templates = require('../components/emailTemplate');
 
 class CreateUserScreen extends React.Component {
 
@@ -35,6 +36,12 @@ class CreateUserScreen extends React.Component {
     console.log(this.props);
       this.props.createUser({ email, password, confirmPassword }, () => {
         this.props.navigation.navigate('main');
+        console.log('Welcome to Knowhere'); 
+    //  if (!user) {
+    //   User.create({ email })
+    //     .then(newUser => sendEmail(newUser.email, templates.confirm(newUser._id)))
+    //     .catch(err => console.log(err))
+    // }
       });
   }
 
