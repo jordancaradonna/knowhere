@@ -52,7 +52,7 @@ class LoginScreen extends React.Component {
   render () {
     return (
 
-      <ImageBackground source={require('../images/finalBackground2.jpg')}
+      <ImageBackground source={require('../images/kwFeels.png')}
                        style={styles.container}>
 
 
@@ -71,7 +71,7 @@ class LoginScreen extends React.Component {
 
 
         <TextInput
-          style={{height: 45, width: 250,
+          style={{height: 45, width: 250,marginTop: 80,
                   backgroundColor: 'white',
                   borderColor: 'black', borderWidth: 0.5}}
           placeholder=' Email: '
@@ -87,20 +87,6 @@ class LoginScreen extends React.Component {
           onChangeText={this.onPasswordChange.bind(this)}
         />
         <Text> </Text>
-
-
-
-
-        <Button
-            small
-            rounded
-            title='Forgot Password?'
-            color="black"
-            backgroundColor='#white'
-            marginBottom= '15'
-            onPress={this.onForgotPasswordPress.bind(this)}
-        /> 
-
 
         <View style={styles.container2}>
 
@@ -129,6 +115,20 @@ class LoginScreen extends React.Component {
               onPress={() => this.props.navigation.navigate('dash')}/> */}
           </View>
         </View>
+
+
+
+
+        <Button
+            small
+            rounded
+            title='Forgot Password?'
+            color="black"
+            backgroundColor='#white'
+            marginBottom= '15'
+            onPress={this.onForgotPasswordPress.bind(this)}
+        /> 
+
 
             <Text
             onPress = {() => this.props.navigation.navigate('dash')}
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     //alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 50,
   },
   buttonContainer:{
     flex: 1,

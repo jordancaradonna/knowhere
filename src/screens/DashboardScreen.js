@@ -15,14 +15,12 @@ import { connect } from 'react-redux'
 
 
 
-
 const Users = [
   { id: "first", uri: require('../images/jIreland.jpg') },
   { id: "second", uri: require('../images/ireland1.png')},
   { id: "third", uri: require('../images/jprofile.png')},
   { id: "fourth", uri: require('../images/ireland2.png')}
 ]
-
 const Users2 = [ //May
   //{ id: "first", uri: require('../images/hawaii1.png') },
   { id: "second", uri: require('../images/hawaii2.png')}, 
@@ -33,7 +31,7 @@ const Users3 = [ //Aidan
   { id: "first", uri: require('../images/caboSanLucas1.png') },
   { id: "second", uri: require('../images/caboSanLucas2.png')}, 
   { id: "third", uri: require('../images/caboSanLucas3.png')},
-  //{ id: "fourth", uri: require('../images/hawaii4.png')}
+  //******ADD THE REST OF THE PHOTOS ****  ---- { id: "fourth", uri: require('../images/hawaii4.png')}
 ]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -152,11 +150,11 @@ class DashboardScreen extends React.Component {
                         large
                         source={require('../images/aprofile.png')}
                         containerStyle={styles.AvatarStyle}
-                        onPress={() => this.props.navigation.navigate('profile')}
+                        onPress={() => this.props.navigation.navigate('other')} 
                         activeOpacity={0.7}
                     />
                     <Text style={{  fontSize: 14, paddingLeft: 6}} 
-                          onPress={() => this.props.navigation.navigate('profile')}>
+                          onPress={() => this.props.navigation.navigate('other')}>
                         Aidan Alcos
                     </Text>
                     <View style = {{flexDirection: 'row', paddingTop: 5, 
@@ -260,6 +258,10 @@ class DashboardScreen extends React.Component {
   _onPhotoPressed() {
     this.props.navigation.navigate('profile');
   }
+  _onPhotoPressed1() {
+    this.props.navigation.navigate('other');
+  }
+
   renderImages = () =>{
        //item, i is the index
      return Users.map((item, currentIndex) =>{

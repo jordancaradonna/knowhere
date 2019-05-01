@@ -61,7 +61,8 @@ class CreateUserScreen extends React.Component {
 
         <TextInput
           style={{height: 45, width: 250, backgroundColor: 'white',
-                  borderColor: 'black', borderWidth: 0.5}}
+                  borderColor: 'black', borderWidth: 0.5,
+                  marginTop: 50}}
           placeholder=' Email:'
           onChangeText={this.onEmailChange.bind(this)}
           value={this.props.email}

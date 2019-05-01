@@ -118,20 +118,16 @@ _renderButton = (onPress) => (
 onViewAllPress() {
   this.props.navigation.navigate('trip');
 }
+onFollowPress(){ //------------------FIX nav---------------------
+  this.props.navigation.navigate('dash');
+}
 
   state = {
     visibleModal: null,
   };
 
 
-
-
-
-
-
-
-
-// --MODEL-- content for when creating a new post
+// -------------------MODEL---------------------------------content for when creating a new post
 _renderModalContent = () => (
 
   <View style={styles2.modalContent}>
@@ -186,6 +182,7 @@ _renderModalContent = () => (
   </View>
 );
 
+//-----------------------------------------------------------------------------------------------------------/
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
@@ -196,20 +193,18 @@ _renderModalContent = () => (
           //rightComponent={{ Icon: 'cog' }}
           backgroundColor= 'white'
           />
-        <ScrollView
-        //entire page view
+        <ScrollView //entire page view
         >
         <View //view of everything on top
         >
-          <ImageBackground  source={require('../images/coverPic.png')}
+          <ImageBackground  source={require('../images/caboSanLucas2.png')}
                         style={{maxHeight: 120}}>
         <View justifyContent='space-between'>
           <View>
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
                 large
-                
-                source={require('../images/jprofile.png')}
+                source={require('../images/aprofile.png')}
                 containerStyle={styles.AvatarStyle}
                 onPress={() => console.log("Works!")}
                 activeOpacity={1}>
@@ -228,11 +223,12 @@ _renderModalContent = () => (
         </View>
         </ImageBackground>
 
+{/* -------------------------------------username and INFO --------------------------------------------- */}
+
         <View flexDirection='row' justifyContent='space-between' //contains country, username, post, and followers
         >
           <View flexDirection='column' >
             <Text style= {{marginTop:5}}> {this.props.city}</Text>
-            <Text>Country</Text>
           </View>
 
           <View alignItems='flex-end'>
@@ -249,15 +245,15 @@ _renderModalContent = () => (
           </View>
         </View>
 
+{/* -------------------------------------five BUTTONS--------------------------------------------- */}
+
         <View alignItems='center' flexDirection='row' 
          style = {{borderBottomWidth: 1, borderColor: '#ddd'}}
         //add new, dream list, trips, outings
         >
-          <View //icons view
+          <View //ICONS view
           flexDirection = 'row'  flex= {1}
           >
-
-
                <View>
                   <Button
                     medium
@@ -280,12 +276,16 @@ _renderModalContent = () => (
                     onPress={this.onStarPress.bind(this)}   />
 
                 </View>
-                    {this._renderButton(() => this.setState({ visibleModal: 1 })) //add new post button
-                    }
-                      <Modal isVisible={this.state.visibleModal === 1}>
-                        {this._renderModalContent()}
-                      </Modal>
-          </View>
+
+                <View>
+                     <Text 
+                        onPress = {this.onFollowPress.bind(this)}
+                        style = {{textAlign: 'right',  fontSize: 15, 
+                                    paddingRight: 10, paddingTop: 5}} >
+                       Follow
+                    </Text>
+                </View>
+
                 <View //trips button view
                   style = {{ flexDirection: 'row'}} >
                   <Button
@@ -310,16 +310,15 @@ _renderModalContent = () => (
                     backgroundColor='#white'
                     onPress={this.onOutingsPress.bind(this)}  
                      />
-                    
                 </View>
+
+              </View>
+
           </View>
         </View>
-
-
-      <View>
+{/* -------------------------------------FEED--------------------------------------------- */}
+    <View>
         <ScrollView>
-           
-
              <View // contains the CardSection  
                style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
                >
@@ -547,6 +546,15 @@ const styles = {
     marginLeft: 0.0,
     marginRight:0.0,
     borderColor: "grey",
+    //borderRadius: 100, //makes it oval not squared
+    //elevation: 5,
+  },
+  buttonFollow:{
+    //width: 100,
+    fontSize:10,
+    marginLeft: 0.0,
+    marginRight:0.0,
+    //borderColor: "grey",
     //borderRadius: 100, //makes it oval not squared
     //elevation: 5,
   },

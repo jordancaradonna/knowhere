@@ -1,6 +1,7 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View,
-        Text, TextInput, Image, cameraRoll, ScrollView } from 'react-native';
+import {ImageBackground, StyleSheet, View,
+        Text, TextInput, Image, 
+        cameraRoll, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Avatar } from 'react-native-elements';
 import CameraRollPicker from "react-native-camera-roll-picker";
@@ -44,7 +45,8 @@ class AccountInfoScreen extends React.Component {
   renderError () {
     if(this.props.error) {
       return(
-        <Text style={styles.errorTextStyle}>
+        <Text //style={styles.errorTextStyle}
+        >
             {this.props.error}
           </Text>
       );
@@ -82,7 +84,7 @@ class AccountInfoScreen extends React.Component {
       return (
         <ScrollView style={{flex:1}}>
           <ImageBackground source={require('../images/finalBackground2.jpg')}
-                         style={styles.container}>
+                            style={styles.container}>
 
 
             <Image

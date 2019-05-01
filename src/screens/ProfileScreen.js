@@ -10,7 +10,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 const Users = [
-  { id: "first", uri: require('../images/jIreland.jpg') },
+  { id: "first", uri: require('../images/jIreland.jpg')},
   { id: "second", uri: require('../images/ireland1.png')},
   { id: "third", uri: require('../images/jprofile.png')},
   { id: "fourth", uri: require('../images/ireland2.png')}
@@ -61,11 +61,11 @@ class ProfileScreen extends React.Component {
   onStarPress() {
     this.props.navigation.navigate('dreamlist');
   }
-  onTripsPress() {
-    this.props.navigation.navigate('');
+  onMyTripsPress() {
+    this.props.navigation.navigate('mytrips');
   }
-  onOutingsPress() {
-    this.props.navigation.navigate('');
+  onMyOutingsPress() {
+    this.props.navigation.navigate('myoutings');
   }
 
 //SCROLL FOR CARDS
@@ -118,20 +118,13 @@ _renderButton = (onPress) => (
 onViewAllPress() {
   this.props.navigation.navigate('trip');
 }
-
   state = {
     visibleModal: null,
   };
 
 
 
-
-
-
-
-
-
-// --MODEL-- content for when creating a new post
+// ------+---MODEL--+-------------------- content for when creating a new post
 _renderModalContent = () => (
 
   <View style={styles2.modalContent}>
@@ -177,15 +170,14 @@ _renderModalContent = () => (
         titleStyle={styles.buttonTitle}
                 buttonStyle={styles.buttonStyle}
                 color='black'
-                backgroundColor='#white'
-    >
-
+                backgroundColor='#white'> 
     </Button>
     {/* {this._renderButton(() => this.setState({ visibleModal: null }))} */}
     </View>
   </View>
 );
 
+//------------------------------------------------------------------------------------------------------------------\\
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
@@ -196,8 +188,7 @@ _renderModalContent = () => (
           //rightComponent={{ Icon: 'cog' }}
           backgroundColor= 'white'
           />
-        <ScrollView
-        //entire page view
+        <ScrollView //entire page view
         >
         <View //view of everything on top
         >
@@ -208,8 +199,7 @@ _renderModalContent = () => (
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
                 large
-                
-                source={require('../images/jprofile.png')}
+                source={{ uri: this.props.profilePhoto }}
                 containerStyle={styles.AvatarStyle}
                 onPress={() => console.log("Works!")}
                 activeOpacity={1}>
@@ -227,12 +217,13 @@ _renderModalContent = () => (
           </View>
         </View>
         </ImageBackground>
+{/* -------------------------------------username and INFO --------------------------------------------- */}
 
         <View flexDirection='row' justifyContent='space-between' //contains country, username, post, and followers
         >
           <View flexDirection='column' >
             <Text style= {{marginTop:5}}> {this.props.city}</Text>
-            <Text>Country</Text>
+            
           </View>
 
           <View alignItems='flex-end'>
@@ -249,15 +240,13 @@ _renderModalContent = () => (
           </View>
         </View>
 
+{/* -------------------------------------five BUTTONS--------------------------------------------- */}
         <View alignItems='center' flexDirection='row' 
          style = {{borderBottomWidth: 1, borderColor: '#ddd'}}
-        //add new, dream list, trips, outings
         >
           <View //icons view
           flexDirection = 'row'  flex= {1}
           >
-
-
                <View>
                   <Button
                     medium
@@ -296,7 +285,7 @@ _renderModalContent = () => (
                                  }}
                     color='black'
                     backgroundColor='#white'
-                    onPress={this.onTripsPress.bind(this)}  
+                    onPress={this.onMyTripsPress.bind(this)}  
                      />
                 </View>
                 <View>
@@ -308,17 +297,15 @@ _renderModalContent = () => (
                                  }}
                     color='black'
                     backgroundColor='#white'
-                    onPress={this.onOutingsPress.bind(this)}  
+                    onPress={this.onMyOutingsPress.bind(this)}  
                      />
                     
                 </View>
           </View>
         </View>
-
-
-      <View>
+{/* -------------------------------------FEED--------------------------------------------- */}
+    <View>
         <ScrollView>
-           
 
              <View // contains the CardSection  
                style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
@@ -368,10 +355,9 @@ _renderModalContent = () => (
                     </View>
                 </View>
                   
-                  
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
-                  >
+                        >
 
                              {this.renderImages()} 
                         </ScrollView>
@@ -417,9 +403,7 @@ _renderModalContent = () => (
                             style = {{height: 14, width: 14}}
                         />
                         <Text style={{fontSize: 12}}>
-                          
-                            {this.props.city
-                            }
+                            {this.props.city}
                         </Text>
 
                   </View>
@@ -434,7 +418,7 @@ _renderModalContent = () => (
                   
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
-                  >
+                        >
                              {this.renderImages1()} 
                         </ScrollView>
                  
@@ -443,9 +427,9 @@ _renderModalContent = () => (
 
 
     <View style ={{flex: 1, flexDirection: 'row',
-                    borderColor: '#C5C7CA', borderWidth: 1 }} //
+                    borderColor: '#C5C7CA', borderWidth: 1 }} 
       >
-        <View //contains the CardSection  ---------NAMIBIA-----------------------
+        <View //contains the CardSection  --------------------NAMIBIA-----------------------
         >      
             <View style = {{flex: 1, flexDirection: 'column',
                             borderColor: '#C5C7CA', borderWidth: 1.5 }}
@@ -500,7 +484,7 @@ const styles = {
     marginBottom: 22,
   },
   leftStyle: {
-    marginLeft: "auto"
+    marginLeft: "auto",
   },
   DividerStyle: {
     marginTop: 10,
@@ -590,6 +574,7 @@ const styles = {
           <Text style={styles.NameStyle}>{this.props.username}</Text>
           <Text style={styles.NameStyle}>{this.props.city}</Text>
         </View> */}
+
 
 //Connect the current props to redux props
 const mapStateToProps = ({ info }) => {

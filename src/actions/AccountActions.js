@@ -4,13 +4,14 @@ import {
   LNAME_CHANGED,
   USERNAME_CHANGED,
   CITY_CHANGED,
+  PHOTO_CHANGED,
   CREATE_PROFILE,
   CREATE_PROFILE_SUCCESS,
   CREATE_PROFILE_FAIL,
   PROFILE_FETCH_SUCCESS,
-  PHOTO_CHANGED,
   SUBMIT_USERNAME,
   SUBMIT_CITY,
+  SUBMIT_PHOTO,
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAIL
 } from './types.js';
@@ -46,13 +47,13 @@ export const photoChanged = (image) => {
   };
 };
 
-export const createProfile = ({fname, lname, username, city}, callbackFunction ) => {
+export const createProfile = ({fname, lname, username, city, photo}, callbackFunction ) => {
   const currentUser = firebase.auth().O;
 
   return (dispatch) => {
     dispatch({ type: CREATE_PROFILE });
     firebase.database().ref(`users/${currentUser}/account`)
-      .set({ fname, lname, username, city })
+      .set({ fname, lname, username, city, photo })
       .then(user => createProfileSuccess(dispatch, callbackFunction))
       .catch((error) => {
         console.log(error);
@@ -110,6 +111,21 @@ export const submitCity = ({city}) => {
     dispatch({ type: SUBMIT_CITY });
     firebase.database().ref(`users/${currentUser}/account`)
       .update({ city })
+      .then(user => editProfileSuccess(dispatch))
+      .catch((error) => {
+        console.log(error);
+        editProfileFail(dispatch, error.message)
+      });
+    };
+};
+
+export const submitPhoto = ({photo}) => {
+  const currentUser = firebase.auth().O
+
+  return (dispatch) => {
+    dispatch({ type: SUBMIT_PHOTO });
+    firebase.database().ref(`users/${currentUser}/account`)
+      .update({ photo })
       .then(user => editProfileSuccess(dispatch))
       .catch((error) => {
         console.log(error);

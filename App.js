@@ -1,10 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { createStackNavigator, createAppContainer, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'
+import { createStackNavigator, createAppContainer, 
+        createBottomTabNavigator, 
+        createMaterialTopTabNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-
 
 import thunk from 'redux-thunk';
 import firebase from 'firebase';
@@ -24,13 +24,12 @@ import LoginScreen from './src/screens/LoginScreen';
 import OtherProfileScreen from './src/screens/OtherProfileScreen';
 import MessagesScreen from './src/screens/MessagesScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
-import OutingsScreen from './src/screens/OutingsScreen';
+import MyOutingsScreen from './src/screens/MyOutingsScreen';
+import MyTripsScreen from './src/screens/MyTripsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 
 import ViewProfileScreen from './src/screens/ViewProfileScreen';
-//import TripsScreen from './src/screens/TripsScreen';
-import ChangeHomeLocationScreen from './src/screens/ChangeHomeLocationScreen';
 import EditProfile from './src/screens/EditProfile';
 import PrivacyScreen from './src/screens/PrivacyScreen';
 import MapScreen from './src/screens/MapScreen';
@@ -79,6 +78,7 @@ export default class App extends React.Component {
 
     const MainNavigator = createStackNavigator(
     {
+        //other: OtherProfileScreen,
         login: LoginScreen,
         viewprofile: ViewProfileScreen,
         createuser: CreateUserScreen,
@@ -89,9 +89,8 @@ export default class App extends React.Component {
         dashOutings: DashboardOutingScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
-        //trips: TripsScreen,
         createtrip: CreateTripScreen,
-        outings: OutingsScreen,
+        myoutings: MyOutingsScreen,
         createouting: CreateOutingScreen,
         //changehomelocation: ChangeHomeLocationScreen,
         editProfile: EditProfile,
@@ -103,6 +102,8 @@ export default class App extends React.Component {
         ViewIreland: ViewIreland,
         settings: SettingsScreen,
         other: OtherProfileScreen,
+        myoutings:MyOutingsScreen,
+        mytrips: MyTripsScreen,
 
 
 

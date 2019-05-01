@@ -37,7 +37,7 @@ class DashboardOutingScreen extends React.Component {
   
   render = () => {
     const {toggle}= this.state;
-    const iconName = toggle ? "bookmar" : "bookmark-o";
+    const iconName = toggle ? "bookmark" : "bookmark-o";
     return (
       <ScrollView style={{flex:1}}>
 
