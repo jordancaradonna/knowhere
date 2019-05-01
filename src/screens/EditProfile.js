@@ -33,10 +33,10 @@ class EditProfile extends Component {
   onSubmitPress() { 
     const { username } = this.props;
     const { city } = this.props;
-    const { image } = this.props;
+    const { photo } = this.props;
     this.props.submitUsername({username})
     this.props.submitCity({city})
-    this.props.submitPhoto({image})
+    this.props.submitPhoto({photo})
     this.props.navigation.navigate('profile');
   }
 
@@ -113,15 +113,17 @@ class EditProfile extends Component {
                 />
 
                 <Button
+
                     title='Select Photo'
                     color="black"
                     backgroundColor='#white'
+                    borderColor='#black'
                     style={{padding:8}}
                     onPress={this.onSelectPhotoPress.bind(this)}
                 />   
                 {this.renderPhoto()}
            
-
+              <View>
                 <Button
                     rounded
                     style= {[styles1.buttonStyle,]}
@@ -140,6 +142,7 @@ class EditProfile extends Component {
                     style = {{padding: 5}}
                     onPress={this.onCancelPress.bind(this)}
                 />
+                </View>
             </ImageBackground>
         );
     }

@@ -8,7 +8,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 class CreateOutingScreen extends React.Component {
 
-  //------------------STATE PROPERTIES FOR CHOOSE PHOTO------------------//
+  //------------------STATE PROPERTIES FOR CHOOSE PHOTO----------------------------//
 
   state = {
     photo: null,
@@ -29,7 +29,7 @@ class CreateOutingScreen extends React.Component {
     this.props.navigation.navigate('dashOutings')
   }
 
-  //------------------STATE PROPERTIES FOR SWITCH-----------------------------//
+  //------------------STATE PROPERTIES FOR SWITCH---------------------------------//
   //Initial state false for the switch. You can change it to true just to see.
   state = { switchValue: false };
 
