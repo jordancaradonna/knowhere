@@ -37,4 +37,4 @@ export const CREATE_OUTING_FAIL = 'create_outing_fail';
 export const CREATE_OUTING_SUCCESS = 'create_outing_success';
 
 //FEEDS
-export const POSTS_FETCH = 'posts_fetch';
+export const POSTS_FETCH_SUCCESS = 'posts_fetch_success';

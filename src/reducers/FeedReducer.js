@@ -1,8 +1,8 @@
 import { POSTS_FETCH_SUCCESS } from '../actions/types'
 
 const INITIAL_STATE = {
-  posts: null,
-  next: null
+  posts: [],
+  next: {}
 }
 
 export default (state = INITIAL_STATE, action) => {

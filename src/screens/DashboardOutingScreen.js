@@ -28,45 +28,45 @@ class DashboardOutingScreen extends React.Component {
   render() {
     return (
       <ScrollView style={{flex:1}}>
-      {
-        this.props.data.map((d, i) => {
-          return (
-            <View style ={{flex: 1, flexDirection: 'row'}} //
-            >
-              <View //contains the CardSection  ---------NAMIBIA----------
-              >
-                  <View style = {{flex: 1, flexDirection: 'column' }}>
-                    <Image
-                      style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}}
-                      source={{ uri: d.photoUrl }} />
+        <View style ={styles.container} //
+        >
+        {
+            this.props.posts.map((d, i) => {
+            return (
+                <View key={i} style={styles.item} //contains the CardSection  ---------NAMIBIA----------
+                >
+                    <View style = {{flex: 1, flexDirection: 'column' }}>
+                      <Image
+                        style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}}
+                        source={{ uri: d.photoUrl }} />
 
-                      <View //contains info on the BOTTOM
-                          style ={{ flex: 1, flexDirection: 'row'}} >
-                          <Avatar
-                              small
-                              source={{ uri: d.author.profilePhoto }}
-                              containerStyle={styles.AvatarStyle}
-                              onPress={() => this.props.navigation.navigate('profile')}
-                              activeOpacity={0.7}
-                          />
-                          <Image
-                                    source = {require('../images/pin.png')}
-                                    style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}
-                          />
-                          <Text style= {{marginTop: 12}} >
-                                    {d.location}
-                          </Text>
-                          <Image
-                              source = {require('../images/bookmarkOuting.png')}
-                              style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
-                          />
+                        <View //contains info on the BOTTOM
+                            style ={{ flex: 1, flexDirection: 'row'}} >
+                            <Avatar
+                                small
+                                source={{ uri: d.author.profilePhoto }}
+                                containerStyle={styles.AvatarStyle}
+                                onPress={() => this.props.navigation.navigate('profile')}
+                                activeOpacity={0.7}
+                            />
+                            <Image
+                                      source = {require('../images/pin.png')}
+                                      style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}
+                            />
+                            <Text style= {{marginTop: 12}} >
+                                      {d.location}
+                            </Text>
+                            <Image
+                                source = {require('../images/bookmarkOuting.png')}
+                                style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
+                            />
+                        </View>
                       </View>
                     </View>
-                  </View>
-              </View>
-            );
-          })
-        }
+              );
+            })
+          }
+          </View>
         </ScrollView>
       );
     }
@@ -80,10 +80,8 @@ const styles1 = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  container2:{
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+  item:{
+    width: '50%' // is 50% of container width
   },
   title:{
     fontSize: 28,
@@ -109,13 +107,10 @@ const styles1 = StyleSheet.create({
 
 const styles = {
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'visible',
-    height: 250,
-    width: 250,
-    padding: 10,
-    position:'relative'
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start' // if you want to fill rows left to right
   },
   slide: {
     flex: 2,
