@@ -383,9 +383,8 @@ _renderModalContent = () => (
                   style = {{alignItems: 'center'}}
                   >
                     <Avatar
-
                         large
-                        source={require('../images/jprofile.png')}
+                        source={{ uri: this.props.profilePhoto }}
                         containerStyle={styles.AvatarStyle}
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}

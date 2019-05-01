@@ -204,7 +204,7 @@ _renderModalContent = () => (
             <View justifyContent='flex-end' style={{flexGrow: 1}} flexDirection='row'>
               <Avatar
                 large
-                source={require('../images/aprofile.png')}
+                source={{uri: this.props.profilePhoto}}
                 containerStyle={styles.AvatarStyle}
                 onPress={() => console.log("Works!")}
                 activeOpacity={1}>
