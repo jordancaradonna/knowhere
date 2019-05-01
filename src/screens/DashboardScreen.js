@@ -113,11 +113,7 @@ class DashboardScreen extends React.Component {
                   </View>
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
-<<<<<<< HEAD
-                          <Icon 
-                              onPress = {()=> this.changeIcon()}
-                              name={iconName} size={35}/>
-=======
+
                           <Icon
                           onPress = {()=> this.changeIcon()}
                           name={iconName} size={35}/>

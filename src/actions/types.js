@@ -26,19 +26,15 @@ export const SUBMIT_PHOTO = 'submit_photo';
 
 //Explore
 export const SEARCH_USER = 'search_user';
-<<<<<<< HEAD
 export const SEARCH_USER_SUCCESS = 'search_user_success';
 
 
 export const USERNAME_CHECK = 'username_check';
 
-=======
+
 
 //Trips and Outings
 export const DESCRIPTION_CHANGED = 'description_changed';
-<<<<<<< HEAD
->>>>>>> Development/16-CreateOuting
-=======
 export const LOCATION_CHANGED = 'location_changed';
 export const PRIVACY_CHANGED = 'privacy_changed';
 export const OUTING_PHOTO_CHANGED = 'outing_photo_changed';
@@ -48,4 +44,3 @@ export const CREATE_OUTING_SUCCESS = 'create_outing_success';
 
 //FEEDS
 export const POSTS_FETCH_SUCCESS = 'posts_fetch_success';
->>>>>>> Development/16-CreateOuting
