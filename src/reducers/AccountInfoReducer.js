@@ -20,9 +20,9 @@ const INITIAL_STATE = {
   lname: '',
   city: '',
   username: '',
-  photo: '',
+  profilePhoto: '',
   loading: false,
-  error: ''
+  error: '',
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -36,12 +36,12 @@ export default (state = INITIAL_STATE, action) => {
     case CITY_CHANGED:
       return { ...state, city: action.payload };
     case PHOTO_CHANGED:
-      return { ...state, photo: action.payload };
+      return { ...state, profilePhoto: action.payload };
     case CREATE_PROFILE:
       console.log('creating');
       return { ...state, loading: true, error: '' };
     case CREATE_PROFILE_SUCCESS:
-      return { ...state, ...INITIAL_STATE };
+      return { ...state, ...INITIAL_STATE, };
     case CREATE_PROFILE_FAIL:
       return { ...state, error: action.payload, loading: false };
     case PROFILE_FETCH_SUCCESS:
@@ -50,7 +50,7 @@ export default (state = INITIAL_STATE, action) => {
         username: action.payload.username,
         fname: action.payload.fname,
         lname: action.payload.lname,
-        photo: action.payload.photoUrl
+        profilePhoto: action.payload.photoUrl
       };
     case EDIT_PROFILE_SUCCESS:
       return { ...state, loading: false }

@@ -1,8 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Switch, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Switch,
+  ScrollView,
+  Image
+} from 'react-native';
+import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import ImagePicker from 'react-native-image-picker';
+import CameraRollPicker from "react-native-camera-roll-picker";
+
+import {
+  descriptionChanged,
+  outingPhotoChanged,
+  locationChanged,
+  privacyChanged,
+  createOuting
+} from '../actions'
 
 
 class CreateOutingScreen extends React.Component {
@@ -13,11 +30,24 @@ class CreateOutingScreen extends React.Component {
   }
 
   onPostPress () {
-    this.props.navigation.navigate('dash')
+    const { description, outingPhoto, location, privacy, username, profilePhoto } = this.props
+
+    this.props.createOuting({ description, outingPhoto, location, privacy, username, profilePhoto }, () => {
+      this.props.navigation.navigate('dash')
+    });
   }
   onDescriptionChange(text){
     this.props.descriptionChanged(text);
   }
+
+  onLocationChange(text){
+    this.props.locationChanged(text);
+  }
+
+  onTogglePrivacy(privacy) {
+    this.props.privacyChanged(privacy);
+  }
+
 
   onSelectPhotoPress() {
     this.setState({ selecting: true });
@@ -25,7 +55,7 @@ class CreateOutingScreen extends React.Component {
 
   getSelectedImage(images) {
     const image = images[0];
-    this.props.photoChanged(image);
+    this.props.outingPhotoChanged(image);
   }
 
   onSubmitPhotoPress() {
@@ -33,104 +63,91 @@ class CreateOutingScreen extends React.Component {
   }
 
   renderPhoto() {
-    if(this.props.photo != ''){
+    console.log(this.props.outingPhoto.uri);
+    if(this.props.outingPhoto != ''){
       return (
-        <Avatar
-          rounded
-          source={{ uri: this.props.photo.uri }}
-          large
+        <Image
+          source={{ uri: this.props.outingPhoto.uri }}
+          style={{ alignSelf: 'center', height: 200, width: 200 }}
         />
       )
     }
   }
 
   render () {
-    const { photo } = this.state;
-    return (
+    if(!this.state.selecting) {
+      return (
 
-      <ScrollView>
-      <View style={{justifyContent: "space-evenly"}}>
-        <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
-          Create Outing
-        </Text>
-        {photo && (
-          <Image
-            source={{ uri: photo.uri }}
-            style={{ width: 300, height: 300 }}
+        <ScrollView>
+        <View style={{justifyContent: "space-evenly"}}>
+          <Text style={{ fontSize: 20, alignSelf: 'center', padding: 20}}>
+            Create Outing
+          </Text>
+          <Button
+            title='Select Photo'
+            color="black"
+            backgroundColor='#white'
+            style={{padding:8}}
+            onPress={this.onSelectPhotoPress.bind(this)}
           />
-        )}
-        <Button
-          title='Select Photo'
-          color="black"
-          backgroundColor='#white'
-          style={{padding:8}}
-          onPress={this.onSelectPhotoPress.bind(this)}
-        />
-        {/* ============== SCROLLABLE VIEW WHEN KEYBOARD IS ACTIVE ============ */}
-        <KeyboardAwareScrollView>
-
           {this.renderPhoto()}
 
-          {/* ======== TEXT INPUT FOR DESCRIPTION OF TRIP/OUTING ========= */}
-          <TextInput style={{ height: 160, width: 260,
-                              backgroundColor: 'white',
-                              borderColor: '#ffffff',
-                              borderWidth: 5, }}
-            placeholder='Outing Description'
-            editable = {true}
-            blurOnSubmit
-            multiline = {true}
-            onChangeText={this.onDescriptionChange.bind(this)}
-            value{this.props.description}
-          />
 
-          {/* =========TEXT INPUT FOR LOCATION======= */}
-          <TextInput
-            style={{ height: 40, width: 200,
-                    backgroundColor: 'white',
-                    borderColor: '#ffffff',
-                    borderWidth: 5, }}
-            placeholder='Location'
-            blurOnSubmit
-          />
 
-          {/*-----------INPUT FOR TAGGING OTHER USERS IN YOUR TRIP/OUTING------------*/}
+            {/* ======== TEXT INPUT FOR DESCRIPTION OF TRIP/OUTING ========= */}
+            <TextInput style={{ height: 160, width: 260,
+                                backgroundColor: 'white',
+                                borderColor: '#ffffff',
+                                borderWidth: 5, }}
+              placeholder='Outing Description'
+              multiline = {true}
+              onChangeText={this.onDescriptionChange.bind(this)}
+              value={this.props.description}
+              blurOnSubmit
+            />
 
-          <TextInput
-            style={{ height: 40, width: 200,
-                    backgroundColor: 'white',
-                    borderColor: '#ffffff',
-                    borderWidth: 5, }}
-            placeholder='Tag People'
-            blurOnSubmit
-          />
-        </KeyboardAwareScrollView>
+            {/* =========TEXT INPUT FOR LOCATION======= */}
+            <TextInput
+              style={{ height: 40, width: 200,
+                      backgroundColor: 'white',
+                      borderColor: '#ffffff',
+                      borderWidth: 5, }}
+              placeholder='Location'
+              onChangeText={this.onLocationChange.bind(this)}
+              value={this.props.location}
+              blurOnSubmit
+            />
 
-        <View flexDirection='row' justifyContent='center' alignItems='center'>
+            {/*-----------PUBLISH POST BUTTON------------*/}
 
-          {/*-----------SWITCH FOR TOGGLING BETWEEN PUBLIC AND PRIVATE POSTING--------*/}
-          <Text>{this.state.switchValue ? 'Private' : 'Public'}</Text>
-          <Switch
-            style={{ marginTop: 10, marginBottom: 10 }}
-            onValueChange={this.toggleSwitch}
-            value={this.state.switchValue}
-          />
-          <Text></Text>
-
-          {/*-----------PUBLISH POST BUTTON------------*/}
-
-          <Button
-            title='Publish Post'
-            titleStyle={styles.buttonTitle}
-            buttonStyle={styles.buttonStyle}
-            onPress={this.onPostPress.bind(this)}
-            justifyContent='center'
-          />
+            <Button
+              title='Publish Post'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.buttonStyle}
+              onPress={this.onPostPress.bind(this)}
+              justifyContent='center'
+            />
         </View>
-      </View>
-      </ScrollView>
+        </ScrollView>
 
-    )
+      )
+    }
+    else {
+      return (
+        <View style={styles.container}>
+          <Button
+              title='Submit Photo'
+              titleStyle={styles.buttonTitle}
+              buttonStyle={styles.bigButtonStyle}
+              style={{padding:8}}
+              onPress={this.onSubmitPhotoPress.bind(this)}
+          />
+          <CameraRollPicker
+          callback={this.getSelectedImage.bind(this)}
+          selectSingleItem />
+        </View>
+      )
+    }
   }
 }
 
@@ -176,18 +193,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
   },
+  bigButtonStyle:{
+    width: 180,
+    height: 45,
+    backgroundColor: "#83b4ff",
+    borderRadius: 100, //makes it oval not squared
+    elevation: 5,
+  }
 });
 
-const mapStateToProps = ({ out }) => {
-  const { description, photo } = info;
+const mapStateToProps = ({ out, info }) => {
+  const { description, outingPhoto, location, privacy, loading, error } = out;
+  const { username, profilePhoto} = info;
 
-  return { description, photo };
+  return { description, outingPhoto, location, privacy, loading, error, username, profilePhoto };
 };
 
 export default connect (
   mapStateToProps,{
     descriptionChanged,
-    photoChanged
+    outingPhotoChanged,
+    locationChanged,
+    privacyChanged,
+    createOuting
   }
 )
 (CreateOutingScreen);

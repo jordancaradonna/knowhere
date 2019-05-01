@@ -22,9 +22,9 @@ class AccountInfoScreen extends React.Component {
   }
 
   onSignInPress() {
-    const {fname, lname, city, username, photo } = this.props
+    const {fname, lname, city, username, profilePhoto } = this.props
 
-    this.props.createProfile({ fname, lname, username, city, photo }, () => {
+    this.props.createProfile({ fname, lname, username, city, profilePhoto }, () => {
       this.props.navigation.navigate('profile')
     });
   }
@@ -65,11 +65,11 @@ class AccountInfoScreen extends React.Component {
   }
 
   renderPhoto() {
-    if(this.props.photo != null){
+    if(this.props.profilePhoto != ''){
       return (
         <Avatar
           rounded
-          source={{ uri: this.props.photo.uri }}
+          source={{ uri: this.props.profilePhoto.uri }}
           large
         />
       )
@@ -221,9 +221,9 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ info }) => {
-  const { fname, lname, city, username, photo } = info;
+  const { fname, lname, city, username, profilePhoto } = info;
 
-  return { fname, lname, city, username, photo };
+  return { fname, lname, city, username, profilePhoto };
 };
 
 export default connect (

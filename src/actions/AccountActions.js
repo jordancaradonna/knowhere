@@ -47,12 +47,12 @@ export const photoChanged = (image) => {
   };
 };
 
-export const createProfile = ({fname, lname, username, city, photo}, callbackFunction ) => {
+export const createProfile = ({fname, lname, username, city, profilePhoto}, callbackFunction ) => {
   const currentUser = firebase.auth().O;
 
   return async (dispatch) => {
     dispatch({ type: CREATE_PROFILE });
-    const photoUrl = await uploadImageAsync(photo.uri)
+    const photoUrl = await uploadImageAsync(profilePhoto.uri)
     firebase.database().ref(`users/${currentUser}/account`)
       .set({ fname, lname, username, city, photoUrl })
       .then(user => createProfileSuccess(dispatch, callbackFunction))
@@ -96,15 +96,11 @@ async function uploadImageAsync(uri) {
     xhr.send(null);
   });
 
-  console.log('IS IT STILL WORKING?', blob);
-
   const ref = firebase
     .storage()
     .ref()
     .child(`${currentUser}-profilePic`);
   const snapshot = await ref.put(blob);
-
-  console.log('PLease help', ref);
 
   // We're done with the blob, close and release it
   blob.close();
@@ -131,7 +127,6 @@ export const submitUsername = ({username}) => {
     dispatch({ type: SUBMIT_USERNAME });
     firebase.database().ref('users')
     .on('value', snapshot => {
-      console.log(snapshot.val());
     });
     firebase.database().ref(`users/${currentUser}/account`)
       .update({ username })
@@ -175,7 +170,6 @@ const usernameCheck = (username) => {
   return (dispatch) => {
     firebase.database().ref(`users`)
       .on('value', snapshot => {
-        console.log(snapshot.val())
       });
   }
 }

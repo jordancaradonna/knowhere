@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, Text, Image, Animated, 
+import { View, Text, Image, Animated,
           StyleSheet, Dimensions, ScrollView} from 'react-native';
 import { Button, Avatar } from 'react-native-elements';
+<<<<<<< HEAD
 //import Icon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome'
+=======
+import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions';
+>>>>>>> Development/16-CreateOuting
 
 
 
@@ -18,7 +24,9 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
 class DashboardOutingScreen extends React.Component {
-  
+  componentWillMount() {
+    this.props.fetchPosts();
+  }
   onTripsPress() {
     this.props.navigation.navigate('dash');
   }
@@ -26,6 +34,7 @@ class DashboardOutingScreen extends React.Component {
     this.props.navigation.navigate('dashOutings');
   }
 
+<<<<<<< HEAD
   state = {
     toggle: false //for bookmark icon switch
   }
@@ -299,9 +308,53 @@ class DashboardOutingScreen extends React.Component {
           </Animated.View>
         );
       })
+=======
+  render() {
+    return (
+      <ScrollView style={{flex:1}}>
+        <View style ={styles.container} //
+        >
+        {
+            this.props.posts.map((d, i) => {
+            return (
+                <View key={i} style={styles.item} //contains the CardSection  ---------NAMIBIA----------
+                >
+                    <View style = {{flex: 1, flexDirection: 'column' }}>
+                      <Image
+                        style={{width: 175, height: 280, marginTop: 10, marginBottom: 5, marginLeft: 10}}
+                        source={{ uri: d.photoUrl }} />
+
+                        <View //contains info on the BOTTOM
+                            style ={{ flex: 1, flexDirection: 'row'}} >
+                            <Avatar
+                                small
+                                source={{ uri: d.author.profilePhoto }}
+                                containerStyle={styles.AvatarStyle}
+                                onPress={() => this.props.navigation.navigate('profile')}
+                                activeOpacity={0.7}
+                            />
+                            <Image
+                                      source = {require('../images/pin.png')}
+                                      style = {{height: 20, width: 20, marginLeft: 5, marginTop: 11}}
+                            />
+                            <Text style= {{marginTop: 12}} >
+                                      {d.location}
+                            </Text>
+                            <Image
+                                source = {require('../images/bookmarkOuting.png')}
+                                style = {{height: 25, width: 25, marginLeft: 10, marginTop: 10}}
+                            />
+                        </View>
+                      </View>
+                    </View>
+              );
+            })
+          }
+          </View>
+        </ScrollView>
+      );
+>>>>>>> Development/16-CreateOuting
     }
-
-
 }
 
 
@@ -312,10 +365,8 @@ const styles1 = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  container2:{
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
+  item:{
+    width: '50%' // is 50% of container width
   },
   title:{
     fontSize: 28,
@@ -346,13 +397,10 @@ const styles1 = StyleSheet.create({
 
 const styles = {
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'visible',
-    height: 250,
-    width: 250, 
-    padding: 10,
-    position:'relative' 
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start' // if you want to fill rows left to right
   },
   slide: {
     flex: 2,
@@ -395,6 +443,11 @@ const styles = {
     }
 }
 
+//Connect the current props to redux props
+const mapStateToProps = ({ feed }) => {
+  const { posts } = feed;
 
+  return { posts };
+};
 
-export default DashboardOutingScreen;
+export default connect(mapStateToProps, { fetchPosts })(DashboardOutingScreen);

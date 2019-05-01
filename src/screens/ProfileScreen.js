@@ -5,7 +5,7 @@ import { Button, Avatar, Header} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux'
-import { profileFetch } from '../actions'
+import { profileFetch, fetchPosts } from '../actions'
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 
@@ -32,6 +32,7 @@ class ProfileScreen extends React.Component {
 
   componentWillMount() {
     this.props.profileFetch();
+    this.props.fetchPosts();
   }
 
   changeIcon() {
@@ -192,7 +193,6 @@ _renderModalContent = () => (
   render () {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
-    console.log('final check', this.props.photo)
     return (
       <SafeAreaView style={{flex:1}}>
         <Header
@@ -654,4 +654,5 @@ const mapStateToProps = ({ info }) => {
   return { fname, lname, city, username, photo };
 };
 
-export default connect(mapStateToProps, { profileFetch })(ProfileScreen);
+export default connect(mapStateToProps,
+  { profileFetch, fetchPosts })(ProfileScreen);
