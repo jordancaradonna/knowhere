@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image,
-         Dimensions, Animated, ScrollView, StyleSheet, 
+         Dimensions, Animated, ScrollView, StyleSheet,
          TouchableWithoutFeedback, TouchableHighlight, TouchableOpacity,
          SafeAreaView} from 'react-native';
 import {Avatar, Button} from 'react-native-elements';
@@ -8,10 +8,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import MapView, {Marker} from 'react-native-maps';
-import thunk from 'redux-thunk';
-import reducers from '../reducers';
-import { profileFetch } from '../actions'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions';
 
 
 
@@ -25,13 +23,13 @@ const Users = [
 
 const Users2 = [ //May
   //{ id: "first", uri: require('../images/hawaii1.png') },
-  { id: "second", uri: require('../images/hawaii2.png')}, 
+  { id: "second", uri: require('../images/hawaii2.png')},
   { id: "third", uri: require('../images/hawaii3.png')},
   { id: "fourth", uri: require('../images/hawaii4.png')}
 ]
 const Users3 = [ //Aidan
   { id: "first", uri: require('../images/caboSanLucas1.png') },
-  { id: "second", uri: require('../images/caboSanLucas2.png')}, 
+  { id: "second", uri: require('../images/caboSanLucas2.png')},
   { id: "third", uri: require('../images/caboSanLucas3.png')},
   //{ id: "fourth", uri: require('../images/hawaii4.png')}
 ]
@@ -42,7 +40,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 class DashboardScreen extends React.Component {
 
   componentWillMount() {
-    this.props.profileFetch();
+    this.props.fetchPosts();
   }
 
   state = {
@@ -67,19 +65,19 @@ class DashboardScreen extends React.Component {
   render = () => {
     const {toggle} = this.state;
     const iconName = toggle ? "bookmark" : "bookmark-o";
-   
+
     return (
       <SafeAreaView style={{flex:1}}>
         <ScrollView style = {{flex: 1}}>
-            <View // contains the CardSection  
+            <View // contains the CardSection
             style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
-                    <Text 
+                    <Text
                         onPress = {this.onViewAllPress.bind(this)}
                         style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                        View Post
                     </Text>
-                    
+
               <View style = {{flex: 1, flexDirection: 'row' }} //contains everything below viewPost for first card section
                 >
                 <View //contains bio info on the left
@@ -93,15 +91,15 @@ class DashboardScreen extends React.Component {
                         activeOpacity={0.7}
 
                     />
-                    <Text style={{  fontSize: 10, }} 
+                    <Text style={{  fontSize: 10, }}
                           onPress={() => this.props.navigation.navigate('profile')}>
                         Jordan Caradonna
                     </Text>
-                 
+
                   <View style = {{flexDirection: 'row', paddingTop: 5, paddingBottom: 15, borderBottomWidth: 1,
-                              borderColor: '#ddd',}} //location pin 
+                              borderColor: '#ddd',}} //location pin
                       >
-                        <Image 
+                        <Image
                             source = {require('../images/home.png')}
                             style = {{height: 14, width: 14}}
                         />
@@ -113,37 +111,37 @@ class DashboardScreen extends React.Component {
                   </View>
                     <View style = {{alignItems: 'center', paddingTop: 25}}//bookmark view
                       >
-                          <Icon 
+                          <Icon
                           onPress = {()=> this.changeIcon()}
                           name={iconName} size={35}/>
                     </View>
                 </View>
-                  
-                  
+
+
                         <ScrollView horizontal style = {{}}
                           //content on the right, all of the pictures
                   >
 
-                             {this.renderImages()} 
+                             {this.renderImages()}
                         </ScrollView>
-                 
+
               </View>
-            </View> 
+            </View>
 
 
 
-         <View // contains the second CardSection 
-            style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
+         <View // contains the second CardSection
+            style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
               <Text
                 onPress = {this.onViewAll2Press.bind(this)}
                 style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                   View Post
               </Text>
-            
-              <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
+
+              <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section
               >
-                
+
                 <View //contains info on the left
                 >
                     <Avatar
@@ -153,33 +151,33 @@ class DashboardScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 14, paddingLeft: 6}} 
+                    <Text style={{  fontSize: 14, paddingLeft: 6}}
                           onPress={() => this.props.navigation.navigate('profile')}>
                         Aidan Alcos
                     </Text>
-                    <View style = {{flexDirection: 'row', paddingTop: 5, 
+                    <View style = {{flexDirection: 'row', paddingTop: 5,
                                     paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
                                     borderColor: '#ddd',}} //location pin
                     >
-                        <Image 
+                        <Image
                             source = {require('../images/home.png')}
                             style = {{height: 15, width: 15}}
                         />
-                        <Text style={{fontSize: 10}} > 
+                        <Text style={{fontSize: 10}} >
                             Kailua Kona, HI
                         </Text>
 
                   </View>
-                  
+
                   <View style = {{paddingLeft: 35, paddingTop: 30}}//bookmark view
                       >
-                          <Icon 
+                          <Icon
                           name= 'bookmark-o' size={35}/>
                     </View>
                 </View>
                   <ScrollView horizontal //view of stuff on right
                   >
-                     {this.renderImages3()} 
+                     {this.renderImages3()}
                     </ScrollView>
                 </View>
             </View>
@@ -187,18 +185,18 @@ class DashboardScreen extends React.Component {
 
 
 
-            <View // contains the third CardSection 
-            style = {{borderBottomWidth: 1,borderColor: '#ddd'}} 
+            <View // contains the third CardSection
+            style = {{borderBottomWidth: 1,borderColor: '#ddd'}}
             >
               <Text
                 onPress = {this.onViewAll3Press.bind(this)}
                 style = {{textAlign: 'right',  fontSize: 10, paddingRight: 10, paddingTop: 5}} >
                   View Post
               </Text>
-            
-              <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section 
+
+              <View style = {{flex: 1, flexDirection: 'row' }} //everything below view post in card section
               >
-                
+
                 <View //contains info on the left
                 >
                     <Avatar
@@ -208,38 +206,38 @@ class DashboardScreen extends React.Component {
                         onPress={() => this.props.navigation.navigate('profile')}
                         activeOpacity={0.7}
                     />
-                    <Text style={{  fontSize: 14, paddingLeft: 6}} 
+                    <Text style={{  fontSize: 14, paddingLeft: 6}}
                           onPress={() => this.props.navigation.navigate('profile')}>
-                        May Chang         
+                        May Chang
                     </Text>
-                    <View style = {{flexDirection: 'row', paddingTop: 5, 
+                    <View style = {{flexDirection: 'row', paddingTop: 5,
                                     paddingBottom: 15, paddingRight: 5, borderBottomWidth: 1,
                                     borderColor: '#ddd',}} //location pin
                     >
-                        <Image 
+                        <Image
                             source = {require('../images/home.png')}
                             style = {{height: 15, width: 15}}
                         />
-                        <Text style={{fontSize: 12}} > 
+                        <Text style={{fontSize: 12}} >
                             Kailua Kona
                         </Text>
 
                   </View>
                   <View style = {{paddingLeft: 35, paddingTop: 30}}//bookmark view
                       >
-                          <Icon 
+                          <Icon
                           name= 'bookmark-o' size={35}/>
                     </View>
                 </View>
                   <ScrollView horizontal //view of stuff on right
                   >
-                     {this.renderImages3()} 
+                     {this.renderImages3()}
                     </ScrollView>
                 </View>
             </View>
-            
+
        </ScrollView>
-      </SafeAreaView> 
+      </SafeAreaView>
     );
   };
 
@@ -262,11 +260,11 @@ class DashboardScreen extends React.Component {
        //item, i is the index
      return Users.map((item, currentIndex) =>{
        return (
-         <Animated.View 
+         <Animated.View
            key = {item.id}
            style = { styles.container}
          >
-             <Image 
+             <Image
                style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
                source = {item.uri}
              />
@@ -278,11 +276,11 @@ class DashboardScreen extends React.Component {
     //item, i is the index
       return Users3.map((item, currentIndex) =>{
         return (
-          <Animated.View 
+          <Animated.View
             key = {item.id}
             style = { styles.container}
           >
-              <Image 
+              <Image
                 style = {{flex: 1, height: 250, width: 250, resizeMode: 'cover', borderRadius: 20}}
                 source = {item.uri}
               />
@@ -299,9 +297,9 @@ const styles = {
     alignItems: 'center',
     overflow: 'visible',
     height: 250,
-    width: 250, 
+    width: 250,
     padding: 10,
-    position:'relative' 
+    position:'relative'
   },
   text: {
     color: '#fff',
@@ -353,10 +351,10 @@ const styles1 = StyleSheet.create({
 });
 
 //Connect the current props to redux props
-const mapStateToProps = ({ info }) => {
-  const { fname, lname, city, username } = info;
+const mapStateToProps = ({ feed }) => {
+  const { posts } = feed;
 
-  return { fname, lname, city, username };
+  return { posts };
 };
 
-export default connect(mapStateToProps, { profileFetch })(DashboardScreen);
+export default connect(mapStateToProps, { fetchPosts })(DashboardScreen);
