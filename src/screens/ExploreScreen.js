@@ -2,10 +2,12 @@ import React from 'react';
 import { View, Text, TextInput, Image, StyleSheet, 
           Dimensions, Animated, ScrollView, 
           TouchableWithoutFeedback, SafeAreaView} from 'react-native';
-import { Avatar, Button, SearchBar } from 'react-native-elements';
+import { Avatar, Button, SearchBar, Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 //import SearchBar from 'react-native-search-bar';
-import { profileFetch, searchUser, searchByUser } from '../actions'
+import { profileFetch, searchUser, searchByUser } from '../actions';
+import {CardSection} from '../components/CardSection';
+
 
 
 const Users = [ //Jordan
@@ -32,6 +34,11 @@ const Users3 = [ //Aidan
   { id: "third", uri: require('../images/caboSanLucas3.png')},
   //{ id: "fourth", uri: require('../images/hawaii4.png')}
 ]
+const london = [ //city profile
+  { id: "first", uri: require('../images/london.jpg') },
+  { id: "second", uri: require('../images/buck.jpg')}, 
+  { id: "third", uri: require('../images/egg.jpg')},
+]
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -42,6 +49,9 @@ class ExploreScreen extends React.Component {
  
   onTripsPress() {
     this.props.navigation.navigate('dash');
+  }
+  onCityPress() {
+    this.props.navigation.navigate('city');
   }
   onOutingsPress(){
     this.props.navigation.navigate('dashOutings');
@@ -60,7 +70,9 @@ class ExploreScreen extends React.Component {
 
         <Image // --KW LOGO-- style={ alignContent= 'center'}
             style={{width: 350, height: 50, marginBottom: 5}} 
-            source={require('../images/kwLogo.png')} />
+            source={require('../images/kwLogo.png')} 
+            
+        />
 
         <SearchBar
           lightTheme
@@ -71,10 +83,20 @@ class ExploreScreen extends React.Component {
           onChangeText = {this.onSearchUser.bind(this)}
         />
         <Button 
-          title= 'press'
+          title= 'Get user information'
           onPress = {this.printUsers.bind(this)}
         />
-
+        <Card>
+            <ScrollView horizontal style = {{}}>
+                 {this.renderImages_london()} 
+            </ScrollView>
+            <View // view for london texts
+            >
+              <Text onPress = {this.onCityPress.bind(this)}>
+                  London
+               </Text>
+            </View>
+        </Card>
         <View //contains the 1st CardSection ---------JORDAN----------  
         >      
             <View style = {{flex: 1, flexDirection: 'row' }}>
@@ -412,6 +434,22 @@ class ExploreScreen extends React.Component {
               );
             })
           }
+          renderImages_london = () =>{
+            //item, i is the index
+              return london.map((item, currentIndex) =>{
+                return (
+                  <Animated.View 
+                    key = {item.id}
+                    style = { styles.container}
+                  >
+                      <Image 
+                        style = {{flex: 1, height: 50, width: 250, resizeMode: 'cover', borderRadius: 20}}
+                        source = {item.uri}
+                      />
+                  </Animated.View>
+                );
+              })
+            }
   
 
     bookmark_filled() {

@@ -37,6 +37,7 @@ import MapScreen from './src/screens/MapScreen';
 import ViewCabo from './src/screens/ViewCabo';
 import ViewHawaii from './src/screens/ViewHawaii';
 import ViewIreland from './src/screens/ViewIreland';
+import CityProfileScreen from './src/screens/CityProfileScreen';
 
 
 
@@ -88,7 +89,7 @@ export default class App extends React.Component {
         dashOutings: DashboardOutingScreen,
         messages: MessagesScreen,
         explore: ExploreScreen,
-        //trips: TripsScreen,
+        city: CityProfileScreen,
         createtrip: CreateTripScreen,
         outings: OutingsScreen,
         createouting: CreateOutingScreen,
